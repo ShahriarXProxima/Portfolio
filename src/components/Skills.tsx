@@ -23,6 +23,9 @@ const SKILLS = [
 export default function Skills() {
   return (
     <section className="px-4 md:px-12 py-12 md:py-16 w-full max-w-full flex flex-col justify-center space-y-6 bg-white/40 dark:bg-primary/20 backdrop-blur-xl">
+      <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-8">
+        ... Skills ...
+      </div>
       {SKILLS.map((skill, index) => (
         <div key={index} className="bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/20 rounded-none md:rounded-tl-[2rem] md:rounded-br-[2rem] p-6 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 group hover:border-accent dark:hover:border-accent transition-colors shadow-2xl">
           <div className="space-y-4 w-full">
