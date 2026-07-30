@@ -76,7 +76,7 @@ export default function Footer() {
                   <img 
                     src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1Ip07PW_t1kDbJ7JLBmz4kv_20x26NpFP%2Fview%3Fusp%3Ddrive_link" 
                     alt="CV QR Code" 
-                    className="w-24 h-24" 
+                    className="w-40 h-40" 
                   />
                 </a>
               </div>
