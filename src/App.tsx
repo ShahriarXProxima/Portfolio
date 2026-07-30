@@ -68,9 +68,9 @@ export default function App() {
 
   if (selectedArticleId) {
     return (
-      <ArticleDetail 
-        articleId={selectedArticleId} 
-        onBack={closeArticle} 
+      <ArticleDetail
+        articleId={selectedArticleId}
+        onBack={closeArticle}
         onSelectArticle={openArticle}
         isDark={isDark}
         toggleTheme={toggleTheme}
@@ -85,7 +85,7 @@ export default function App() {
       <main className="relative z-10">
         <Hero />
         <CautionStrip />
-        
+
         <div className="flex flex-col pb-0 pt-0">
           <About />
           <Skills />

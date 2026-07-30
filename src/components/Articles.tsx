@@ -33,15 +33,15 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
       <h2 className="text-5xl md:text-6xl font-mono font-medium text-center md:text-right text-black dark:text-white drop-shadow-md">Articles</h2>
 
       <div className="overflow-hidden relative w-full">
-        <div 
+        <div
           className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${currentPage * 100}%)` }}
         >
           {Array.from({ length: totalPages }).map((_, pageIndex) => (
             <div key={pageIndex} className="w-full shrink-0 flex-none grid grid-cols-1 md:grid-cols-3 gap-6">
               {ARTICLES_DATA.slice(pageIndex * itemsPerPage, (pageIndex + 1) * itemsPerPage).map((article) => (
-                <div 
-                  key={article.id} 
+                <div
+                  key={article.id}
                   onClick={() => handleArticleClick(article.id)}
                   className="bg-white/40 dark:bg-primary/40 backdrop-blur-xl border border-blue-vivid/30 dark:border-blue-vivid/50 rounded-2xl md:rounded-tl-[3rem] md:rounded-br-[3rem] p-6 md:p-8 flex flex-col justify-between min-h-[300px] group hover:scale-[1.02] transition-all cursor-pointer shadow-2xl hover:border-accent dark:hover:border-accent"
                 >
@@ -53,7 +53,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
                   </div>
 
                   <div className="flex items-center justify-between pt-8 mt-auto">
-                    <button 
+                    <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleArticleClick(article.id);
@@ -78,17 +78,16 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
           <button
             key={i}
             onClick={() => setCurrentPage(i)}
-            className={`w-10 h-10 rounded-xl font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shadow-lg ${
-              currentPage === i
+            className={`w-10 h-10 rounded-xl font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shadow-lg ${currentPage === i
                 ? 'bg-orange-vivid text-white border border-transparent'
                 : 'bg-white/40 dark:bg-primary/40 border border-blue-vivid/30 text-blue-deep dark:text-white hover:bg-orange-vivid/20 dark:hover:border-orange-vivid'
-            }`}
+              }`}
             aria-label={`Go to page ${i + 1}`}
           >
             {i + 1}
           </button>
         ))}
-        <button 
+        <button
           onClick={handleNext}
           className="w-10 h-10 rounded-xl bg-white/40 dark:bg-primary/40 border border-blue-vivid/30 text-blue-deep dark:text-white flex items-center justify-center hover:bg-orange-vivid/20 dark:hover:border-orange-vivid transition-colors cursor-pointer shadow-lg"
           aria-label="Next page"

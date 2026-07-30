@@ -36,7 +36,7 @@ export default function WorkExperience() {
           ))}
         </div>
         <div className="text-right text-2xl font-mono text-blue-vivid dark:text-blue-pale font-bold pt-8 italic drop-shadow-sm">
-          Work experience<br/>
+          Work experience<br />
           <span className="text-orange-vivid dark:text-orange-vivid text-3xl">7 months +</span>
         </div>
       </div>
