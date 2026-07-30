@@ -9,6 +9,7 @@ import Articles from './components/Articles';
 import Design from './components/Design';
 import Footer from './components/Footer';
 import ArticleDetail from './components/ArticleDetail';
+import StaticStrip from './components/StaticStrip';
 import CautionStrip from './components/CautionStrip';
 import ScrollBackground from './components/ScrollBackground';
 
@@ -84,16 +85,22 @@ export default function App() {
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <main className="relative z-10">
         <Hero />
-        <CautionStrip />
 
         <div className="flex flex-col pb-0 pt-0">
+          <StaticStrip title="ABOUT" direction="left" />
           <About />
+          <StaticStrip title="SKILLS" direction="right" />
           <Skills />
+          <StaticStrip title="DESIGN" direction="left" />
           <Design />
+          <StaticStrip title="EXPERIENCE" direction="right" />
           <WorkExperience />
+          <StaticStrip title="PROJECTS" direction="left" />
           <Projects />
+          <StaticStrip title="ARTICLES" direction="right" />
           <Articles onSelectArticle={openArticle} />
         </div>
+        <CautionStrip />
       </main>
       <div className="relative z-10">
         <Footer />

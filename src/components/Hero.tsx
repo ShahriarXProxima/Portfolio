@@ -41,10 +41,10 @@ export default function Hero() {
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-accent text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-5 hover:bg-accent/90 hover:scale-105 transition-all duration-300 cursor-pointer mx-auto inline-flex shadow-[0_0_20px_rgba(255,78,70,0.4)] hover:shadow-[0_0_40px_rgba(255,78,70,0.6)] text-lg"
+            className="bg-accent text-white px-10 py-5 rounded-full font-bold flex items-center gap-5 hover:bg-accent/90 hover:scale-105 transition-all duration-300 cursor-pointer mx-auto inline-flex shadow-[0_0_20px_rgba(255,78,70,0.4)] hover:shadow-[0_0_40px_rgba(255,78,70,0.6)] text-lg"
           >
             Explore Projects
-            <div className="bg-white text-accent p-2.5 rounded-xl">
+            <div className="bg-white text-accent p-2.5 rounded-full">
               <ArrowRight size={20} />
             </div>
           </a>

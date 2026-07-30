@@ -33,7 +33,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="w-full mt-8 pb-8 border-t border-gray-200/50 dark:border-orange-vivid/50 pt-12 bg-white/40 dark:bg-gradient-to-t dark:from-orange-vivid/20 dark:to-primary/40 backdrop-blur-xl">
+    <footer id="contact" className="w-full pb-8 border-t border-gray-200/50 dark:border-orange-vivid/50 pt-12 bg-white/40 dark:bg-gradient-to-t dark:from-orange-vivid/20 dark:to-primary/40 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 md:px-12 space-y-24">
         {/* Contact Me Section */}
         <div className="space-y-16">
@@ -71,7 +71,7 @@ export default function Footer() {
                   href="https://drive.google.com/file/d/1Ip07PW_t1kDbJ7JLBmz4kv_20x26NpFP/view?usp=drive_link" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-block bg-gray-100 dark:bg-white p-3 rounded-xl hover:scale-105 transition-transform border border-gray-200 dark:border-transparent"
+                  className="inline-block bg-gray-100 dark:bg-white p-3 rounded-full hover:scale-105 transition-transform border border-gray-200 dark:border-transparent"
                 >
                   <img 
                     src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1Ip07PW_t1kDbJ7JLBmz4kv_20x26NpFP%2Fview%3Fusp%3Ddrive_link" 
@@ -161,7 +161,7 @@ export default function Footer() {
 
         {/* Giant Name */}
         <div className="w-full flex justify-center md:justify-between overflow-hidden">
-          <h3 className="text-[17vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-[0.75] text-gray-900 dark:text-orange-vivid whitespace-nowrap">
+          <h3 className="text-[17vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-[0.75] text-gray-900 dark:text-accent whitespace-nowrap">
             shahriar tahmid
           </h3>
         </div>

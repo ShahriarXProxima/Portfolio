@@ -58,11 +58,11 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
                         e.stopPropagation();
                         handleArticleClick(article.id);
                       }}
-                      className="bg-orange-vivid text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-orange-vivid/80 transition-colors cursor-pointer border border-transparent shadow-lg"
+                      className="bg-orange-vivid text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-orange-vivid/80 transition-colors cursor-pointer border border-transparent shadow-lg"
                     >
                       Read more
                     </button>
-                    <div className="bg-orange-vivid text-white p-2 rounded-xl group-hover:bg-orange-vivid/80 group-hover:scale-110 transition-all border border-transparent shadow-lg">
+                    <div className="bg-orange-vivid text-white p-2 rounded-full group-hover:bg-orange-vivid/80 group-hover:scale-110 transition-all border border-transparent shadow-lg">
                       <ArrowRight size={16} />
                     </div>
                   </div>
@@ -78,7 +78,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
           <button
             key={i}
             onClick={() => setCurrentPage(i)}
-            className={`w-10 h-10 rounded-xl font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shadow-lg ${currentPage === i
+            className={`w-10 h-10 rounded-full font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shadow-lg ${currentPage === i
                 ? 'bg-orange-vivid text-white border border-transparent'
                 : 'bg-white/40 dark:bg-primary/40 border border-blue-vivid/30 text-blue-deep dark:text-white hover:bg-orange-vivid/20 dark:hover:border-orange-vivid'
               }`}
@@ -89,7 +89,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
         ))}
         <button
           onClick={handleNext}
-          className="w-10 h-10 rounded-xl bg-white/40 dark:bg-primary/40 border border-blue-vivid/30 text-blue-deep dark:text-white flex items-center justify-center hover:bg-orange-vivid/20 dark:hover:border-orange-vivid transition-colors cursor-pointer shadow-lg"
+          className="w-10 h-10 rounded-full bg-white/40 dark:bg-primary/40 border border-blue-vivid/30 text-blue-deep dark:text-white flex items-center justify-center hover:bg-orange-vivid/20 dark:hover:border-orange-vivid transition-colors cursor-pointer shadow-lg"
           aria-label="Next page"
         >
           <ArrowRight size={16} />
