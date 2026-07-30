@@ -17,12 +17,12 @@ const row2 = [poster8, poster9, poster10, poster11, poster12, poster13];
 
 export default function Design() {
   return (
-    <section className="px-4 md:px-12 py-16 w-full max-w-[90rem] mx-auto space-y-16 overflow-hidden">
-      <div className="text-gray-500 dark:text-zinc-500 font-mono text-sm tracking-wider text-center">
-        ... /Design & Posters ...
+    <section className="px-4 md:px-12 py-16 w-full max-w-[100rem] mx-auto space-y-16 overflow-hidden">
+      <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-12">
+        ... Poster Designs ...
       </div>
 
-      <div className="space-y-12 bg-blue-deep/30 dark:bg-blue-deep/50 backdrop-blur-xl border border-blue-deep/20 dark:border-blue-deep rounded-2xl md:rounded-tr-[4rem] md:rounded-bl-[4rem] py-8 md:py-12 shadow-2xl relative flex flex-col overflow-hidden hover:border-accent dark:hover:border-accent transition-colors">
+      <div className="space-y-12 bg-blue-deep/30 dark:bg-blue-deep/50 backdrop-blur-xl border border-blue-deep/20 dark:border-blue-deep rounded-2xl md:rounded-tr-[4rem] md:rounded-bl-[4rem] py-8 md:py-16 shadow-2xl relative flex flex-col overflow-hidden hover:border-accent dark:hover:border-accent transition-colors">
         
         {/* Row 1 - Scroll Left */}
         <div className="flex w-max animate-marquee">

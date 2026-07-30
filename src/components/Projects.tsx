@@ -30,7 +30,7 @@ export default function Projects() {
   return (
     <section id="projects" className="px-4 md:px-12 py-12 md:py-16 w-full max-w-full flex flex-col justify-center bg-gray-stone/20 dark:bg-gray-stone/40 backdrop-blur-xl border-y border-gray-stone/50">
       <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-12">
-        ... /Projects ...
+        ... Projects ...
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-7xl mx-auto">

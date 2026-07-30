@@ -40,8 +40,8 @@ export default function Skills() {
       ))}
 
       <div className="flex flex-col md:flex-row gap-6 md:gap-8 pt-4 items-center">
-        <div className="flex-1 text-2xl md:text-4xl text-orange-vivid dark:text-orange-vivid font-sans font-bold leading-tight py-4 md:py-8 md:px-4 drop-shadow-md">
-          Some of my favorite technologies, topics, or tools that I've worked with
+        <div className="flex-1 text-2xl md:text-4xl text-orange-vivid dark:text-orange-vivid font-mono font-bold leading-[120%] py-4 md:py-4 md:px-2 drop-shadow-md">
+          Some of my favorite technologies, topics, or tools that I've worked with...
         </div>
         <div className="flex-[3] w-full bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/20 rounded-none md:rounded-tr-[2rem] md:rounded-bl-[2rem] p-6 md:p-10 shadow-2xl hover:border-accent dark:hover:border-accent transition-colors">
           <h3 className="text-2xl text-blue-vivid dark:text-blue-pale font-mono font-bold drop-shadow-sm mb-4">DevOps</h3>
