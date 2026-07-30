@@ -1,0 +1,6 @@
+{
+  "name": "Portfolio Website",
+  "description": "A dark-themed responsive portfolio website with sections for hero, about, skills, work experience, projects, and articles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

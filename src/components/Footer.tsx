@@ -1,0 +1,186 @@
+import { useState } from 'react';
+import { SOCIAL_LINKS } from '../data';
+
+export default function Footer() {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+    
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
+    
+    try {
+      // Formspree API endpoint - user needs to replace YOUR_FORM_ID
+      const res = await fetch('https://formspree.io/f/xykrvpap', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <footer id="contact" className="w-full mt-8 pb-8 border-t border-gray-200/50 dark:border-orange-vivid/50 pt-12 bg-white/40 dark:bg-gradient-to-t dark:from-orange-vivid/20 dark:to-primary/40 backdrop-blur-xl">
+      <div className="max-w-7xl mx-auto px-4 md:px-12 space-y-24">
+        {/* Contact Me Section */}
+        <div className="space-y-16">
+          <h2 className="text-[15vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-none text-gray-900 dark:text-white">
+            Contact me
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 font-mono text-sm text-gray-600 dark:text-gray-300">
+            {/* Left Column: Contact Details & Social Links */}
+            <div className="space-y-6 md:mt-2">
+              <div>
+                <a href="mailto:shahriarxproximalog1@gmail.com" className="text-base text-gray-900 dark:text-white hover:underline transition-colors block mb-4">
+                  shahriarxproximalog1@gmail.com
+                </a>
+              </div>
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                {SOCIAL_LINKS.map((social) => (
+                  <a 
+                    key={social.name} 
+                    href={social.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center gap-3 text-gray-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors group"
+                  >
+                    <social.icon size={16} className="group-hover:scale-110 transition-transform shrink-0" />
+                    <span>{social.name}</span>
+                  </a>
+                ))}
+              </div>
+              
+              {/* CV QR Code */}
+              <div className="pt-8">
+                <p className="text-gray-900 dark:text-white font-bold mb-5">Scan for CV:</p>
+                <a 
+                  href="https://drive.google.com/file/d/1Ip07PW_t1kDbJ7JLBmz4kv_20x26NpFP/view?usp=drive_link" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-block bg-gray-100 dark:bg-white p-3 rounded-xl hover:scale-105 transition-transform border border-gray-200 dark:border-transparent"
+                >
+                  <img 
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1Ip07PW_t1kDbJ7JLBmz4kv_20x26NpFP%2Fview%3Fusp%3Ddrive_link" 
+                    alt="CV QR Code" 
+                    className="w-24 h-24" 
+                  />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Form */}
+            <form className="space-y-8 font-mono" onSubmit={handleSubmit}>
+              <div className="space-y-6">
+                <label className="text-gray-900 dark:text-white font-medium block">Name (required)</label>
+                <div className="flex flex-col md:flex-row gap-6 md:gap-4">
+                  <div className="flex-1 space-y-2">
+                    <label className="text-xs text-gray-500 dark:text-zinc-400">First Name</label>
+                    <input 
+                      type="text" 
+                      name="firstName"
+                      required
+                      className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none" 
+                    />
+                  </div>
+                  <div className="flex-1 space-y-2">
+                    <label className="text-xs text-gray-500 dark:text-zinc-400">Last Name</label>
+                    <input 
+                      type="text" 
+                      name="lastName"
+                      required
+                      className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none" 
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-gray-900 dark:text-white font-medium block mb-6">Email (required)</label>
+                <input 
+                  type="email" 
+                  name="email"
+                  required
+                  className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none" 
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-gray-900 dark:text-white font-medium block mb-6">Message (required)</label>
+                <input 
+                  type="text" 
+                  name="message"
+                  required
+                  className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none" 
+                />
+              </div>
+
+              <div className="pt-4 flex items-center gap-4">
+                <button 
+                  type="submit" 
+                  disabled={status === 'loading' || status === 'success'}
+                  className="bg-orange-vivid dark:bg-orange-vivid text-white dark:text-white text-xs font-bold px-8 py-3 hover:bg-orange-vivid/80 transition-colors cursor-pointer rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {status === 'loading' ? 'SUBMITTING...' : status === 'success' ? 'SENT!' : 'SUBMIT'}
+                </button>
+                {status === 'success' && <span className="text-sm text-green-600 dark:text-green-400 font-bold">Message sent successfully!</span>}
+                {status === 'error' && <span className="text-sm text-red-600 dark:text-red-400 font-bold">Failed to send. Please try again.</span>}
+              </div>
+            </form>
+          </div>
+        </div>
+
+        {/* Info Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-mono text-gray-600 dark:text-gray-300">
+          <div>
+            Full-stack Development,<br />
+            System Designing, Problem Solving
+          </div>
+          <div className="md:text-center">
+            7+ months of professional experience<br />
+            <a href="#projects" className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors">View Work</a>
+          </div>
+          <div className="md:text-right">
+            Shahriar Tahmid<br />
+            2026
+          </div>
+        </div>
+
+        {/* Giant Name */}
+        <div className="w-full flex justify-center md:justify-between overflow-hidden">
+          <h3 className="text-[17vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-[0.75] text-gray-900 dark:text-orange-vivid whitespace-nowrap">
+            shahriar tahmid
+          </h3>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="flex flex-col gap-6 pt-12 text-xs font-mono text-black-500 dark:text-black-500">
+          <div className="flex justify-between w-full">
+            <a href="#contact" className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors">Contact</a>
+            <a href="mailto:shahriarxproximalog1@gmail.com" className="hover:text-black dark:hover:text-black transition-colors text-center pr-8 md:pr-0">shahriarxproximalog1@gmail.com</a>
+            <div className="hidden md:block w-[45px]"></div>
+          </div>
+          <div className="flex flex-col md:flex-row justify-between w-full gap-4 md:gap-0">
+            <div>
+              © 2026 Shahriar Tahmid | All Rights Reserved
+            </div>
+            <a href="#" className="hover:text-black dark:hover:text-white transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

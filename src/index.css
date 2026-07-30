@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #050505;
+  --color-secondary: #212030;
+  --color-blue-deep: #1b165b;
+  --color-blue-vivid: #4837ff;
+  --color-blue-pale: #d1cdff;
+  --color-orange-vivid: #f75b04;
+  --color-gray-stone: #5f5f6b;
+  --color-paper-white: #ffffff;
+  --color-accent: #f75b04;
+}
+
+@layer base {
+  body {
+    @apply bg-transparent text-gray-900 dark:text-white antialiased selection:bg-accent selection:text-white dark:selection:bg-accent dark:selection:text-white transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marquee-reverse 40s linear infinite;
+  }
+  .animate-marquee:hover, .animate-marquee-reverse:hover {
+    animation-play-state: paused;
+  }
+}
