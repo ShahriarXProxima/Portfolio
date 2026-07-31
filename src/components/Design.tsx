@@ -20,14 +20,18 @@ export default function Design() {
   const [selectedPoster, setSelectedPoster] = useState<string | null>(null);
 
   useEffect(() => {
+    const header = document.querySelector('header');
     if (selectedPoster) {
       document.body.style.overflow = 'hidden';
+      if (header) header.style.display = 'none';
     } else {
       document.body.style.overflow = 'unset';
+      if (header) header.style.display = '';
     }
 
     return () => {
       document.body.style.overflow = 'unset';
+      if (header) header.style.display = '';
     };
   }, [selectedPoster]);
 
