@@ -17,11 +17,12 @@ export default function About() {
             Hello! I'm <span className="text-accent italic font-bold">Shahriar</span>,
           </h3>
           <h4 className="text-xl md:text-3xl font-mono text-blue-deep dark:text-blue-pale mt-4 mb-6 font-medium">
-            Backend Engineer & Student
+            Fullstack Engineer
           </h4>
           <p className="text-lg md:text-xl text-gray-700 dark:text-zinc-300 font-sans leading-relaxed max-w-2xl">
-            A results-driven Backend Engineer and Software Engineering student at Daffodil International University. 
-            I specialize in building scalable backend systems, designing REST APIs, and optimizing relational databases with clean, maintainable code.
+            A results-driven Fullstack Engineer and Software Engineering student at Daffodil International University. 
+            I specialize in building scalable backend systems, designing REST APIs, and optimizing relational databases with clean, maintainable code.<br/><br/>
+            I am also a competitive programmer and a hackathon enthusiast, constantly pushing my limits to learn and grow. Ranked top 10 in CodeTrap spring 2025 programming contest.
           </p>
         </div>
 
