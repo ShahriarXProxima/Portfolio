@@ -24,6 +24,8 @@ export default function Footer() {
 
       if (res.ok) {
         setStatus('success');
+        e.currentTarget.reset();
+        setTimeout(() => setStatus('idle'), 3000);
       } else {
         setStatus('error');
       }
@@ -37,7 +39,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 md:px-12 space-y-24">
         {/* Contact Me Section */}
         <div className="space-y-16">
-          <h2 className="text-[15vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-none text-gray-900 dark:text-white">
+          <h2 className="text-6xl sm:text-[12vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-none text-gray-900 dark:text-white break-words">
             Contact me
           </h2>
 
@@ -161,19 +163,19 @@ export default function Footer() {
 
         {/* Giant Name */}
         <div className="w-full flex justify-center md:justify-between overflow-hidden">
-          <h3 className="text-[17vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-[0.75] text-gray-900 dark:text-accent whitespace-nowrap">
+          <h3 className="text-5xl sm:text-[12vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-[0.8] md:leading-[0.75] text-gray-900 dark:text-accent break-words md:whitespace-nowrap text-center md:text-left">
             shahriar tahmid
           </h3>
         </div>
 
         {/* Bottom Footer */}
         <div className="flex flex-col gap-6 pt-12 text-xs font-mono text-black-500 dark:text-black-500">
-          <div className="flex justify-between w-full">
+          <div className="flex flex-col md:flex-row justify-between items-center w-full gap-4 md:gap-0">
             <a href="#contact" className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors">Contact</a>
-            <a href="mailto:shahriarxproximalog1@gmail.com" className="hover:text-black dark:hover:text-black transition-colors text-center pr-8 md:pr-0">shahriarxproximalog1@gmail.com</a>
+            <a href="mailto:shahriarxproximalog1@gmail.com" className="hover:text-black dark:hover:text-black transition-colors text-center">shahriarxproximalog1@gmail.com</a>
             <div className="hidden md:block w-[45px]"></div>
           </div>
-          <div className="flex flex-col md:flex-row justify-between w-full gap-4 md:gap-0">
+          <div className="flex flex-col md:flex-row justify-between items-center w-full gap-4 md:gap-0 text-center md:text-left">
             <div>
               © 2026 Shahriar Tahmid | All Rights Reserved
             </div>

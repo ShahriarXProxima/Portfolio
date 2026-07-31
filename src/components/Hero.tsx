@@ -26,7 +26,7 @@ export default function Hero() {
         
         {/* Top Section */}
         <div className="space-y-8 mt-4 md:mt-12 animate-[fadeInDown_1s_ease-out]">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-serif leading-[1.1] text-gray-900 dark:text-white drop-shadow-[0_4px_10px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] tracking-tight whitespace-nowrap">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-serif leading-[1.1] text-gray-900 dark:text-white drop-shadow-[0_4px_10px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] tracking-tight break-words md:whitespace-nowrap">
             Full-stack <span className="font-sans font-medium text-accent italic">Developer</span>
           </h1>
 
