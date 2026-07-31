@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import poster1 from '../../resources/poster1.jpg';
 import poster2 from '../../resources/poster2.jpg';
 import poster3 from '../../resources/poster3.jpg';
@@ -18,6 +18,18 @@ const row2 = [poster8, poster9, poster10, poster11, poster12, poster13];
 
 export default function Design() {
   const [selectedPoster, setSelectedPoster] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (selectedPoster) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedPoster]);
 
   return (
     <section className="px-4 md:px-12 py-16 w-full max-w-[100rem] mx-auto space-y-16 overflow-hidden">
