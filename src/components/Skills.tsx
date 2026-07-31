@@ -4,54 +4,70 @@ const SKILLS = [
   {
     title: 'Front-end',
     tags: 'TypeScript / React / Vue / Redux Toolkit / GraphQL / React Native',
-  },
-  {
-    title: 'Styles',
-    tags: 'SCSS / SASS / PostCSS / Ant.d / MUI / Material UI',
-    hasLink: true,
+    colSpan: 'md:col-span-2',
+    rowSpan: 'md:row-span-2',
+    image: 'https://images.unsplash.com/photo-1517724125867-b7156f7bf677?auto=format&fit=crop&q=80&w=1000'
   },
   {
     title: 'Back-end',
     tags: 'Spring Boot / PostgreSQL / MySQL / Redis / Kafka / RabbitMQ / Microservices',
+    colSpan: 'md:col-span-1',
+    rowSpan: 'md:row-span-2',
+    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    title: 'Styles',
+    tags: 'SCSS / SASS / PostCSS / Ant.d / MUI / Material UI',
+    colSpan: 'md:col-span-1',
+    rowSpan: 'md:row-span-1',
+    image: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&q=80&w=800'
   },
   {
     title: 'Design',
     tags: 'Canva / Affinity Designer / Affinity Photo / Poster Design',
+    colSpan: 'md:col-span-2',
+    rowSpan: 'md:row-span-1',
+    image: 'https://images.unsplash.com/photo-1478059299873-f044d2207902?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
+    title: 'DevOps',
+    tags: 'Github / Docker / (CI/CD) / k8s / Bash / Shell Scripting',
+    colSpan: 'md:col-span-3',
+    rowSpan: 'md:row-span-1',
+    image: 'https://images.unsplash.com/photo-1518972935272-9fc31aeb7cba?auto=format&fit=crop&q=80&w=1400'
   }
 ];
 
 export default function Skills() {
   return (
-    <section className="px-4 md:px-12 py-12 md:py-16 w-full max-w-full flex flex-col justify-center space-y-6 bg-white/40 dark:bg-primary/20 backdrop-blur-xl">
-      <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-8">
+    <section id="skills" className="px-4 md:px-12 py-12 md:py-16 w-full max-w-[90rem] mx-auto flex flex-col justify-center space-y-8 bg-transparent">
+      <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-4">
         ... Skills ...
       </div>
-      {SKILLS.map((skill, index) => (
-        <div key={index} className="bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/20 rounded-none md:rounded-tl-[2rem] md:rounded-br-[2rem] p-6 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 group hover:border-accent dark:hover:border-accent transition-colors shadow-2xl">
-          <div className="space-y-4 w-full">
-            <h3 className="text-2xl text-blue-vivid dark:text-orange-vivid font-mono font-bold drop-shadow-sm">{skill.title}</h3>
-            <p className="text-xl md:text-2xl font-mono leading-relaxed text-black dark:text-white font-medium drop-shadow-md">
-              {skill.tags}
-            </p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(180px,auto)] md:auto-rows-[minmax(240px,auto)]">
+        {SKILLS.map((skill, index) => (
+          <div 
+            key={index} 
+            className={`relative overflow-hidden rounded-2xl md:rounded-[2rem] p-6 md:p-10 flex flex-col justify-end group shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] border border-white/20 dark:border-white/10 hover:border-accent dark:hover:border-accent ${skill.colSpan} ${skill.rowSpan}`}
+          >
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              style={{ backgroundImage: `url(${skill.image})` }}
+            />
+            {/* Overlay for contrast */}
+            <div className="absolute inset-0 z-10 bg-black/40 group-hover:bg-black/30 transition-colors backdrop-blur-[2px]" />
+            
+            {/* Content */}
+            <div className="relative z-20 space-y-2 w-full">
+              <h3 className="text-2xl md:text-3xl text-orange-vivid font-mono font-bold drop-shadow-lg">{skill.title}</h3>
+              <p className="text-base md:text-xl font-mono leading-relaxed text-white font-medium drop-shadow-lg">
+                {skill.tags}
+              </p>
+            </div>
           </div>
-          {/* {skill.hasLink && (
-            <button className="bg-gray-100 dark:bg-white text-gray-900 dark:text-black p-4 rounded-full self-start md:self-auto group-hover:bg-gray-200 dark:group-hover:bg-zinc-200 transition-colors border border-gray-200 dark:border-transparent">
-              <ArrowUpRight size={24} />
-            </button>
-          )} */}
-        </div>
-      ))}
-
-      <div className="flex flex-col md:flex-row gap-6 md:gap-8 pt-4 items-center">
-        <div className="flex-1 text-2xl md:text-4xl text-orange-vivid dark:text-orange-vivid font-mono font-bold leading-[120%] py-4 md:py-4 md:px-2 drop-shadow-md">
-          Some of my favorite technologies, topics, or tools that I've worked with...
-        </div>
-        <div className="flex-[3] w-full bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/20 rounded-none md:rounded-tr-[2rem] md:rounded-bl-[2rem] p-6 md:p-10 shadow-2xl hover:border-accent dark:hover:border-accent transition-colors">
-          <h3 className="text-2xl text-blue-vivid dark:text-blue-pale font-mono font-bold drop-shadow-sm mb-4">DevOps</h3>
-          <p className="text-xl md:text-2xl font-mono leading-relaxed text-black dark:text-white font-medium drop-shadow-md">
-            Github / Docker / (CI/CD) / k8s / Bash / Shell Scripting
-          </p>
-        </div>
+        ))}
       </div>
     </section>
   );
