@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import poster1 from '../../resources/poster1.jpg';
 import poster2 from '../../resources/poster2.jpg';
 import poster3 from '../../resources/poster3.jpg';
@@ -16,6 +17,8 @@ const row1 = [poster1, poster2, poster3, poster4, poster5, poster6, poster7];
 const row2 = [poster8, poster9, poster10, poster11, poster12, poster13];
 
 export default function Design() {
+  const [selectedPoster, setSelectedPoster] = useState<string | null>(null);
+
   return (
     <section className="px-4 md:px-12 py-16 w-full max-w-[100rem] mx-auto space-y-16 overflow-hidden">
       <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-12">
@@ -32,7 +35,8 @@ export default function Design() {
               <img 
                 src={src} 
                 alt="Poster design" 
-                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500" 
+                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500 cursor-pointer" 
+                onClick={() => setSelectedPoster(src)}
               />
             </div>
           ))}
@@ -45,13 +49,38 @@ export default function Design() {
               <img 
                 src={src} 
                 alt="Poster design" 
-                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500" 
+                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500 cursor-pointer" 
+                onClick={() => setSelectedPoster(src)}
               />
             </div>
           ))}
         </div>
 
       </div>
+
+      {/* Fullscreen Poster Modal */}
+      {selectedPoster && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/60 backdrop-blur-xl transition-opacity duration-300"
+          onClick={() => setSelectedPoster(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 p-2 text-white/70 hover:text-white bg-black/40 hover:bg-black/60 rounded-full transition-all duration-300 z-50 backdrop-blur-md"
+            onClick={() => setSelectedPoster(null)}
+            aria-label="Close"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <img 
+            src={selectedPoster} 
+            alt="Enlarged poster design" 
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10" 
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 }
