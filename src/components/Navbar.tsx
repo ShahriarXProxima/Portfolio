@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 
 interface NavbarProps {
   isDark?: boolean;
@@ -7,7 +7,6 @@ interface NavbarProps {
 }
 
 export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
-  const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -19,9 +18,9 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
       if (currentScrollY < 50) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY) {
-        setIsVisible(false);
+        setIsVisible(false); // Hide on scroll down
       } else {
-        setIsVisible(true);
+        setIsVisible(true); // Show on scroll up
       }
       
       lastScrollY = currentScrollY;
@@ -67,93 +66,57 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
   };
 
   return (
-    <header className={`fixed top-0 w-full z-50 backdrop-blur-xl bg-white/40 dark:bg-primary/40 border-b border-black/5 dark:border-blue-deep transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-      <nav className="flex items-center justify-between py-3.5 px-4 md:px-12 w-full max-w-7xl mx-auto">
-        {/* Logo */}
+    <header className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[96vw] md:w-max ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0 pointer-events-none'}`}>
+      <nav className="flex items-center justify-between gap-3 md:gap-10 py-2.5 px-4 md:px-6 w-full mx-auto backdrop-blur-3xl bg-white/30 dark:bg-black/30 border border-white/40 dark:border-white/10 rounded-full shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
+        
+        {/* Sleek Logo */}
         <div
           onClick={handleLogoClick}
-          className="text-lg font-medium tracking-tight cursor-pointer hover:opacity-80 transition-opacity"
+          className="text-lg md:text-xl font-medium tracking-tighter cursor-pointer hover:opacity-80 transition-opacity shrink-0 flex items-baseline"
         >
-          <span className="font-sans font-bold text-orange-vivid dark:text-orange-vivid italic"> shahriar .dev</span>
+          <span className="font-serif italic font-extrabold text-gray-900 dark:text-white">
+            shahriar
+          </span>
+          <span className="font-serif italic text-accent font-extrabold">.dev</span>
         </div>
 
-        {/* Right side container: Links row + Animated Circle Button */}
-        <div className="flex items-center gap-3 md:gap-6">
-          {/* Theme Toggle */}
-          {toggleTheme && (
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center gap-1">
+          {navItems.map((item) => (
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full text-gray-700 hover:bg-black/5 dark:text-gray-300 dark:hover:bg-white/10 transition-colors"
-              aria-label="Toggle theme"
+              key={item.id}
+              onClick={() => handleScroll(item.id)}
+              className="text-sm font-sans font-medium text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white px-5 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer"
             >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              {item.name}
             </button>
-          )}
-
-          {/* Navigation Bar Row */}
-          <div
-            className={`flex items-center transition-all duration-500 ease-in-out overflow-hidden ${isOpen
-              ? 'max-w-2xl opacity-100 translate-x-0'
-              : 'max-w-0 opacity-0 translate-x-10 pointer-events-none'
-              }`}
-          >
-            <div className="flex items-center gap-1.5 md:gap-3 bg-white/40 dark:bg-blue-deep/40 border border-black/5 dark:border-blue-vivid/50 px-3 py-1.5 rounded-full backdrop-blur-xl shadow-xl whitespace-nowrap">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleScroll(item.id)}
-                  className="text-xs md:text-sm font-mono text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white px-3 py-1 rounded-full hover:bg-black/5 dark:hover:bg-blue-vivid/30 transition-all cursor-pointer"
-                >
-                  {item.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Toggle Button with Expanding Circle Animation */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="relative group p-2.5 rounded-full flex items-center justify-center text-gray-900 dark:text-white transition-all cursor-pointer focus:outline-none"
-            aria-label="Toggle navigation menu"
-          >
-            {/* Animated Circle Rings */}
-            <span
-              className={`absolute inset-0 rounded-full border transition-all duration-500 ease-out ${isOpen
-                ? 'scale-125 opacity-100 border-black/80 dark:border-white/80 animate-pulse'
-                : 'scale-100 opacity-40 border-gray-400 dark:border-zinc-500 group-hover:scale-110 group-hover:border-black dark:group-hover:border-white'
-                }`}
-            />
-
-            {/* Circle background fill on open */}
-            <span
-              className={`absolute inset-0 rounded-full bg-black/5 dark:bg-white/10 transition-all duration-500 ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-                }`}
-            />
-
-            {/* Rotating Dashed SVG Circle Ring */}
-            <svg
-              className={`absolute inset-[-4px] w-[calc(100%+8px)] h-[calc(100%+8px)] transition-all duration-700 pointer-events-none ${isOpen ? 'rotate-180 opacity-100 scale-105' : 'rotate-0 opacity-0 scale-90'
-                }`}
-              viewBox="0 0 44 44"
-            >
-              <circle
-                cx="22"
-                cy="22"
-                r="20"
-                fill="none"
-                stroke={isDark ? "white" : "black"}
-                strokeWidth="1.5"
-                strokeDasharray="6 4"
-                className="animate-[spin_8s_linear_infinite]"
-              />
-            </svg>
-
-            {/* Icon */}
-            <div className={`relative z-10 transition-transform duration-300 ${isOpen ? 'rotate-90' : 'rotate-0'}`}>
-              {isOpen ? <X size={18} /> : <Menu size={18} />}
-            </div>
-          </button>
+          ))}
         </div>
+        
+        {/* Mobile Navigation (Compacted) */}
+        <div className="flex md:hidden items-center gap-1 overflow-x-auto no-scrollbar scroll-smooth">
+           {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => handleScroll(item.id)}
+              className="text-[11px] sm:text-xs font-sans font-medium text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white px-2.5 sm:px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer whitespace-nowrap"
+            >
+              {item.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Theme Toggle */}
+        {toggleTheme && (
+          <button
+            onClick={toggleTheme}
+            className="p-2 shrink-0 rounded-full text-gray-700 hover:bg-black/5 dark:text-gray-300 dark:hover:bg-white/20 transition-colors bg-white/40 dark:bg-black/40 border border-black/5 dark:border-white/10 shadow-sm ml-1"
+            aria-label="Toggle theme"
+          >
+            {isDark ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+        )}
+
       </nav>
     </header>
   );
