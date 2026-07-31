@@ -6,35 +6,35 @@ const SKILLS = [
     tags: 'TypeScript / React / Vue / Redux Toolkit / GraphQL / React Native',
     colSpan: 'md:col-span-2',
     rowSpan: 'md:row-span-2',
-    image: 'https://images.unsplash.com/photo-1517724125867-b7156f7bf677?auto=format&fit=crop&q=80&w=1000'
+    image: 'https://images.unsplash.com/photo-1418985991508-e47386d96a71?auto=format&fit=crop&q=80&w=1000'
   },
   {
     title: 'Back-end',
     tags: 'Spring Boot / PostgreSQL / MySQL / Redis / Kafka / RabbitMQ / Microservices',
     colSpan: 'md:col-span-1',
     rowSpan: 'md:row-span-2',
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.unsplash.com/photo-1473654729523-203e25dfda10?auto=format&fit=crop&q=80&w=800'
   },
   {
     title: 'Styles',
     tags: 'SCSS / SASS / PostCSS / Ant.d / MUI / Material UI',
     colSpan: 'md:col-span-1',
     rowSpan: 'md:row-span-1',
-    image: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&q=80&w=800'
   },
   {
     title: 'Design',
     tags: 'Canva / Affinity Designer / Affinity Photo / Poster Design',
     colSpan: 'md:col-span-2',
     rowSpan: 'md:row-span-1',
-    image: 'https://images.unsplash.com/photo-1478059299873-f044d2207902?auto=format&fit=crop&q=80&w=1000'
+    image: 'https://images.unsplash.com/photo-1507281736509-c6289f1ea0f8?auto=format&fit=crop&q=80&w=1000'
   },
   {
     title: 'DevOps',
     tags: 'Github / Docker / (CI/CD) / k8s / Bash / Shell Scripting',
     colSpan: 'md:col-span-3',
     rowSpan: 'md:row-span-1',
-    image: 'https://images.unsplash.com/photo-1518972935272-9fc31aeb7cba?auto=format&fit=crop&q=80&w=1400'
+    image: 'https://images.unsplash.com/photo-1523997596732-56d0ebb8eacf?auto=format&fit=crop&q=80&w=1400'
   }
 ];
 
@@ -57,7 +57,7 @@ export default function Skills() {
               style={{ backgroundImage: `url(${skill.image})` }}
             />
             {/* Overlay for contrast */}
-            <div className="absolute inset-0 z-10 bg-black/40 group-hover:bg-black/30 transition-colors backdrop-blur-[2px]" />
+            <div className="absolute inset-0 z-10 bg-black/40 group-hover:bg-black/30 transition-colors" />
             
             {/* Content */}
             <div className="relative z-20 space-y-2 w-full">
