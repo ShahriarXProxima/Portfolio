@@ -74,7 +74,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
           onClick={handleLogoClick}
           className="text-lg md:text-xl font-medium tracking-tighter cursor-pointer hover:opacity-80 transition-opacity shrink-0 flex items-baseline"
         >
-          <span className="font-serif italic font-extrabold text-gray-900 dark:text-white">
+          <span className="font-serif font-extrabold text-gray-900 dark:text-white">
             shahriar
           </span>
           <span className="font-serif italic text-accent font-extrabold">.dev</span>

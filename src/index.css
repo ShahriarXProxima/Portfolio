@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -18,6 +19,10 @@
   body {
     @apply bg-transparent text-gray-900 dark:text-white antialiased selection:bg-accent selection:text-white dark:selection:bg-accent dark:selection:text-white transition-colors duration-300;
   }
+}
+
+.font-pirata {
+  font-family: 'Pirata One', serif;
 }
 
 @layer utilities {
