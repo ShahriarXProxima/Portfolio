@@ -51,14 +51,14 @@ export default function Footer() {
                   shahriarxproximalog1@gmail.com
                 </a>
               </div>
-              <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 {SOCIAL_LINKS.map((social) => (
                   <a 
                     key={social.name} 
                     href={social.url} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="flex items-center gap-3 text-gray-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors group"
+                    className="flex items-center gap-3 text-gray-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors group break-all"
                   >
                     <social.icon size={16} className="group-hover:scale-110 transition-transform shrink-0" />
                     <span>{social.name}</span>
