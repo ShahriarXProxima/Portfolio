@@ -44,21 +44,21 @@ export default function Skills() {
       <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-4">
         {/* ... Skills ... */}
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(180px,auto)] md:auto-rows-[minmax(240px,auto)]">
         {SKILLS.map((skill, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className={`relative overflow-hidden rounded-2xl md:rounded-[2rem] p-6 md:p-10 flex flex-col justify-end group shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] border border-white/20 dark:border-white/10 hover:border-accent dark:hover:border-accent ${skill.colSpan} ${skill.rowSpan}`}
           >
             {/* Background Image */}
-            <div 
+            <div
               className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
               style={{ backgroundImage: `url(${skill.image})` }}
             />
             {/* Overlay for contrast */}
             <div className="absolute inset-0 z-10 bg-black/40 group-hover:bg-black/30 transition-colors" />
-            
+
             {/* Content */}
             <div className="relative z-20 space-y-2 w-full">
               <h3 className="text-2xl md:text-3xl text-orange-vivid font-mono font-bold drop-shadow-lg">{skill.title}</h3>
