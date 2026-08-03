@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { SOCIAL_LINKS } from '../data';
-import heroVideo from '../../resources/video.mp4';
+import heroVideo from '../../resources/video1.mp4';
 
 export default function Hero() {
   const githubUrl = SOCIAL_LINKS.find((social) => social.name.toLowerCase() === 'github-repositories')?.url || 'https://github.com/ShahriarXProxima?tab=repositories';
