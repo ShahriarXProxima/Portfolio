@@ -36,7 +36,7 @@ export default function Design() {
   }, [selectedPoster]);
 
   return (
-    <section className="px-4 md:px-12 py-16 w-full max-w-[100rem] mx-auto space-y-16 overflow-hidden">
+    <section id="design" className="px-4 md:px-12 py-16 w-full max-w-[100rem] mx-auto space-y-16 overflow-hidden">
       <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-12">
         ... Poster Designs ...
       </div>

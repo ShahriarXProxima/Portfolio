@@ -44,6 +44,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
   const navItems = [
     { name: 'About me', id: 'about' },
     { name: 'Work', id: 'work' },
+    { name: 'Design', id: 'design' },
     { name: 'Articles', id: 'articles' },
     { name: 'Contact me', id: 'contact' },
   ];

@@ -163,7 +163,7 @@ export default function Footer() {
 
         {/* Giant Name */}
         <div className="w-full flex justify-center md:justify-between overflow-hidden">
-          <h3 className="text-5xl sm:text-[12vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-[0.8] md:leading-[0.75] text-gray-900 dark:text-accent break-words md:whitespace-nowrap text-center md:text-left">
+          <h3 className="text-5xl sm:text-[12vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-[0.8] md:leading-[0.75] text-accent break-words md:whitespace-nowrap text-center md:text-left">
             shahriar tahmid
           </h3>
         </div>

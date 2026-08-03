@@ -55,7 +55,7 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const [isDark, setIsDark] = useState(false); // Light mode by default
+  const [isDark, setIsDark] = useState(true); // Dark mode by default
 
   useEffect(() => {
     if (isDark) {
@@ -82,6 +82,7 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans transition-colors duration-300 text-gray-900 dark:text-white">
       <ScrollBackground />
+      <div className="fixed inset-0 z-0 pointer-events-none bg-graph-paper"></div>
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <main className="relative z-10">
         <Hero />

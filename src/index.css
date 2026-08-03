@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -21,11 +20,14 @@
   }
 }
 
-.font-pirata {
-  font-family: 'Pirata One', serif;
-}
 
 @layer utilities {
+  .bg-graph-paper {
+    background-image: linear-gradient(to right, rgba(150, 150, 150, 0.15) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(150, 150, 150, 0.15) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
