@@ -294,9 +294,9 @@ This project is open-source and available under the **MIT License**. Feel free t
 ## 📬 Contact
 
 - **GitHub:** [@ShahriarXProxima](https://github.com/ShahriarXProxima)
-- **Portfolio:** https://shahriar-x-proxima.vercel.app/
-- **Email:** [EMAIL_ADDRESS]
-- **LinkedIn:** https://www.linkedin.com/in/shahriar-mohammad-0094a2267/
+- **Portfolio:** [Portfolio](https://shahriarxproxima-portfolio.vercel.app/)
+- **Email:** [Email](mailto:[EMAIL_ADDRESS])
+- **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/shahriarxtahmid/)
 
 ---
 
