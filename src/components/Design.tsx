@@ -38,13 +38,13 @@ export default function Design() {
   return (
     <section id="design" className="px-4 md:px-12 py-16 w-full max-w-[100rem] mx-auto space-y-16 overflow-hidden">
       <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-12">
-        ... Poster Designs ...
+        {/* ... Poster Designs ... */}
       </div>
 
       <div className="space-y-12 bg-blue-deep/30 dark:bg-blue-deep/50 backdrop-blur-xl border border-blue-deep/20 dark:border-blue-deep rounded-2xl md:rounded-tr-[4rem] md:rounded-bl-[4rem] py-8 md:py-16 shadow-2xl relative flex flex-col overflow-hidden hover:border-accent dark:hover:border-accent transition-colors">
         
         {/* Row 1 - Scroll Left */}
-        <div className="flex w-max animate-marquee">
+        <div className={`flex w-max ${selectedPoster ? '' : 'animate-marquee'}`}>
           {/* We duplicate the array to allow for smooth 50% translation looping */}
           {[...row1, ...row1].map((src, idx) => (
             <div key={`r1-${idx}`} className="pr-4 md:pr-8 shrink-0">
@@ -59,7 +59,7 @@ export default function Design() {
         </div>
 
         {/* Row 2 - Scroll Right */}
-        <div className="flex w-max animate-marquee-reverse">
+        <div className={`flex w-max ${selectedPoster ? '' : 'animate-marquee-reverse'}`}>
           {[...row2, ...row2].map((src, idx) => (
             <div key={`r2-${idx}`} className="pr-4 md:pr-8 shrink-0">
               <img 
@@ -77,7 +77,7 @@ export default function Design() {
       {/* Fullscreen Poster Modal */}
       {selectedPoster && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/60 backdrop-blur-xl transition-opacity duration-300"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/80 dark:bg-black/90 backdrop-blur-md transition-opacity duration-300"
           onClick={() => setSelectedPoster(null)}
         >
           <button 

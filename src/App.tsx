@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import ArticleDetail from './components/ArticleDetail';
 import StaticStrip from './components/StaticStrip';
 import CautionStrip from './components/CautionStrip';
-import ScrollBackground from './components/ScrollBackground';
+import ShimmerBackground from './components/ShimmerBackground';
 
 export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
@@ -81,8 +81,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans transition-colors duration-300 text-gray-900 dark:text-white">
-      <ScrollBackground />
-      <div className="fixed inset-0 z-0 pointer-events-none bg-graph-paper"></div>
+      <ShimmerBackground isDark={isDark} />
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <main className="relative z-10">
         <Hero />

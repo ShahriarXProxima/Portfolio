@@ -5,7 +5,7 @@ export default function About() {
     <section id="about" className="px-4 md:px-12 py-12 md:py-20 w-full max-w-[90rem] mx-auto space-y-8">
       {/* Intro Header */}
       <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-4">
-        ... About me ...
+        {/* ... About me ... */}
       </div>
 
       {/* Grid Container */}

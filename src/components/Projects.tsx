@@ -28,47 +28,58 @@ const PROJECTS = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-4 md:px-12 py-12 md:py-16 w-full max-w-full flex flex-col justify-center bg-gray-stone/20 dark:bg-gray-stone/40 backdrop-blur-xl border-y border-gray-stone/50">
-      <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-12">
-        ... Projects ...
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-7xl mx-auto">
-        {PROJECTS.map((project, index) => (
-          <div key={index} className={`flex flex-col bg-white/40 dark:bg-primary/40 backdrop-blur-xl border border-gray-200/50 dark:border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl transition-all hover:scale-[1.02] hover:border-accent dark:hover:border-accent ${index === 0 ? 'md:col-span-2 md:flex-row gap-8 items-center' : 'gap-6'}`}>
-            <div className={`flex flex-col flex-1 space-y-6 ${index === 0 ? 'order-1 md:order-2' : ''}`}>
-              <h3 className="text-3xl md:text-5xl font-bold text-black dark:text-white drop-shadow-md">{project.title}</h3>
-
-              <div className="flex flex-wrap gap-2">
-                {project.tags.slice(0, 5).map(tag => (
-                  <span key={tag} className="px-3 py-1 rounded-full border border-blue-vivid/30 dark:border-blue-pale/30 text-xs font-mono font-bold text-blue-vivid dark:text-blue-pale bg-white/50 dark:bg-primary/50">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="text-blue-deep dark:text-white font-sans font-medium text-base md:text-lg leading-relaxed whitespace-pre-line drop-shadow-sm">
-                {project.description}
-              </div>
-
-              <div className="pt-2">
-                {project.repoUrl ? (
-                  <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-orange-vivid text-white px-5 py-3 rounded-full font-bold hover:bg-orange-vivid/80 transition-colors shadow-lg">
-                    View Code <ArrowUpRight size={18} />
-                  </a>
-                ) : (
-                  <button className="inline-flex items-center gap-2 bg-orange-vivid text-white px-5 py-3 rounded-full font-bold hover:bg-orange-vivid/80 transition-colors shadow-lg">
-                    Private Repo <ArrowUpRight size={18} />
-                  </button>
-                )}
-              </div>
-            </div>
-
-            <div className={`flex-[1.2] w-full rounded-xl overflow-hidden bg-white/20 dark:bg-primary/50 border border-white/20 relative group shadow-lg ${index === 0 ? 'order-2 md:order-1 h-full' : 'aspect-video'}`}>
-              <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            </div>
+    <section id="projects" className="px-4 md:px-12 py-16 md:py-24 w-full max-w-full flex flex-col justify-center bg-transparent border-y border-blue-vivid/20 dark:border-blue-pale/20 transition-colors">
+      <div className="w-full max-w-7xl mx-auto flex flex-col gap-24">
+        
+        <div className="text-center space-y-4">
+          <h2 className="text-5xl md:text-7xl font-mono font-bold text-black dark:text-white drop-shadow-md tracking-tight">Selected Work</h2>
+          <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider drop-shadow-sm uppercase">
+            Projects & Case Studies
           </div>
-        ))}
+        </div>
+
+        <div className="flex flex-col gap-24 md:gap-32">
+          {PROJECTS.map((project, index) => (
+            <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 md:gap-16 items-center group`}>
+              
+              {/* Image Container */}
+              <div className="w-full md:w-1/2 aspect-[4/3] rounded-[2rem] overflow-hidden bg-white/20 dark:bg-primary/50 relative shadow-2xl border border-gray-200 dark:border-white/10 group-hover:shadow-[0_20px_50px_-15px_rgba(72,55,255,0.3)] transition-all duration-700">
+                <div className="absolute inset-0 bg-blue-vivid/10 dark:bg-blue-deep/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+              </div>
+
+              {/* Content Container */}
+              <div className="w-full md:w-1/2 flex flex-col gap-6 md:gap-8">
+                <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white tracking-tight drop-shadow-sm">{project.title}</h3>
+                
+                <div className="text-gray-800 dark:text-gray-200 font-sans font-medium text-lg leading-relaxed whitespace-pre-line">
+                  {project.description}
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="px-4 py-2 rounded-lg border border-blue-vivid/20 dark:border-blue-pale/20 text-sm font-mono font-bold text-blue-deep dark:text-blue-pale bg-white/80 dark:bg-primary/80 shadow-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="pt-4">
+                  {project.repoUrl ? (
+                    <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-orange-vivid text-white px-8 py-4 rounded-full font-bold hover:bg-orange-vivid/80 transition-all hover:-translate-y-1 hover:shadow-xl shadow-lg">
+                      View Project <ArrowUpRight size={20} />
+                    </a>
+                  ) : (
+                    <button className="inline-flex items-center gap-2 bg-gray-500 text-white px-8 py-4 rounded-full font-bold cursor-not-allowed shadow-lg opacity-80">
+                      Private Repository <ArrowUpRight size={20} />
+                    </button>
+                  )}
+                </div>
+              </div>
+
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

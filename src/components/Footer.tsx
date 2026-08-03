@@ -35,7 +35,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="w-full pb-8 border-t border-gray-200/50 dark:border-orange-vivid/50 pt-12 bg-white/40 dark:bg-gradient-to-t dark:from-orange-vivid/20 dark:to-primary/40 backdrop-blur-xl">
+    <footer id="contact" className="w-full pb-8 border-t border-gray-200/50 dark:border-orange-vivid/50 pt-12 bg-white/20 dark:bg-gradient-to-t dark:from-orange-vivid/10 dark:to-primary/20 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 md:px-12 space-y-24">
         {/* Contact Me Section */}
         <div className="space-y-16">

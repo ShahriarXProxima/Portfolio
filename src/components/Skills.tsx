@@ -42,7 +42,7 @@ export default function Skills() {
   return (
     <section id="skills" className="px-4 md:px-12 py-12 md:py-16 w-full max-w-[90rem] mx-auto flex flex-col justify-center space-y-8 bg-transparent">
       <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-4">
-        ... Skills ...
+        {/* ... Skills ... */}
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(180px,auto)] md:auto-rows-[minmax(240px,auto)]">
