@@ -14,7 +14,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY < 50) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY) {
@@ -22,7 +22,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
       } else {
         setIsVisible(true); // Show on scroll up
       }
-      
+
       lastScrollY = currentScrollY;
     };
 
@@ -68,8 +68,8 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
 
   return (
     <header className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[96vw] md:w-max ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0 pointer-events-none'}`}>
-      <nav className="flex items-center justify-between gap-3 md:gap-10 py-2.5 px-4 md:px-6 w-full mx-auto backdrop-blur-3xl bg-white/30 dark:bg-black/30 border border-white/40 dark:border-white/10 rounded-full shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
-        
+      <nav className="flex items-center justify-between gap-3 md:gap-10 py-2.5 px-4 md:px-6 w-full mx-auto backdrop-blur-md bg-white/30 dark:bg-black/30 border border-white/40 dark:border-white/10 rounded-full shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
+
         {/* Sleek Logo */}
         <div
           onClick={handleLogoClick}
@@ -93,10 +93,10 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
             </button>
           ))}
         </div>
-        
+
         {/* Mobile Navigation (Compacted) */}
         <div className="flex md:hidden items-center gap-1 overflow-x-auto no-scrollbar scroll-smooth">
-           {navItems.map((item) => (
+          {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleScroll(item.id)}

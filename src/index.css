@@ -38,9 +38,13 @@
   }
   .animate-marquee {
     animation: marquee 40s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
   }
   .animate-marquee-reverse {
     animation: marquee-reverse 40s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
   }
   .animate-marquee:hover, .animate-marquee-reverse:hover {
     animation-play-state: paused;

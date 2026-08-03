@@ -25,7 +25,7 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
 
       {/* Main Container */}
-      <main className="relative z-10 max-w-4xl mx-auto px-4 md:px-12 pt-12 pb-24 space-y-12 bg-white/40 dark:bg-blue-vivid/20 backdrop-blur-xl rounded-2xl md:rounded-tl-[4rem] md:rounded-br-[4rem] border border-blue-vivid/30 dark:border-blue-vivid/50 shadow-2xl mt-32 mb-12">
+      <main className="relative z-10 max-w-4xl mx-auto px-4 md:px-12 pt-12 pb-24 space-y-12 bg-white/40 dark:bg-blue-vivid/20 backdrop-blur-md rounded-2xl md:rounded-tl-[4rem] md:rounded-br-[4rem] border border-blue-vivid/30 dark:border-blue-vivid/50 shadow-2xl mt-32 mb-12">
         {/* Navigation Breadcrumb & Back Button */}
         <div className="flex items-center justify-between border-b border-gray-200/50 dark:border-white/10 pb-6">
           <button
@@ -135,7 +135,7 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
 
               {/* Code Snippet */}
               {section.codeBlock && (
-                <div className="rounded-xl overflow-hidden bg-white/40 dark:bg-primary/80 backdrop-blur-xl border border-gray-200/50 dark:border-secondary/50 my-6 font-mono text-sm shadow-xl">
+                <div className="rounded-xl overflow-hidden bg-white/40 dark:bg-primary/80 backdrop-blur-md border border-gray-200/50 dark:border-secondary/50 my-6 font-mono text-sm shadow-xl">
                   <div className="px-6 py-3 bg-gray-200/50 dark:bg-zinc-900/50 border-b border-gray-300/50 dark:border-white/10 flex items-center justify-between text-xs text-gray-700 dark:text-zinc-400">
                     <span className="uppercase tracking-wider font-bold">{section.codeBlock.language}</span>
                     <span className="text-gray-500 dark:text-zinc-500">Snippet</span>
@@ -195,7 +195,7 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
               <div
                 key={other.id}
                 onClick={() => onSelectArticle(other.id)}
-                className="bg-white/40 dark:bg-blue-deep/30 backdrop-blur-xl border border-gray-200/50 dark:border-blue-deep/50 hover:border-accent dark:hover:border-accent rounded-xl md:rounded-tl-[2rem] md:rounded-br-[2rem] p-6 flex flex-col justify-between group cursor-pointer transition-all hover:scale-[1.02] shadow-lg"
+                className="bg-white/40 dark:bg-blue-deep/30 backdrop-blur-md border border-gray-200/50 dark:border-blue-deep/50 hover:border-accent dark:hover:border-accent rounded-xl md:rounded-tl-[2rem] md:rounded-br-[2rem] p-6 flex flex-col justify-between group cursor-pointer transition-all hover:scale-[1.02] shadow-lg"
               >
                 <div className="space-y-4">
                   <div className="text-xs font-mono text-blue-deep dark:text-blue-pale font-bold">{other.date}</div>

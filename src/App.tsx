@@ -12,6 +12,7 @@ import ArticleDetail from './components/ArticleDetail';
 import StaticStrip from './components/StaticStrip';
 import CautionStrip from './components/CautionStrip';
 import ShimmerBackground from './components/ShimmerBackground';
+import StudioBackground from './components/StudioBackground';
 
 export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);

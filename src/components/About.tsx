@@ -12,7 +12,7 @@ export default function About() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 auto-rows-auto">
         
         {/* Card 1: Greeting & Title (col-span-2) */}
-        <div className="md:col-span-2 bg-white/40 dark:bg-primary/20 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-[2rem] p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent group flex flex-col justify-center">
+        <div className="md:col-span-2 bg-white/40 dark:bg-primary/20 backdrop-blur-md border border-gray-200/50 dark:border-white/10 rounded-[2rem] p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent group flex flex-col justify-center">
           <h3 className="text-4xl md:text-6xl font-medium font-serif text-gray-900 dark:text-white leading-[1.1] drop-shadow-sm">
             Hello! I'm <span className="text-accent italic font-bold">Shahriar</span>,
           </h3>
@@ -27,7 +27,7 @@ export default function About() {
         </div>
 
         {/* Card 2: Portrait (col-span-1) */}
-        <div className="md:col-span-1 bg-white/40 dark:bg-primary/20 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-[2rem] p-4 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent overflow-hidden group flex items-center justify-center">
+        <div className="md:col-span-1 bg-white/40 dark:bg-primary/20 backdrop-blur-md border border-gray-200/50 dark:border-white/10 rounded-[2rem] p-4 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent overflow-hidden group flex items-center justify-center">
           <div className="w-full h-full min-h-[300px] rounded-[1.5rem] overflow-hidden relative">
             <img 
               src={profileImg} 
@@ -38,7 +38,7 @@ export default function About() {
         </div>
 
         {/* Card 3: Experience/Focus (col-span-1) */}
-        <div className="md:col-span-1 bg-gradient-to-br from-blue-vivid/20 to-orange-vivid/20 dark:from-blue-vivid/30 dark:to-orange-vivid/30 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-[2rem] p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent flex flex-col justify-center gap-4">
+        <div className="md:col-span-1 bg-gradient-to-br from-blue-vivid/20 to-orange-vivid/20 dark:from-blue-vivid/30 dark:to-orange-vivid/30 backdrop-blur-md border border-gray-200/50 dark:border-white/10 rounded-[2rem] p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent flex flex-col justify-center gap-4">
            <h4 className="text-2xl font-mono font-bold text-gray-900 dark:text-white drop-shadow-sm">
              My Focus
            </h4>
@@ -53,7 +53,7 @@ export default function About() {
         </div>
 
         {/* Card 4: GitHub Snake (col-span-2) */}
-        <div className="md:col-span-2 bg-white/40 dark:bg-primary/20 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-[2rem] p-6 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent flex flex-col justify-center items-center overflow-hidden">
+        <div className="md:col-span-2 bg-white/40 dark:bg-primary/20 backdrop-blur-md border border-gray-200/50 dark:border-white/10 rounded-[2rem] p-6 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent flex flex-col justify-center items-center overflow-hidden">
           <div className="w-full flex justify-between items-center mb-6">
             <h4 className="text-2xl font-mono font-bold text-gray-900 dark:text-white drop-shadow-sm">GitHub Contributions</h4>
             <span className="text-sm font-mono text-gray-500 dark:text-zinc-400 hidden sm:block">Track Record</span>

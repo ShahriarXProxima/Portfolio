@@ -41,7 +41,7 @@ export default function Design() {
         {/* ... Poster Designs ... */}
       </div>
 
-      <div className="space-y-12 bg-blue-deep/30 dark:bg-blue-deep/50 backdrop-blur-xl border border-blue-deep/20 dark:border-blue-deep rounded-2xl md:rounded-tr-[4rem] md:rounded-bl-[4rem] py-8 md:py-16 shadow-2xl relative flex flex-col overflow-hidden hover:border-accent dark:hover:border-accent transition-colors">
+      <div className="space-y-12 bg-blue-deep/30 dark:bg-blue-deep/50 backdrop-blur-md border border-blue-deep/20 dark:border-blue-deep rounded-2xl md:rounded-tr-[4rem] md:rounded-bl-[4rem] py-8 md:py-16 shadow-2xl relative flex flex-col overflow-hidden hover:border-accent dark:hover:border-accent transition-colors">
         
         {/* Row 1 - Scroll Left */}
         <div className={`flex w-max ${selectedPoster ? '' : 'animate-marquee'}`}>

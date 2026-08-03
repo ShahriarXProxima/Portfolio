@@ -7,7 +7,6 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center text-center px-4 md:px-12 pt-32 pb-12 overflow-hidden">
-      {/* Background Video (Fully Bright) */}
       <video
         autoPlay
         loop
