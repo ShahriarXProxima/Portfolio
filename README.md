@@ -219,7 +219,7 @@ Project/
 
 Tested and supported on the latest two versions of:
 
-- Chrome / Edge (Chromium-based)
+- Chrome / Brave (Chromium-based)
 - Firefox
 - Safari (desktop and iOS)
 
