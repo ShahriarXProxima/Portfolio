@@ -146,9 +146,11 @@ export default function ShimmerBackground({ isDark }: ShimmerBackgroundProps) {
       container.style.setProperty('--mouse-x', `${interpolatedX}px`);
       container.style.setProperty('--mouse-y', `${interpolatedY}px`);
 
-      for (let y = 0; y < canvas.height; y += size + gap) {
-        for (let x = 0; x < canvas.width; x += size + gap) {
-          const opacity = getOpacity(x, y);
+      ctx.fillStyle = isDark ? "#ffffff" : "#000000";
+      ctxBright.fillStyle = isDark ? "#ffffff" : "#000000";
+
+      for (let i = 0; i < cachedPoints.length; i++) {
+        const { x, y, opacity } = cachedPoints[i];
 
           // Calculate distance to smoothly interpolated mouse for buttery interaction
           const dx = x - interpolatedX;
@@ -170,28 +172,36 @@ export default function ShimmerBackground({ isDark }: ShimmerBackgroundProps) {
 
           // Draw dim background dot
           const dimOpacity = opacity * (isDark ? 0.25 : 0.35);
-          ctx.fillStyle = colorString.replace(")", `,${dimOpacity})`).replace("rgb", "rgba");
+          ctx.globalAlpha = dimOpacity;
           ctx.beginPath();
-          ctx.arc(drawX + drawSize / 2, drawY + drawSize / 2, drawSize / 2, 0, 2 * Math.PI);
+          ctx.rect(drawX, drawY, drawSize, drawSize);
           ctx.fill();
 
           // Draw bright foreground dot
           const brightOpacity = isDark ? opacity * 0.8 : opacity * 1.0 + 0.3;
-          ctxBright.fillStyle = colorString.replace(")", `,${Math.min(1, brightOpacity)})`).replace("rgb", "rgba");
+          ctxBright.globalAlpha = Math.min(1, brightOpacity);
           ctxBright.beginPath();
-          ctxBright.arc(drawX + drawSize / 2, drawY + drawSize / 2, drawSize / 2, 0, 2 * Math.PI);
+          ctxBright.rect(drawX, drawY, drawSize, drawSize);
           ctxBright.fill();
         }
-      }
 
       animationFrameRef.current = requestAnimationFrame(drawShapes);
     };
+
+    let cachedPoints: { x: number; y: number; opacity: number }[] = [];
 
     const resizeCanvas = () => {
       canvas.width = container.offsetWidth;
       canvas.height = container.offsetHeight;
       canvasBright.width = container.offsetWidth;
       canvasBright.height = container.offsetHeight;
+      
+      cachedPoints = [];
+      for (let y = 0; y < canvas.height; y += size + gap) {
+        for (let x = 0; x < canvas.width; x += size + gap) {
+          cachedPoints.push({ x, y, opacity: getOpacity(x, y) });
+        }
+      }
     };
 
     resizeCanvas();
