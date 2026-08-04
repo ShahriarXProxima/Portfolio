@@ -3,7 +3,7 @@ export default function CautionStrip() {
   const repeatCount = 20;
 
   return (
-    <div className="w-full overflow-hidden bg-yellow-400/80 backdrop-blur-md py-3 relative z-40 border-y border-yellow-500/50">
+    <div className="w-full overflow-hidden bg-cyan-400/80 backdrop-blur-md py-3 relative z-40 border-y border-cyan-500/50">
       <div className="flex w-max animate-marquee">
         {/* We create two groups of the same text so it loops seamlessly. 
             The marquee animation moves from 0 to -50% of the total width. */}
