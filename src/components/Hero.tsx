@@ -11,7 +11,7 @@ export default function Hero() {
         autoPlay
         loop
         muted
-        playsInline
+        playsInline 
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
         <source src={heroVideo} type="video/mp4" />

@@ -6,7 +6,7 @@ const EXPERIENCES = [
     stack: 'Spring Boot & PostgreSQL'
   },
   {
-    period: 'Jan,25 - Jun,25\n0 year\n6 months',
+    period: 'Jan,25 - Jun,25',
     company: 'DriveTrain',
     role: 'Software Engineer Intern',
     stack: 'Java & Spring Boot'
@@ -20,7 +20,7 @@ export default function WorkExperience() {
         <div className="text-center space-y-4">
           <h2 className="text-5xl md:text-7xl font-mono font-bold text-black dark:text-white drop-shadow-md tracking-tight">Work Experience</h2>
           <div className="text-orange-vivid font-mono text-2xl font-bold tracking-wider drop-shadow-sm uppercase">
-            7 months +
+            7 months 
           </div>
         </div>
         
