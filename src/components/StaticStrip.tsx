@@ -9,7 +9,7 @@ export default function StaticStrip({ title, direction = 'left' }: StaticStripPr
   const animationClass = direction === 'left' ? 'animate-marquee' : 'animate-marquee-reverse';
 
   return (
-    <div className="w-full overflow-hidden bg-yellow-400/80 backdrop-blur-md py-3 relative z-40 border-y border-yellow-500/50">
+    <div className="w-full overflow-hidden bg-yellow-400/80 backdrop-blur-md py-3 relative z-40">
       <div className={`flex w-max ${animationClass}`}>
         {[...Array(repeatCount)].map((_, i) => (
           <div 
