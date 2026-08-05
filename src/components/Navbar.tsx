@@ -87,7 +87,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
             <button
               key={item.id}
               onClick={() => handleScroll(item.id)}
-              className="text-sm font-sans font-medium text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white px-5 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors duration-300 cursor-pointer"
+              className="text-sm font-fira font-bold text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white hover:italic px-5 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer"
             >
               {item.name}
             </button>
@@ -100,7 +100,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
             <button
               key={item.id}
               onClick={() => handleScroll(item.id)}
-              className="text-[11px] sm:text-xs font-sans font-medium text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white px-2.5 sm:px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors duration-300 cursor-pointer whitespace-nowrap"
+              className="text-[11px] sm:text-xs font-fira font-bold text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white hover:italic px-2.5 sm:px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer whitespace-nowrap"
             >
               {item.name}
             </button>
