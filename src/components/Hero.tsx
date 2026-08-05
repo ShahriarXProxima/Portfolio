@@ -18,18 +18,18 @@ export default function Hero() {
       </video>
 
       {/* Subtle Gradients for Text Readability at Top & Bottom */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 dark:from-primary/80 via-transparent to-white/80 dark:to-primary/80 z-0 pointer-events-none transition-colors duration-300"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-transparent to-primary/80 z-0 pointer-events-none transition-colors duration-300"></div>
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col justify-between items-center max-w-5xl mx-auto w-full flex-1">
         
         {/* Top Section */}
         <div className="space-y-8 mt-4 md:mt-12 animate-[fadeInDown_1s_ease-out]">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-serif leading-[1.1] text-gray-900 dark:text-white drop-shadow-[0_4px_10px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] tracking-tight break-words md:whitespace-nowrap">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-serif leading-[1.1] text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] tracking-tight break-words md:whitespace-nowrap">
             Full-stack <span className="font-sans font-medium text-accent italic">Developer</span>
           </h1>
 
-          <p className="text-lg md:text-2xl text-gray-800 dark:text-zinc-100 font-serif italic max-w-2xl mx-auto leading-relaxed drop-shadow-md dark:drop-shadow-xl font-medium px-4">
+          <p className="text-lg md:text-2xl text-zinc-100 font-serif italic max-w-2xl mx-auto leading-relaxed drop-shadow-xl font-medium px-4">
             Goal is to write maintainable, clean and understandable code so the development process is enjoyable.
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function Hero() {
                 href={social.url} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center gap-3 text-gray-700 dark:text-zinc-200 hover:text-black dark:hover:text-white transition-all group drop-shadow-md hover:-translate-y-1"
+                className="flex items-center gap-3 text-zinc-200 hover:text-white transition-all group drop-shadow-md hover:-translate-y-1"
               >
                 <social.icon size={22} className="group-hover:scale-110 transition-transform shrink-0" />
                 <span className="text-sm font-bold tracking-wider uppercase">{social.name}</span>
