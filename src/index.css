@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -12,6 +13,9 @@
   --color-gray-stone: #5f5f6b;
   --color-paper-white: #ffffff;
   --color-accent: #f75b04;
+  --font-fira: 'Fira Code', monospace;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+  --font-oswald: 'Oswald', sans-serif;
 }
 
 @layer base {
@@ -24,29 +28,44 @@
 @layer utilities {
   .bg-graph-paper {
     background-image: linear-gradient(to right, rgba(150, 150, 150, 0.15) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(150, 150, 150, 0.15) 1px, transparent 1px);
+      linear-gradient(to bottom, rgba(150, 150, 150, 0.15) 1px, transparent 1px);
     background-size: 30px 30px;
   }
-  
+
   @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
   }
+
   @keyframes marquee-reverse {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    0% {
+      transform: translateX(-50%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
   }
+
   .animate-marquee {
     animation: marquee 40s linear infinite;
     will-change: transform;
     transform: translateZ(0);
   }
+
   .animate-marquee-reverse {
     animation: marquee-reverse 40s linear infinite;
     will-change: transform;
     transform: translateZ(0);
   }
-  .animate-marquee:hover, .animate-marquee-reverse:hover {
+
+  .animate-marquee:hover,
+  .animate-marquee-reverse:hover {
     animation-play-state: paused;
   }
 }

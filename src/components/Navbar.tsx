@@ -112,8 +112,8 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
           <button
             onClick={toggleTheme}
             className={`relative shrink-0 rounded-full w-9 h-9 flex items-center justify-center transition-all duration-300 shadow-sm ml-1 border
-              ${isDark 
-                ? 'bg-black/40 hover:bg-white/20 border-white/10' 
+              ${isDark
+                ? 'bg-black/40 hover:bg-white/20 border-white/10'
                 : 'bg-white/40 hover:bg-black/5 border-black/5'
               }
             `}

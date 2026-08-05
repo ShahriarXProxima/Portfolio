@@ -30,7 +30,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
 
   return (
     <section id="articles" className="px-4 md:px-12 py-12 md:py-16 w-full max-w-full flex flex-col justify-center space-y-16 bg-transparent border-y border-blue-vivid/30">
-      <h2 className="text-5xl md:text-6xl font-mono font-medium text-center md:text-right text-black dark:text-white drop-shadow-md">Articles</h2>
+      <h2 className="text-5xl md:text-6xl font-jetbrains font-medium text-center md:text-right text-black dark:text-white drop-shadow-md">Articles</h2>
 
       <div className="overflow-hidden relative w-full">
         <div
@@ -46,7 +46,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
                   className="bg-white/20 dark:bg-primary/20 backdrop-blur-sm border border-blue-vivid/30 dark:border-blue-vivid/50 rounded-2xl md:rounded-tl-[3rem] md:rounded-br-[3rem] p-6 md:p-8 flex flex-col justify-between min-h-[300px] group hover:scale-[1.02] transition-all cursor-pointer shadow-2xl hover:border-accent dark:hover:border-accent"
                 >
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold font-mono leading-tight text-black dark:text-white group-hover:text-orange-vivid dark:group-hover:text-orange-vivid transition-colors drop-shadow-sm">{article.title}</h3>
+                    <h3 className="text-2xl font-bold font-jetbrains leading-tight text-black dark:text-white group-hover:text-orange-vivid dark:group-hover:text-orange-vivid transition-colors drop-shadow-sm">{article.title}</h3>
                     <p className="text-blue-deep dark:text-blue-pale text-sm font-medium leading-relaxed drop-shadow-sm">
                       {article.description}
                     </p>
@@ -78,7 +78,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
           <button
             key={i}
             onClick={() => setCurrentPage(i)}
-            className={`w-10 h-10 rounded-full font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shadow-lg ${currentPage === i
+            className={`w-10 h-10 rounded-full font-jetbrains font-bold flex items-center justify-center transition-colors cursor-pointer shadow-lg ${currentPage === i
               ? 'bg-orange-vivid text-white border border-transparent'
               : 'bg-white/40 dark:bg-primary/40 border border-blue-vivid/30 text-blue-deep dark:text-white hover:bg-orange-vivid/20 dark:hover:border-orange-vivid'
               }`}

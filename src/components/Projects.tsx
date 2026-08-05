@@ -32,8 +32,8 @@ export default function Projects() {
       <div className="w-full max-w-7xl mx-auto flex flex-col gap-24">
         
         <div className="text-center space-y-4">
-          <h2 className="text-5xl md:text-7xl font-mono font-bold text-black dark:text-white drop-shadow-md tracking-tight">Selected Work</h2>
-          <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider drop-shadow-sm uppercase">
+          <h2 className="text-5xl md:text-7xl font-jetbrains font-bold text-black dark:text-white drop-shadow-md tracking-tight">Selected Work</h2>
+          <div className="text-orange-vivid font-jetbrains text-xl font-bold tracking-wider drop-shadow-sm uppercase">
             Projects & Case Studies
           </div>
         </div>
@@ -52,13 +52,13 @@ export default function Projects() {
               <div className="w-full md:w-1/2 flex flex-col gap-6 md:gap-8">
                 <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white tracking-tight drop-shadow-sm">{project.title}</h3>
                 
-                <div className="text-gray-800 dark:text-gray-200 font-sans font-medium text-lg leading-relaxed whitespace-pre-line">
+                <div className="text-gray-800 dark:text-gray-200 font-jetbrains text-lg leading-relaxed whitespace-pre-line">
                   {project.description}
                 </div>
 
                 <div className="flex flex-wrap gap-3">
                   {project.tags.map(tag => (
-                    <span key={tag} className="px-4 py-2 rounded-lg border border-blue-vivid/20 dark:border-blue-pale/20 text-sm font-mono font-bold text-blue-deep dark:text-blue-pale bg-white/80 dark:bg-primary/80 shadow-sm">
+                    <span key={tag} className="px-4 py-2 rounded-lg border border-blue-vivid/20 dark:border-blue-pale/20 text-sm font-jetbrains font-bold text-blue-deep dark:text-blue-pale bg-white/80 dark:bg-primary/80 shadow-sm">
                       {tag}
                     </span>
                   ))}
