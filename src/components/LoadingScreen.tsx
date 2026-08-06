@@ -127,6 +127,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               fontStyle: 'normal',
               fontWeight: 800,
               fontFamily: "'Playfair Display', Georgia, serif",
+              color: 'gray',
             }}
           >
             {lastNameDisplay}
