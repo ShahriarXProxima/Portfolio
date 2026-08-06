@@ -39,21 +39,24 @@ function generatePerlinNoise(width: number, height: number, cellSize: number) {
 }
 
 function createSeamlessPerlinNoise(width: number, height: number, cellSize: number) {
-  const singleNoise = generatePerlinNoise(width, height, cellSize);
+  // Generate at half resolution for performance, CSS will scale it up
+  const halfW = Math.ceil(width / 2);
+  const halfH = Math.ceil(height / 2);
+  const singleNoise = generatePerlinNoise(halfW, halfH, cellSize);
   const canvas = document.createElement("canvas");
-  canvas.width = width * 4; canvas.height = height;
+  canvas.width = halfW * 4; canvas.height = halfH;
   const ctx = canvas.getContext("2d");
   if (!ctx) return "";
 
   ctx.drawImage(singleNoise, 0, 0);
   ctx.save();
-  ctx.translate(width * 2, 0);
+  ctx.translate(halfW * 2, 0);
   ctx.scale(-1, 1);
   ctx.drawImage(singleNoise, 0, 0);
   ctx.restore();
-  ctx.drawImage(singleNoise, width * 2, 0);
+  ctx.drawImage(singleNoise, halfW * 2, 0);
   ctx.save();
-  ctx.translate(width * 4, 0);
+  ctx.translate(halfW * 4, 0);
   ctx.scale(-1, 1);
   ctx.drawImage(singleNoise, 0, 0);
   ctx.restore();
@@ -64,6 +67,9 @@ function createSeamlessPerlinNoise(width: number, height: number, cellSize: numb
 interface ShimmerBackgroundProps {
   isDark: boolean;
 }
+
+// Target ~30fps instead of uncapped 60fps for background effect
+const FRAME_INTERVAL = 1000 / 30;
 
 export default function ShimmerBackground({ isDark }: ShimmerBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -78,14 +84,13 @@ export default function ShimmerBackground({ isDark }: ShimmerBackgroundProps) {
   const size = 1.5;
   const gap = 28;
   const speed = 15;
-  const colors = isDark ? ["rgb(255, 255, 255)"] : ["rgb(0, 0, 0)"];
 
   useEffect(() => {
     setIsClient(true);
     const handleMouseMove = (e: MouseEvent) => {
       mousePosRef.current = { x: e.clientX, y: e.clientY };
     };
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
@@ -125,12 +130,41 @@ export default function ShimmerBackground({ isDark }: ShimmerBackgroundProps) {
 
     let interpolatedX = -1000;
     let interpolatedY = -1000;
+    let lastFrameTime = 0;
 
-    const drawShapes = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctxBright.clearRect(0, 0, canvasBright.width, canvasBright.height);
+    // Pre-render static dim dots to an offscreen canvas — only re-render when
+    // dots near the mouse need to move (interaction zone)
+    let staticCanvas: HTMLCanvasElement | null = null;
+    let staticCtx: CanvasRenderingContext2D | null = null;
 
-      const colorString = colors[0];
+    const renderStaticDots = () => {
+      staticCanvas = document.createElement("canvas");
+      staticCanvas.width = canvas.width;
+      staticCanvas.height = canvas.height;
+      staticCtx = staticCanvas.getContext("2d");
+      if (!staticCtx) return;
+
+      staticCtx.fillStyle = isDark ? "#ffffff" : "#000000";
+      for (let i = 0; i < cachedPoints.length; i++) {
+        const { x, y, opacity } = cachedPoints[i];
+        const dimOpacity = opacity * (isDark ? 0.25 : 0.35);
+        staticCtx.globalAlpha = dimOpacity;
+        staticCtx.fillRect(x, y, size, size);
+      }
+    };
+
+    const interactionRadius = 150;
+    const interactionRadiusSq = interactionRadius * interactionRadius;
+
+    const drawShapes = (timestamp: number) => {
+      // Throttle to ~30fps
+      const delta = timestamp - lastFrameTime;
+      if (delta < FRAME_INTERVAL) {
+        animationFrameRef.current = requestAnimationFrame(drawShapes);
+        return;
+      }
+      lastFrameTime = timestamp - (delta % FRAME_INTERVAL);
+
       const targetMx = mousePosRef.current.x;
       const targetMy = mousePosRef.current.y;
 
@@ -146,44 +180,85 @@ export default function ShimmerBackground({ isDark }: ShimmerBackgroundProps) {
       container.style.setProperty('--mouse-x', `${interpolatedX}px`);
       container.style.setProperty('--mouse-y', `${interpolatedY}px`);
 
-      ctx.fillStyle = isDark ? "#ffffff" : "#000000";
+      // --- Dim layer: blit static canvas, then redraw only interaction-zone dots ---
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (staticCanvas) {
+        ctx.drawImage(staticCanvas, 0, 0);
+      }
+
+      // Clear and redraw only the interaction zone on the dim canvas
+      // to show displacement
+      const zoneLeft = interpolatedX - interactionRadius - 20;
+      const zoneTop = interpolatedY - interactionRadius - 20;
+      const zoneSize = (interactionRadius + 20) * 2;
+
+      if (zoneLeft < canvas.width && zoneTop < canvas.height &&
+          zoneLeft + zoneSize > 0 && zoneTop + zoneSize > 0) {
+        // Clear the zone on dim canvas and re-draw displaced dots
+        ctx.clearRect(zoneLeft, zoneTop, zoneSize, zoneSize);
+        ctx.fillStyle = isDark ? "#ffffff" : "#000000";
+
+        for (let i = 0; i < cachedPoints.length; i++) {
+          const { x, y, opacity } = cachedPoints[i];
+
+          // Cheap bounding-box pre-check: skip dots far from mouse
+          if (x < zoneLeft || x > zoneLeft + zoneSize ||
+              y < zoneTop || y > zoneTop + zoneSize) continue;
+
+          const dx = x - interpolatedX;
+          const dy = y - interpolatedY;
+          const distSq = dx * dx + dy * dy;
+
+          let drawX = x;
+          let drawY = y;
+          let drawSize = size;
+
+          if (distSq < interactionRadiusSq) {
+            const dist = Math.sqrt(distSq);
+            const force = (interactionRadius - dist) / interactionRadius;
+            drawX += (dx / dist) * force * 15;
+            drawY += (dy / dist) * force * 15;
+            drawSize += force * 1.5;
+          }
+
+          const dimOpacity = opacity * (isDark ? 0.25 : 0.35);
+          ctx.globalAlpha = dimOpacity;
+          ctx.fillRect(drawX, drawY, drawSize, drawSize);
+        }
+      }
+
+      // --- Bright layer: only draw dots in interaction zone ---
+      ctxBright.clearRect(0, 0, canvasBright.width, canvasBright.height);
       ctxBright.fillStyle = isDark ? "#ffffff" : "#000000";
 
       for (let i = 0; i < cachedPoints.length; i++) {
         const { x, y, opacity } = cachedPoints[i];
 
-          // Calculate distance to smoothly interpolated mouse for buttery interaction
-          const dx = x - interpolatedX;
-          const dy = y - interpolatedY;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+        // Cheap bounding-box pre-check
+        const dx = x - interpolatedX;
+        const dy = y - interpolatedY;
+        const distSq = dx * dx + dy * dy;
 
-          // Repel dots and increase scale slightly if near mouse
-          let drawX = x;
-          let drawY = y;
-          let drawSize = size;
+        // Only draw bright dots within a reasonable range of the spotlight
+        // (the spotlight radial gradient handles fade, but we skip distant dots entirely)
+        if (distSq > 640000) continue; // 800px radius squared
 
-          const interactionRadius = 150;
-          if (dist < interactionRadius) {
-            const force = (interactionRadius - dist) / interactionRadius;
-            drawX += (dx / dist) * force * 15; // Push away up to 15px
-            drawY += (dy / dist) * force * 15;
-            drawSize += force * 1.5; // Grow slightly
-          }
+        let drawX = x;
+        let drawY = y;
+        let drawSize = size;
 
-          // Draw dim background dot
-          const dimOpacity = opacity * (isDark ? 0.25 : 0.35);
-          ctx.globalAlpha = dimOpacity;
-          ctx.beginPath();
-          ctx.rect(drawX, drawY, drawSize, drawSize);
-          ctx.fill();
-
-          // Draw bright foreground dot
-          const brightOpacity = isDark ? opacity * 0.8 : opacity * 1.0 + 0.3;
-          ctxBright.globalAlpha = Math.min(1, brightOpacity);
-          ctxBright.beginPath();
-          ctxBright.rect(drawX, drawY, drawSize, drawSize);
-          ctxBright.fill();
+        if (distSq < interactionRadiusSq) {
+          const dist = Math.sqrt(distSq);
+          const force = (interactionRadius - dist) / interactionRadius;
+          drawX += (dx / dist) * force * 15;
+          drawY += (dy / dist) * force * 15;
+          drawSize += force * 1.5;
         }
+
+        const brightOpacity = isDark ? opacity * 0.8 : opacity * 1.0 + 0.3;
+        ctxBright.globalAlpha = Math.min(1, brightOpacity);
+        ctxBright.fillRect(drawX, drawY, drawSize, drawSize);
+      }
 
       animationFrameRef.current = requestAnimationFrame(drawShapes);
     };
@@ -202,6 +277,9 @@ export default function ShimmerBackground({ isDark }: ShimmerBackgroundProps) {
           cachedPoints.push({ x, y, opacity: getOpacity(x, y) });
         }
       }
+
+      // Re-render static background dots
+      renderStaticDots();
     };
 
     resizeCanvas();

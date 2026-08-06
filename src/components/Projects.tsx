@@ -30,7 +30,7 @@ export default function Projects() {
   return (
     <section id="projects" className="px-4 md:px-12 py-16 md:py-24 w-full max-w-full flex flex-col justify-center bg-transparent border-y border-blue-vivid/20 dark:border-blue-pale/20 transition-colors">
       <div className="w-full max-w-7xl mx-auto flex flex-col gap-24">
-        
+
         <div className="text-center space-y-4">
           <h2 className="text-5xl md:text-7xl font-jetbrains font-bold text-black dark:text-white drop-shadow-md tracking-tight">Selected Work</h2>
           <div className="text-orange-vivid font-jetbrains text-xl font-bold tracking-wider drop-shadow-sm uppercase">
@@ -41,7 +41,7 @@ export default function Projects() {
         <div className="flex flex-col gap-24 md:gap-32">
           {PROJECTS.map((project, index) => (
             <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 md:gap-16 items-center group`}>
-              
+
               {/* Image Container */}
               <div className="w-full md:w-1/2 aspect-[4/3] rounded-[2rem] overflow-hidden bg-white/20 dark:bg-primary/50 relative shadow-2xl border border-gray-200 dark:border-white/10 group-hover:shadow-[0_20px_50px_-15px_rgba(72,55,255,0.3)] transition-all duration-700">
                 <div className="absolute inset-0 bg-blue-vivid/10 dark:bg-blue-deep/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
@@ -51,7 +51,7 @@ export default function Projects() {
               {/* Content Container */}
               <div className="w-full md:w-1/2 flex flex-col gap-6 md:gap-8">
                 <h3 className="text-4xl md:text-5xl font-bold text-black dark:text-white tracking-tight drop-shadow-sm">{project.title}</h3>
-                
+
                 <div className="text-gray-800 dark:text-gray-200 font-jetbrains text-lg leading-relaxed whitespace-pre-line">
                   {project.description}
                 </div>

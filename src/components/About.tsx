@@ -2,24 +2,24 @@ import profileImg from '../../resources/shahriarFamtik.jpg';
 
 export default function About() {
   return (
-    <section id="about" className="px-4 md:px-12 py-12 md:py-20 w-full max-w-[90rem] mx-auto space-y-8">
+    <section id="about" className="px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-20 w-full max-w-[90rem] mx-auto space-y-6 sm:space-y-8">
       {/* Intro Header */}
       <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-4">
         {/* ... About me ... */}
       </div>
 
       {/* Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 auto-rows-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 auto-rows-auto">
 
         {/* Card 1: Greeting & Title (col-span-2) */}
         <div className="md:col-span-2 bg-white/40 dark:bg-primary/20 backdrop-blur-md rounded-[2rem] p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent group flex flex-col justify-center text-right items-end">
-          <h3 className="text-4xl md:text-6xl font-medium font-serif text-gray-900 dark:text-white leading-[1.1] drop-shadow-sm">
+          <h3 className="text-2xl sm:text-4xl md:text-6xl font-medium font-serif text-gray-900 dark:text-white leading-[1.1] drop-shadow-sm">
             Hello! I'm <span className="text-accent italic font-bold">Shahriar</span>,
           </h3>
-          <h4 className="text-xl md:text-3xl font-mono text-blue-deep dark:text-blue-pale mt-4 mb-6 font-medium">
+          <h4 className="text-lg sm:text-xl md:text-3xl font-mono text-blue-deep dark:text-blue-pale mt-3 sm:mt-4 mb-4 sm:mb-6 font-medium">
             Fullstack Engineer
           </h4>
-          <p className="text-lg md:text-xl text-gray-700 dark:text-zinc-300 font-sans leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-zinc-300 font-sans leading-relaxed max-w-2xl">
             A results-driven Fullstack Engineer and Software Engineering student at Daffodil International University.
             I specialize in building scalable backend systems, designing REST APIs, and optimizing relational databases with clean, maintainable code.<br /><br />
             I am also a competitive programmer and a hackathon enthusiast, constantly pushing my limits to learn and grow. Ranked top 10 in CodeTrap spring 2025 programming contest.

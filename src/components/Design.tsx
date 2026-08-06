@@ -42,16 +42,16 @@ export default function Design() {
       </div>
 
       <div className="space-y-12 bg-blue-deep/30 dark:bg-blue-deep/50 backdrop-blur-md border border-blue-deep/20 dark:border-blue-deep rounded-2xl md:rounded-tr-[4rem] md:rounded-bl-[4rem] py-8 md:py-16 shadow-2xl relative flex flex-col overflow-hidden hover:border-accent dark:hover:border-accent transition-colors">
-        
+
         {/* Row 1 - Scroll Left */}
         <div className={`flex w-max ${selectedPoster ? '' : 'animate-marquee'}`}>
           {/* We duplicate the array to allow for smooth 50% translation looping */}
           {[...row1, ...row1].map((src, idx) => (
             <div key={`r1-${idx}`} className="pr-4 md:pr-8 shrink-0">
-              <img 
-                src={src} 
-                alt="Poster design" 
-                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500 cursor-pointer" 
+              <img
+                src={src}
+                alt="Poster design"
+                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500 cursor-pointer"
                 onClick={() => setSelectedPoster(src)}
               />
             </div>
@@ -62,10 +62,10 @@ export default function Design() {
         <div className={`flex w-max ${selectedPoster ? '' : 'animate-marquee-reverse'}`}>
           {[...row2, ...row2].map((src, idx) => (
             <div key={`r2-${idx}`} className="pr-4 md:pr-8 shrink-0">
-              <img 
-                src={src} 
-                alt="Poster design" 
-                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500 cursor-pointer" 
+              <img
+                src={src}
+                alt="Poster design"
+                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500 cursor-pointer"
                 onClick={() => setSelectedPoster(src)}
               />
             </div>
@@ -76,11 +76,11 @@ export default function Design() {
 
       {/* Fullscreen Poster Modal */}
       {selectedPoster && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/80 dark:bg-black/90 backdrop-blur-md transition-opacity duration-300"
           onClick={() => setSelectedPoster(null)}
         >
-          <button 
+          <button
             className="absolute top-6 right-6 p-2 text-white/70 hover:text-white bg-black/40 hover:bg-black/60 rounded-full transition-all duration-300 z-50 backdrop-blur-md"
             onClick={() => setSelectedPoster(null)}
             aria-label="Close"
@@ -89,10 +89,10 @@ export default function Design() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <img 
-            src={selectedPoster} 
-            alt="Enlarged poster design" 
-            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10" 
+          <img
+            src={selectedPoster}
+            alt="Enlarged poster design"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
             onClick={(e) => e.stopPropagation()}
           />
         </div>

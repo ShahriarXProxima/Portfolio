@@ -1,6 +1,6 @@
 export default function CautionStrip() {
   // Repeating text blocks so it fills the screen twice for seamless scrolling
-  const repeatCount = 20;
+  const repeatCount = 10;
 
   return (
     <div className="w-full overflow-hidden bg-cyan-400/80 backdrop-blur-md py-3 relative z-40">
@@ -21,3 +21,4 @@ export default function CautionStrip() {
     </div>
   );
 }
+

@@ -7,10 +7,10 @@ export default function Footer() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
-    
+
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData);
-    
+
     try {
       // Formspree API endpoint - user needs to replace YOUR_FORM_ID
       const res = await fetch('https://formspree.io/f/xykrvpap', {
@@ -36,14 +36,14 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="w-full pb-8 border-t border-gray-200/50 dark:border-orange-vivid/50 pt-12 bg-white/20 dark:bg-gradient-to-t dark:from-orange-vivid/10 dark:to-primary/20 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 space-y-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 space-y-16 sm:space-y-24">
         {/* Contact Me Section */}
         <div className="space-y-16">
-          <h2 className="text-6xl sm:text-[12vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-none text-gray-900 dark:text-white break-words">
+          <h2 className="text-4xl sm:text-6xl md:text-[10rem] font-bold font-sans tracking-tighter leading-none text-gray-900 dark:text-white break-words">
             Contact me
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 font-mono text-sm text-gray-600 dark:text-gray-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 md:gap-8 font-mono text-sm text-gray-600 dark:text-gray-300">
             {/* Left Column: Contact Details & Social Links */}
             <div className="space-y-6 md:mt-2">
               <div>
@@ -53,11 +53,11 @@ export default function Footer() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 {SOCIAL_LINKS.map((social) => (
-                  <a 
-                    key={social.name} 
-                    href={social.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-3 text-gray-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors group break-all"
                   >
                     <social.icon size={16} className="group-hover:scale-110 transition-transform shrink-0" />
@@ -65,20 +65,20 @@ export default function Footer() {
                   </a>
                 ))}
               </div>
-              
+
               {/* CV QR Code */}
               <div className="pt-8">
                 <p className="text-gray-900 dark:text-white font-bold mb-5">Scan for CV:</p>
-                <a 
-                  href="https://drive.google.com/file/d/1Ip07PW_t1kDbJ7JLBmz4kv_20x26NpFP/view?usp=drive_link" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://drive.google.com/file/d/1Ip07PW_t1kDbJ7JLBmz4kv_20x26NpFP/view?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-gray-100 dark:bg-white p-3 rounded-full hover:scale-105 transition-transform border border-gray-200 dark:border-transparent"
                 >
-                  <img 
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1Ip07PW_t1kDbJ7JLBmz4kv_20x26NpFP%2Fview%3Fusp%3Ddrive_link" 
-                    alt="CV QR Code" 
-                    className="w-40 h-40" 
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1Ip07PW_t1kDbJ7JLBmz4kv_20x26NpFP%2Fview%3Fusp%3Ddrive_link"
+                    alt="CV QR Code"
+                    className="w-40 h-40"
                   />
                 </a>
               </div>
@@ -91,20 +91,20 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row gap-6 md:gap-4">
                   <div className="flex-1 space-y-2">
                     <label className="text-xs text-gray-500 dark:text-zinc-400">First Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="firstName"
                       required
-                      className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none" 
+                      className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none"
                     />
                   </div>
                   <div className="flex-1 space-y-2">
                     <label className="text-xs text-gray-500 dark:text-zinc-400">Last Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="lastName"
                       required
-                      className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none" 
+                      className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none"
                     />
                   </div>
                 </div>
@@ -112,27 +112,27 @@ export default function Footer() {
 
               <div className="space-y-2">
                 <label className="text-gray-900 dark:text-white font-medium block mb-6">Email (required)</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   name="email"
                   required
-                  className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none" 
+                  className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none"
                 />
               </div>
 
               <div className="space-y-2">
                 <label className="text-gray-900 dark:text-white font-medium block mb-6">Message (required)</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="message"
                   required
-                  className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none" 
+                  className="w-full bg-transparent border-b border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-black dark:focus:border-white transition-colors rounded-none"
                 />
               </div>
 
               <div className="pt-4 flex items-center gap-4">
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={status === 'loading' || status === 'success'}
                   className="bg-orange-vivid dark:bg-orange-vivid text-white dark:text-white text-xs font-bold px-8 py-3 hover:bg-orange-vivid/80 transition-colors cursor-pointer rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
@@ -163,7 +163,7 @@ export default function Footer() {
 
         {/* Giant Name */}
         <div className="w-full flex justify-center md:justify-center overflow-hidden">
-          <h3 className="text-5xl sm:text-[12vw] md:text-[10rem] font-bold font-sans tracking-tighter leading-[0.8] md:leading-[0.75] text-accent break-words md:whitespace-nowrap text-center md:text-left">
+          <h3 className="text-3xl sm:text-5xl md:text-[10rem] font-bold font-sans tracking-tighter leading-[0.85] md:leading-[0.75] text-accent break-words text-center">
             shahriar tahmid
           </h3>
         </div>
