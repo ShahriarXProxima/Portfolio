@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 const FIRST_NAME = "Shahriar's ";
 const LAST_NAME = 'Studio';
 const FULL_NAME = FIRST_NAME + LAST_NAME;
-const LOADING_DURATION = 3000; // Total time for loading in ms
+const LOADING_DURATION = 2000; // Total time for loading in ms
 const TYPEWRITER_INTERVAL = LOADING_DURATION / FULL_NAME.length;
 
 interface LoadingScreenProps {
