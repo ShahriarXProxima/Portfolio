@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -67,5 +67,30 @@
   .animate-marquee:hover,
   .animate-marquee-reverse:hover {
     animation-play-state: paused;
+  }
+
+  /* Loading Screen Animations */
+  @keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .typewriter-cursor {
+    animation: cursor-blink 0.7s steps(1) infinite;
+  }
+
+  .welcome-btn:hover {
+    background: linear-gradient(135deg, #ff8533 0%, #ff6a00 50%, #f75b04 100%) !important;
+    letter-spacing: 0.25em !important;
+    box-shadow: 0 6px 30px rgba(247, 91, 4, 0.4), 0 0 60px rgba(255, 106, 0, 0.15) !important;
+  }
+
+  @keyframes float-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .welcome-btn--float {
+    animation: float-gentle 3s ease-in-out infinite;
   }
 }

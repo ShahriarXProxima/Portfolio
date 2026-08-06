@@ -12,10 +12,23 @@ import ArticleDetail from './components/ArticleDetail';
 import StaticStrip from './components/StaticStrip';
 import CautionStrip from './components/CautionStrip';
 import ShimmerBackground from './components/ShimmerBackground';
-import StudioBackground from './components/StudioBackground';
+import LoadingScreen from './components/LoadingScreen';
 
 export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
+  const [showLoading, setShowLoading] = useState(true);
+
+  // Lock body scroll during loading
+  useEffect(() => {
+    if (showLoading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showLoading]);
 
   // Sync hash routing e.g. #article/kafka-springboot or section scrolling
   useEffect(() => {
@@ -81,6 +94,8 @@ export default function App() {
   }
 
   return (
+    <>
+    {showLoading && <LoadingScreen onComplete={() => setShowLoading(false)} />}
     <div className="min-h-screen font-sans transition-colors duration-300 text-gray-900 dark:text-white">
       <ShimmerBackground isDark={isDark} />
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
@@ -107,5 +122,6 @@ export default function App() {
         <Footer />
       </div>
     </div>
+    </>
   );
 }
