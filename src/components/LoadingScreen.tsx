@@ -1,5 +1,135 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import type { ComponentType } from 'react';
 import { HoverButton } from './HoverButton';
+
+export function eyesFollowCursor<P extends object>(Component: ComponentType<P>): ComponentType<P> {
+  return (props: P) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+      const handleMove = (e: MouseEvent) => {
+        if (!ref.current) return;
+
+        // Get center of pupil container
+        const rect = ref.current.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        // Vector from pupil center to cursor
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+
+        // Limit movement radius
+        const distance = Math.min(10, Math.hypot(dx, dy));
+        const angle = Math.atan2(dy, dx);
+
+        // Offset position relative to center
+        setOffset({
+          x: Math.cos(angle) * distance,
+          y: Math.sin(angle) * distance,
+        });
+      };
+
+      window.addEventListener('mousemove', handleMove);
+      return () => window.removeEventListener('mousemove', handleMove);
+    }, []);
+
+    return (
+      <div
+        ref={ref}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          pointerEvents: 'none',
+          transform: `translate(${offset.x}px, ${offset.y}px)`,
+        }}
+      >
+        <Component {...props} />
+      </div>
+    );
+  };
+}
+
+const Pupil = () => (
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '1px',
+      height: '22px',
+      position: 'relative',
+      zIndex: 2,
+    }}
+  >
+    <div
+      style={{
+        position: 'relative',
+        width: '16px',
+        height: '22px',
+        backgroundColor: 'rgb(12, 12, 12)',
+        borderRadius: '100%',
+        flex: 'none',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '3px',
+          left: 'calc(50% - 1.5px)',
+          width: '3px',
+          height: '3px',
+          backgroundColor: 'rgb(255, 254, 253)',
+          borderRadius: '100%',
+          zIndex: 1,
+        }}
+      />
+    </div>
+  </div>
+);
+
+const MovingPupil = eyesFollowCursor(Pupil);
+
+const Eyes = () => (
+  <div
+    style={{
+      width: '56px',
+      height: '36px',
+      display: 'block',
+      overflow: 'visible',
+      gap: '0px',
+      position: 'absolute',
+      borderRadius: '0px 0px 0px 0px',
+      top: '-60px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+    }}
+  >
+    {/* Left Eye */}
+    <div style={{ position: 'absolute', top: 0, left: 0, width: '24px', height: '36px' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '24px', height: '36px', backgroundColor: 'rgb(255, 254, 253)', borderRadius: '40px' }} />
+      <div style={{ position: 'absolute', top: '7px', bottom: '7px', left: 0, right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <MovingPupil />
+      </div>
+    </div>
+    
+    {/* Right Eye */}
+    <div style={{ position: 'absolute', top: 0, right: 0, width: '24px', height: '36px' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '24px', height: '36px', backgroundColor: 'rgb(255, 254, 253)', borderRadius: '40px' }} />
+      <div style={{ position: 'absolute', top: '7px', bottom: '7px', left: 0, right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <MovingPupil />
+      </div>
+    </div>
+  </div>
+);
 
 const FIRST_NAME = "Shahriar's ";
 const LAST_NAME = 'Studio';
@@ -100,8 +230,11 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           flexDirection: 'column',
           alignItems: 'center',
           gap: '32px',
+          position: 'relative',
         }}
       >
+        <Eyes />
+        
         {/* Name with typewriter effect */}
         <div
           className="loading-name"
