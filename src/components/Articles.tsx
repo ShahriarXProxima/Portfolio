@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { ARTICLES_DATA } from '../data/articles';
+import { HoverButton } from './HoverButton';
 
 interface ArticlesProps {
   onSelectArticle?: (id: string) => void;
@@ -53,7 +54,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
                   </div>
 
                   <div className="flex items-center justify-between pt-8 mt-auto">
-                    <button
+                    <HoverButton
                       onClick={(e) => {
                         e.stopPropagation();
                         handleArticleClick(article.id);
@@ -61,7 +62,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
                       className="bg-orange-vivid text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-orange-vivid/80 transition-colors cursor-pointer border border-transparent shadow-lg"
                     >
                       Read more
-                    </button>
+                    </HoverButton>
                     <div className="bg-orange-vivid text-white p-2 rounded-full group-hover:bg-orange-vivid/80 group-hover:scale-110 transition-all border border-transparent shadow-lg">
                       <ArrowRight size={16} />
                     </div>
@@ -75,7 +76,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
 
       <div className="flex items-center justify-end gap-2 pt-8">
         {Array.from({ length: totalPages }).map((_, i) => (
-          <button
+          <HoverButton
             key={i}
             onClick={() => setCurrentPage(i)}
             className={`w-10 h-10 rounded-full font-jetbrains font-bold flex items-center justify-center transition-colors cursor-pointer shadow-lg ${currentPage === i
@@ -85,15 +86,15 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
             aria-label={`Go to page ${i + 1}`}
           >
             {i + 1}
-          </button>
+          </HoverButton>
         ))}
-        <button
+        <HoverButton
           onClick={handleNext}
           className="w-10 h-10 rounded-full bg-white/40 dark:bg-primary/40 border border-blue-vivid/30 text-blue-deep dark:text-white flex items-center justify-center hover:bg-orange-vivid/20 dark:hover:border-orange-vivid transition-colors cursor-pointer shadow-lg"
           aria-label="Next page"
         >
           <ArrowRight size={16} />
-        </button>
+        </HoverButton>
       </div>
     </section>
   );

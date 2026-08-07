@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react';
+import { HoverButton } from './HoverButton';
 import bloodLinkImg from '../../resources/bloodLink.jpg';
 import titanBoostImg from '../../resources/titanBoost.jpg';
 import pacmanImg from '../../resources/pacman.png';
@@ -66,13 +67,13 @@ export default function Projects() {
 
                 <div className="pt-4">
                   {project.repoUrl ? (
-                    <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-orange-vivid text-white px-8 py-4 rounded-full font-bold hover:bg-orange-vivid/80 transition-all hover:-translate-y-1 hover:shadow-xl shadow-lg">
+                    <HoverButton as="a" href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-orange-vivid text-white px-8 py-4 rounded-full font-bold hover:bg-orange-vivid/80 transition-all hover:-translate-y-1 hover:shadow-xl shadow-lg">
                       View Project <ArrowUpRight size={20} />
-                    </a>
+                    </HoverButton>
                   ) : (
-                    <button className="inline-flex items-center gap-2 bg-gray-500 text-white px-8 py-4 rounded-full font-bold cursor-not-allowed shadow-lg opacity-80">
+                    <HoverButton className="inline-flex items-center gap-2 bg-gray-500 text-white px-8 py-4 rounded-full font-bold cursor-not-allowed shadow-lg opacity-80">
                       Private Repository <ArrowUpRight size={20} />
-                    </button>
+                    </HoverButton>
                   )}
                 </div>
               </div>

@@ -3,6 +3,7 @@ import { ARTICLES_DATA, Article } from '../data/articles';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ScrollBackground from './ScrollBackground';
+import { HoverButton } from './HoverButton';
 
 interface ArticleDetailProps {
   articleId: string;
@@ -28,13 +29,13 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
       <main className="relative z-10 max-w-4xl mx-auto px-4 md:px-12 pt-12 pb-24 space-y-12 bg-white/40 dark:bg-blue-vivid/20 backdrop-blur-md rounded-2xl md:rounded-tl-[4rem] md:rounded-br-[4rem] border border-blue-vivid/30 dark:border-blue-vivid/50 shadow-2xl mt-32 mb-12">
         {/* Navigation Breadcrumb & Back Button */}
         <div className="flex items-center justify-between border-b border-gray-200/50 dark:border-white/10 pb-6">
-          <button
+          <HoverButton
             onClick={onBack}
             className="flex items-center gap-3 text-sm font-mono text-gray-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors bg-white/50 dark:bg-zinc-800/50 backdrop-blur-md border border-gray-300/50 dark:border-white/10 px-5 py-2.5 rounded-full cursor-pointer hover:border-gray-400 dark:hover:border-white/30"
           >
             <ArrowLeft size={16} />
             Back to Portfolio
-          </button>
+          </HoverButton>
 
           <div className="flex items-center gap-2 text-xs font-mono text-blue-deep dark:text-blue-pale font-bold">
             <span>Articles</span>
@@ -159,15 +160,15 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
 
         {/* Share & Back Controls */}
         <div className="pt-12 border-t border-gray-200/50 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <button
+          <HoverButton
             onClick={onBack}
             className="bg-gray-100/80 dark:bg-white/90 text-gray-900 dark:text-black border border-gray-200/50 dark:border-transparent px-8 py-3 rounded-full font-bold flex items-center gap-3 hover:bg-white dark:hover:bg-gray-100 transition-colors cursor-pointer shadow-md"
           >
             <ArrowLeft size={16} />
             Return to Main Portfolio
-          </button>
+          </HoverButton>
 
-          <button
+          <HoverButton
             onClick={() => {
               if (navigator.clipboard) {
                 navigator.clipboard.writeText(window.location.href);
@@ -178,7 +179,7 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
           >
             <Share2 size={14} />
             Share Article
-          </button>
+          </HoverButton>
         </div>
 
         {/* More Articles Section */}

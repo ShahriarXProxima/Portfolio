@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { HoverButton } from './HoverButton';
 
 const FIRST_NAME = "Shahriar's ";
 const LAST_NAME = 'Studio';
@@ -149,7 +150,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         </div>
 
         {/* Welcome button — fades in when loading is complete */}
-        <button
+        <HoverButton
           onClick={handleWelcomeClick}
           disabled={!loadingComplete}
           className={`welcome-btn ${loadingComplete ? 'welcome-btn--float' : ''}`}
@@ -164,8 +165,8 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             fontWeight: 600,
             letterSpacing: '0.15em',
             textTransform: 'uppercase' as const,
-            cursor: loadingComplete ? 'pointer' : 'default',
             borderRadius: '50px',
+            cursor: loadingComplete ? 'pointer' : 'default',
             boxShadow: '0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(255,255,255,0.05)',
             transition: 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), letter-spacing 0.4s ease',
             opacity: loadingComplete ? 1 : 0,
@@ -173,7 +174,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           }}
         >
           Welcome
-        </button>
+        </HoverButton>
       </div>
 
       {/* Loading counter — bottom right */}

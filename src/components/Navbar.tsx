@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { HoverButton } from './HoverButton';
 
 interface NavbarProps {
   isDark?: boolean;
@@ -84,26 +85,26 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
         {/* Navigation Links */}
         <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
-            <button
+            <HoverButton
               key={item.id}
               onClick={() => handleScroll(item.id)}
               className="text-sm font-fira font-bold text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white hover:italic px-5 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer"
             >
               {item.name}
-            </button>
+            </HoverButton>
           ))}
         </div>
 
         {/* Mobile Navigation (Compacted) */}
         <div className="flex md:hidden items-center gap-1 overflow-x-auto no-scrollbar scroll-smooth">
           {navItems.map((item) => (
-            <button
+            <HoverButton
               key={item.id}
               onClick={() => handleScroll(item.id)}
               className="text-[11px] sm:text-xs font-fira font-bold text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white hover:italic px-2.5 sm:px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer whitespace-nowrap"
             >
               {item.name}
-            </button>
+            </HoverButton>
           ))}
         </div>
 
@@ -111,10 +112,10 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
         {toggleTheme && (
           <button
             onClick={toggleTheme}
-            className={`relative shrink-0 rounded-full w-9 h-9 flex items-center justify-center transition-all duration-300 shadow-sm ml-1 border
+            className={`relative shrink-0 rounded-full w-9 h-9 flex items-center justify-center transition-all duration-300 shadow-sm ml-1
               ${isDark
-                ? 'bg-black/40 hover:bg-white/20 border-white/10'
-                : 'bg-white/40 hover:bg-black/5 border-black/5'
+                ? 'bg-black/40 hover:bg-white/20'
+                : 'bg-white/40 hover:bg-black/5'
               }
             `}
             aria-label="Toggle theme"

@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { SOCIAL_LINKS } from '../data';
+import { HoverButton } from './HoverButton';
 import heroVideo from '../../resources/video3.mp4';
 
 export default function Hero() {
@@ -36,17 +37,17 @@ export default function Hero() {
 
         {/* Bottom Section */}
         <div className="flex flex-col items-center space-y-6 sm:space-y-10 mt-auto animate-[fadeInUp_1s_ease-out] w-full pb-4 sm:pb-8 pt-8 sm:pt-16">
-          <a 
+          <HoverButton as="a" 
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-accent text-white px-6 sm:px-10 py-3 sm:py-5 rounded-full font-bold flex items-center gap-3 sm:gap-5 hover:bg-accent/90 hover:scale-105 transition-all duration-300 cursor-pointer mx-auto inline-flex shadow-[0_0_20px_rgba(255,78,70,0.4)] hover:shadow-[0_0_40px_rgba(255,78,70,0.6)] text-sm sm:text-lg"
           >
             Explore Projects
-            <div className="bg-white text-accent p-2.5 rounded-full">
+            <div className="bg-white text-accent p-2.5 rounded-full z-10 pointer-events-none">
               <ArrowRight size={20} />
             </div>
-          </a>
+          </HoverButton>
 
           {/* Social Links */}
           <div className="flex flex-wrap justify-center items-center gap-x-5 sm:gap-x-10 gap-y-4 sm:gap-y-6 max-w-3xl pt-2">

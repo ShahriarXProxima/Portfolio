@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SOCIAL_LINKS } from '../data';
+import { HoverButton } from './HoverButton';
 
 export default function Footer() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -131,13 +132,13 @@ export default function Footer() {
               </div>
 
               <div className="pt-4 flex items-center gap-4">
-                <button
+                <HoverButton
                   type="submit"
                   disabled={status === 'loading' || status === 'success'}
                   className="bg-orange-vivid dark:bg-orange-vivid text-white dark:text-white text-xs font-bold px-8 py-3 hover:bg-orange-vivid/80 transition-colors cursor-pointer rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? 'SUBMITTING...' : status === 'success' ? 'SENT!' : 'SUBMIT'}
-                </button>
+                </HoverButton>
                 {status === 'success' && <span className="text-sm text-green-600 dark:text-green-400 font-bold">Message sent successfully!</span>}
                 {status === 'error' && <span className="text-sm text-red-600 dark:text-red-400 font-bold">Failed to send. Please try again.</span>}
               </div>

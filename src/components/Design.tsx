@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { HoverButton } from './HoverButton';
 import poster1 from '../../resources/poster1.jpg';
 import poster2 from '../../resources/poster2.jpg';
 import poster3 from '../../resources/poster3.jpg';
@@ -80,7 +81,7 @@ export default function Design() {
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/80 dark:bg-black/90 backdrop-blur-md transition-opacity duration-300"
           onClick={() => setSelectedPoster(null)}
         >
-          <button
+          <HoverButton
             className="absolute top-6 right-6 p-2 text-white/70 hover:text-white bg-black/40 hover:bg-black/60 rounded-full transition-all duration-300 z-50 backdrop-blur-md"
             onClick={() => setSelectedPoster(null)}
             aria-label="Close"
@@ -88,7 +89,7 @@ export default function Design() {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
-          </button>
+          </HoverButton>
           <img
             src={selectedPoster}
             alt="Enlarged poster design"
