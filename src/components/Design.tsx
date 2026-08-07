@@ -106,7 +106,7 @@ export default function Design() {
           ))
         }
         autoplay
-        autoplayMs={3000}
+        autoplayMs={2000}
         radius={1200}
         angleStep={14}
         sizeDecrease={0.06}

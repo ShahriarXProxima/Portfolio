@@ -32,7 +32,7 @@ export default function CurvedCarousel(props: CurvedCarouselProps) {
     background = 'transparent',
     bottomFade = true,
     autoplay = true,
-    autoplayMs = 3500,
+    autoplayMs = 1000,
     radius = 1200,
     angleStep = 16,
     dragThreshold = 60,
