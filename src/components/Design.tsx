@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { HoverButton } from './HoverButton';
+import CurvedCarousel from './CurvedCarousel';
 import poster1 from '../../resources/poster1.jpg';
 import poster2 from '../../resources/poster2.jpg';
 import poster3 from '../../resources/poster3.jpg';
@@ -14,8 +15,10 @@ import poster11 from '../../resources/poster11.jpg';
 import poster12 from '../../resources/poster12.jpg';
 import poster13 from '../../resources/poster13.jpg';
 
-const row1 = [poster1, poster2, poster3, poster4, poster5, poster6, poster7];
-const row2 = [poster8, poster9, poster10, poster11, poster12, poster13];
+const ALL_POSTERS = [
+  poster1, poster2, poster3, poster4, poster5, poster6, poster7,
+  poster8, poster9, poster10, poster11, poster12, poster13,
+];
 
 export default function Design() {
   const [selectedPoster, setSelectedPoster] = useState<string | null>(null);
@@ -37,43 +40,51 @@ export default function Design() {
   }, [selectedPoster]);
 
   return (
-    <section id="design" className="px-4 md:px-12 py-16 w-full max-w-[100rem] mx-auto space-y-16 overflow-hidden">
-      <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-12">
-        {/* ... Poster Designs ... */}
-      </div>
+    <section id="design" className="w-full overflow-hidden relative min-h-screen flex items-center justify-center">
 
-      <div className="space-y-12 bg-blue-deep/30 dark:bg-blue-deep/50 backdrop-blur-md border border-blue-deep/20 dark:border-blue-deep rounded-2xl md:rounded-tr-[4rem] md:rounded-bl-[4rem] py-8 md:py-16 shadow-2xl relative flex flex-col overflow-hidden hover:border-accent dark:hover:border-accent transition-colors">
-
-        {/* Row 1 - Scroll Left */}
-        <div className={`flex w-max ${selectedPoster ? '' : 'animate-marquee'}`}>
-          {/* We duplicate the array to allow for smooth 50% translation looping */}
-          {[...row1, ...row1].map((src, idx) => (
-            <div key={`r1-${idx}`} className="pr-4 md:pr-8 shrink-0">
+      {/* Curved Carousel — Full Width */}
+      <CurvedCarousel
+        items={
+          ALL_POSTERS.map((src, idx) => (
+            <div
+              key={idx}
+              onClick={() => setSelectedPoster(src)}
+              style={{
+                cursor: 'pointer',
+                pointerEvents: 'auto',
+                borderRadius: 16,
+                overflow: 'hidden',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+              }}
+            >
               <img
                 src={src}
-                alt="Poster design"
-                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500 cursor-pointer"
-                onClick={() => setSelectedPoster(src)}
+                alt={`Poster design ${idx + 1}`}
+                style={{
+                  width: 300,
+                  height: 420,
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+                draggable={false}
               />
             </div>
-          ))}
-        </div>
-
-        {/* Row 2 - Scroll Right */}
-        <div className={`flex w-max ${selectedPoster ? '' : 'animate-marquee-reverse'}`}>
-          {[...row2, ...row2].map((src, idx) => (
-            <div key={`r2-${idx}`} className="pr-4 md:pr-8 shrink-0">
-              <img
-                src={src}
-                alt="Poster design"
-                className="h-64 md:h-80 w-auto rounded-xl border border-gray-200 dark:border-secondary shadow-sm bg-white dark:bg-black/20 hover:scale-105 transition-transform duration-500 cursor-pointer"
-                onClick={() => setSelectedPoster(src)}
-              />
-            </div>
-          ))}
-        </div>
-
-      </div>
+          ))
+        }
+        autoplay
+        autoplayMs={3000}
+        radius={1200}
+        angleStep={14}
+        sizeDecrease={0.06}
+        arrowSize={48}
+        arrowInset={32}
+        arrowGap={16}
+        arrowBg="rgba(255,255,255,0.9)"
+        arrowBorder="rgba(200,200,200,0.5)"
+        arrowText="#333"
+        bottomFade={false}
+        style={{ height: 620 }}
+      />
 
       {/* Fullscreen Poster Modal */}
       {selectedPoster && (
