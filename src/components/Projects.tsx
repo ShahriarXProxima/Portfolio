@@ -29,7 +29,7 @@ const PROJECTS = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-4 md:px-12 py-16 md:py-24 w-full max-w-full flex flex-col justify-center bg-transparent border-y border-blue-vivid/20 dark:border-blue-pale/20 transition-colors">
+    <section id="projects" className="px-4 md:px-12 py-16 md:py-24 w-full max-w-full flex flex-col justify-center bg-transparent transition-colors">
       <div className="w-full max-w-7xl mx-auto flex flex-col gap-24">
 
         <div className="text-center space-y-4">

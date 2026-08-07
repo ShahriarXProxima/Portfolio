@@ -307,5 +307,159 @@ export const useStore = create<StoreState>((set) => ({
         }
       }
     ]
+  },
+  {
+    id: 'java-multithreading',
+    title: 'Mastering Java Multithreading',
+    description: 'A deep dive into Java concurrency, thread pools, and the Executor framework for high-performance applications.',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2670&auto=format&fit=crop',
+    date: 'August 01, 2026',
+    readTime: '8 min read',
+    author: {
+      name: 'Shahriar Tahmid',
+      role: 'Full-stack Developer',
+      avatar: './resources/shahriarFamtik.jpg',
+    },
+    tags: ['Java', 'Concurrency', 'Multithreading', 'Backend'],
+    sections: [
+      {
+        heading: 'The Power of the ExecutorService',
+        paragraphs: [
+          'Directly managing threads is error-prone. Java provides the ExecutorService to decouple task submission from execution mechanics, making concurrent programming much safer.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'spring-boot-security',
+    title: 'Securing Spring Boot APIs with JWT',
+    description: 'Learn how to implement robust stateless authentication using JSON Web Tokens (JWT) in Spring Security.',
+    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2669&auto=format&fit=crop',
+    date: 'August 03, 2026',
+    readTime: '7 min read',
+    author: {
+      name: 'Shahriar Tahmid',
+      role: 'Full-stack Developer',
+      avatar: './resources/shahriarFamtik.jpg',
+    },
+    tags: ['Spring Boot', 'Security', 'JWT', 'Java'],
+    sections: [
+      {
+        heading: 'Stateless Authentication Basics',
+        paragraphs: [
+          'In modern microservices, maintaining session state is a bottleneck. JWT offers a stateless approach where the token itself contains all the claims required to authenticate the user.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'spring-cloud-microservices',
+    title: 'Building Microservices with Spring Cloud',
+    description: 'An architectural overview of building resilient, scalable microservices using the Spring Cloud ecosystem.',
+    image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2670&auto=format&fit=crop',
+    date: 'August 04, 2026',
+    readTime: '9 min read',
+    author: {
+      name: 'Shahriar Tahmid',
+      role: 'Full-stack Developer',
+      avatar: './resources/shahriarFamtik.jpg',
+    },
+    tags: ['Spring Boot', 'Microservices', 'Spring Cloud', 'Architecture'],
+    sections: [
+      {
+        heading: 'Service Discovery and API Gateways',
+        paragraphs: [
+          'Spring Cloud Netflix Eureka and Spring Cloud Gateway form the backbone of a robust microservice architecture by handling dynamic routing and service discovery out of the box.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'leetcode-dynamic-programming',
+    title: 'Conquering Dynamic Programming on LeetCode',
+    description: 'Strategies for identifying overlapping subproblems and optimal substructure to ace DP interviews.',
+    image: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=2670&auto=format&fit=crop',
+    date: 'August 05, 2026',
+    readTime: '6 min read',
+    author: {
+      name: 'Shahriar Tahmid',
+      role: 'Full-stack Developer',
+      avatar: './resources/shahriarFamtik.jpg',
+    },
+    tags: ['LeetCode', 'Algorithms', 'Dynamic Programming', 'Interviews'],
+    sections: [
+      {
+        heading: 'Top-Down vs. Bottom-Up',
+        paragraphs: [
+          'Understanding when to use memoization (top-down) versus tabulation (bottom-up) is key to mastering DP. Both approaches optimize time complexity, but bottom-up often saves recursion stack space.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'leetcode-graphs',
+    title: 'Graph Algorithms Demystified',
+    description: 'A visual approach to understanding BFS, DFS, Dijkstra, and topological sort for coding challenges.',
+    image: 'https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=2689&auto=format&fit=crop',
+    date: 'August 06, 2026',
+    readTime: '7 min read',
+    author: {
+      name: 'Shahriar Tahmid',
+      role: 'Full-stack Developer',
+      avatar: './resources/shahriarFamtik.jpg',
+    },
+    tags: ['LeetCode', 'Graphs', 'Algorithms', 'BFS/DFS'],
+    sections: [
+      {
+        heading: 'Traversing the Unknown',
+        paragraphs: [
+          'Whether finding the shortest path in a maze or detecting cycles in dependencies, graph algorithms are foundational. Start with standard BFS/DFS and build intuition from there.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'codeforces-competitive',
+    title: 'Getting Started with Competitive Programming on Codeforces',
+    description: 'A beginner\'s guide to setting up a local C++ environment and tackling the first Codeforces rating milestones.',
+    image: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=2674&auto=format&fit=crop',
+    date: 'August 07, 2026',
+    readTime: '5 min read',
+    author: {
+      name: 'Shahriar Tahmid',
+      role: 'Full-stack Developer',
+      avatar: './resources/shahriarFamtik.jpg',
+    },
+    tags: ['Codeforces', 'Competitive Programming', 'C++', 'Problem Solving'],
+    sections: [
+      {
+        heading: 'The Template and the Mindset',
+        paragraphs: [
+          'Speed is everything in CP. Having a robust template with fast I/O and commonly used macros allows you to focus purely on the logic rather than boilerplate.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'java-garbage-collection',
+    title: 'Understanding Java Garbage Collection',
+    description: 'How the JVM manages memory, and how to tune the G1 and ZGC collectors for low-latency systems.',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2672&auto=format&fit=crop',
+    date: 'August 08, 2026',
+    readTime: '8 min read',
+    author: {
+      name: 'Shahriar Tahmid',
+      role: 'Full-stack Developer',
+      avatar: './resources/shahriarFamtik.jpg',
+    },
+    tags: ['Java', 'JVM', 'Memory Management', 'Performance'],
+    sections: [
+      {
+        heading: 'Generational Hypothesis',
+        paragraphs: [
+          'Most objects die young. Understanding this principle helps demystify why the heap is divided into Eden, Survivor, and Tenured spaces, and how minor GCs differ from major ones.'
+        ]
+      }
+    ]
   }
 ];

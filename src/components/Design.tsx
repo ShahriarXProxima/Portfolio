@@ -40,7 +40,10 @@ export default function Design() {
   }, [selectedPoster]);
 
   return (
-    <section id="design" className="w-full overflow-hidden relative min-h-screen flex items-center justify-center">
+    <section id="design" className="w-full overflow-hidden relative min-h-screen flex flex-col items-center justify-center py-16">
+      <div className="px-4 md:px-12 w-full flex justify-center mb-12 md:mb-16">
+        <h2 className="text-5xl md:text-7xl font-jetbrains font-bold text-black dark:text-white drop-shadow-md tracking-tight text-center">Poster Design</h2>
+      </div>
 
       {/* Curved Carousel — Full Width */}
       <CurvedCarousel

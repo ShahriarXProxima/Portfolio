@@ -15,7 +15,7 @@ const EXPERIENCES = [
 
 export default function WorkExperience() {
   return (
-    <section id="work" className="w-full max-w-full py-16 md:py-24 relative bg-transparent backdrop-blur-md border-y border-blue-vivid/20 dark:border-blue-pale/50 transition-colors">
+    <section id="work" className="w-full max-w-full py-16 md:py-24 relative bg-transparent backdrop-blur-md transition-colors">
       <div className="w-full max-w-7xl mx-auto px-4 md:px-12 flex flex-col gap-16">
         <div className="text-center space-y-4">
           <h2 className="text-3xl sm:text-5xl md:text-7xl font-mono font-bold text-black dark:text-white drop-shadow-md tracking-tight">Work Experience</h2>

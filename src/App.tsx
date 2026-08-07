@@ -13,6 +13,7 @@ import StaticStrip from './components/StaticStrip';
 import CautionStrip from './components/CautionStrip';
 import ShimmerBackground from './components/ShimmerBackground';
 import LoadingScreen from './components/LoadingScreen';
+import footerBg from '../resources/footer.jpg';
 
 export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
@@ -95,33 +96,46 @@ export default function App() {
 
   return (
     <>
-    {showLoading && <LoadingScreen onComplete={() => setShowLoading(false)} />}
-    <div className="min-h-screen font-sans transition-colors duration-300 text-gray-900 dark:text-white">
-      <ShimmerBackground isDark={isDark} />
-      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-      <main className="relative z-10">
-        <Hero />
+      {showLoading && <LoadingScreen onComplete={() => setShowLoading(false)} />}
+      <div className="min-h-screen font-sans transition-colors duration-300 text-gray-900 dark:text-white">
+        <ShimmerBackground isDark={isDark} />
+        <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+        <main className="relative z-10">
+          <Hero />
 
-        <div className="flex flex-col pb-0 pt-0">
-          <StaticStrip title="ABOUT" direction="left" />
-          <About />
-          <StaticStrip title="SKILLS" direction="right" />
-          <Skills />
-          <StaticStrip title="DESIGN" direction="left" />
-          <Design />
-          <StaticStrip title="EXPERIENCE" direction="right" />
-          <WorkExperience />
-          <StaticStrip title="PROJECTS" direction="left" />
-          <Projects />
-          <StaticStrip title="ARTICLES" direction="right" />
-          <Articles onSelectArticle={openArticle} />
+          <div className="relative flex flex-col pb-0 pt-0 overflow-hidden">
+            <div
+              className="absolute inset-0 z-0 w-full h-full"
+              style={{
+                backgroundImage: `url(${footerBg})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                filter: 'blur(20px)',
+                transform: 'scaleX(1.05) scaleY(-1.05)'
+              }}
+            />
+
+            <div className="relative z-10 w-full">
+              <StaticStrip title="ABOUT" direction="left" />
+              <About />
+              <StaticStrip title="SKILLS" direction="right" />
+              <Skills />
+              <StaticStrip title="DESIGN" direction="left" />
+              <Design />
+              <StaticStrip title="EXPERIENCE" direction="right" />
+              <WorkExperience />
+              <StaticStrip title="PROJECTS" direction="left" />
+              <Projects />
+              <StaticStrip title="ARTICLES" direction="right" />
+              <Articles onSelectArticle={openArticle} />
+            </div>
+          </div>
+          <CautionStrip />
+        </main>
+        <div className="relative z-10">
+          <Footer />
         </div>
-        <CautionStrip />
-      </main>
-      <div className="relative z-10">
-        <Footer />
       </div>
-    </div>
     </>
   );
 }

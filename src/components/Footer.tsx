@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SOCIAL_LINKS } from '../data';
 import { HoverButton } from './HoverButton';
+import footerBg from '../../resources/footer.jpg';
 
 export default function Footer() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -36,9 +37,14 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="w-full pb-8 border-t border-gray-200/50 dark:border-orange-vivid/50 pt-12 bg-white/20 dark:bg-gradient-to-t dark:from-orange-vivid/10 dark:to-primary/20 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 space-y-16 sm:space-y-24">
-        {/* Contact Me Section */}
+    <footer id="contact" className="relative w-full overflow-hidden p-3 sm:p-4 md:p-5 lg:p-6">
+      <div 
+        className="absolute inset-0 z-0 w-full h-full -scale-y-100" 
+        style={{ backgroundImage: `url(${footerBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} 
+      />
+      <div className="relative z-10 w-full mx-auto px-6 py-12 sm:px-10 md:px-12 bg-white/30 dark:bg-black/40 backdrop-blur-[70px] rounded-[2rem] md:rounded-[3rem] shadow-2xl">
+        <div className="w-full max-w-7xl mx-auto space-y-16 sm:space-y-24">
+          {/* Contact Me Section */}
         <div className="space-y-16">
           <h2 className="text-4xl sm:text-6xl md:text-[10rem] font-bold font-sans tracking-tighter leading-none text-gray-900 dark:text-white break-words">
             Contact me
@@ -47,10 +53,8 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 md:gap-8 font-mono text-sm text-gray-600 dark:text-gray-300">
             {/* Left Column: Contact Details & Social Links */}
             <div className="space-y-6 md:mt-2">
-              <div>
-                <a href="mailto:shahriarxproximalog1@gmail.com" className="text-base text-gray-900 dark:text-white hover:underline transition-colors block mb-4">
-                  shahriarxproximalog1@gmail.com
-                </a>
+              <div className="text-gray-900 dark:text-white hover:underline transition-colors block mb-4">
+                Social Links
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 {SOCIAL_LINKS.map((social) => (
@@ -183,6 +187,7 @@ export default function Footer() {
             <a href="#" className="hover:text-black dark:hover:text-white transition-colors">Privacy Policy</a>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   );
