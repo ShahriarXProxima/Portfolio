@@ -147,7 +147,6 @@ export default function CurvedCarousel(props: CurvedCarouselProps) {
   const onPointerDown = React.useCallback(
     (e: React.PointerEvent) => {
       if (total <= 1) return;
-      (e.currentTarget as HTMLDivElement).setPointerCapture?.(e.pointerId);
       startXRef.current = e.clientX;
       clearAutoplay();
       React.startTransition(() => setIsDragging(true));
@@ -159,6 +158,13 @@ export default function CurvedCarousel(props: CurvedCarouselProps) {
     (e: React.PointerEvent) => {
       if (!isDragging) return;
       const diffX = e.clientX - startXRef.current;
+
+      if (Math.abs(diffX) > 5) {
+        try {
+          (e.currentTarget as HTMLDivElement).setPointerCapture?.(e.pointerId);
+        } catch (err) {}
+      }
+
       if (Math.abs(diffX) > Math.max(10, dragThreshold)) {
         moveCarousel(diffX > 0 ? -1 : 1);
         React.startTransition(() => setIsDragging(false));
