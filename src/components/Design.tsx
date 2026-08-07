@@ -22,6 +22,7 @@ const ALL_POSTERS = [
 
 export default function Design() {
   const [selectedPoster, setSelectedPoster] = useState<string | null>(null);
+  const [animDir, setAnimDir] = useState<'up' | 'down' | 'scale'>('scale');
 
   useEffect(() => {
     const header = document.querySelector('header');
@@ -33,11 +34,38 @@ export default function Design() {
       if (header) header.style.display = '';
     }
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedPoster) return;
+      if (e.key === 'Escape') setSelectedPoster(null);
+      if (e.key === 'ArrowUp') navigatePoster('up');
+      if (e.key === 'ArrowDown') navigatePoster('down');
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
       document.body.style.overflow = 'unset';
       if (header) header.style.display = '';
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [selectedPoster]);
+
+  const navigatePoster = (direction: 'up' | 'down', e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (!selectedPoster) return;
+    const currentIndex = ALL_POSTERS.indexOf(selectedPoster);
+    if (currentIndex === -1) return;
+    
+    setAnimDir(direction);
+    let nextIndex;
+    if (direction === 'up') {
+      // UP arrow -> Previous poster (slides down from top)
+      nextIndex = currentIndex === 0 ? ALL_POSTERS.length - 1 : currentIndex - 1;
+    } else {
+      // DOWN arrow -> Next poster (slides up from bottom)
+      nextIndex = currentIndex === ALL_POSTERS.length - 1 ? 0 : currentIndex + 1;
+    }
+    setSelectedPoster(ALL_POSTERS[nextIndex]);
+  };
 
   return (
     <section id="design" className="w-full overflow-hidden relative min-h-screen flex flex-col items-center justify-center py-16">
@@ -51,7 +79,10 @@ export default function Design() {
           ALL_POSTERS.map((src, idx) => (
             <div
               key={idx}
-              onClick={() => setSelectedPoster(src)}
+              onClick={() => {
+                setAnimDir('scale');
+                setSelectedPoster(src);
+              }}
               style={{
                 cursor: 'pointer',
                 pointerEvents: 'auto',
@@ -92,24 +123,51 @@ export default function Design() {
       {/* Fullscreen Poster Modal */}
       {selectedPoster && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/80 dark:bg-black/90 backdrop-blur-md transition-opacity duration-300"
+          className="fixed inset-0 z-[100] flex items-center justify-center py-12 px-16 sm:px-24 bg-black/80 dark:bg-black/90 backdrop-blur-md transition-opacity duration-300"
           onClick={() => setSelectedPoster(null)}
         >
           <HoverButton
-            className="absolute top-6 right-6 p-2 text-white/70 hover:text-white bg-black/40 hover:bg-black/60 rounded-full transition-all duration-300 z-50 backdrop-blur-md"
+            className="fixed top-4 right-4 md:top-8 md:right-8 p-2 md:p-3 text-white/70 hover:text-white bg-black/40 hover:bg-black/60 rounded-full transition-all duration-300 z-[110] backdrop-blur-md shadow-lg flex items-center justify-center"
             onClick={() => setSelectedPoster(null)}
             aria-label="Close"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </HoverButton>
-          <img
-            src={selectedPoster}
-            alt="Enlarged poster design"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
-            onClick={(e) => e.stopPropagation()}
-          />
+
+          <div className="relative inline-flex items-center justify-center max-h-full max-w-full">
+            <div className="absolute -right-16 md:-right-20 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50">
+              <HoverButton
+                className="p-2 md:p-3 text-white/70 hover:text-white bg-black/40 hover:bg-black/60 rounded-full transition-all duration-300 backdrop-blur-md shadow-lg flex items-center justify-center"
+                onClick={(e) => navigatePoster('up', e)}
+                aria-label="Previous Poster"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                </svg>
+              </HoverButton>
+              <HoverButton
+                className="p-2 md:p-3 text-white/70 hover:text-white bg-black/40 hover:bg-black/60 rounded-full transition-all duration-300 backdrop-blur-md shadow-lg flex items-center justify-center"
+                onClick={(e) => navigatePoster('down', e)}
+                aria-label="Next Poster"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </HoverButton>
+            </div>
+
+            <img
+              key={selectedPoster}
+              src={selectedPoster}
+              alt="Enlarged poster design"
+              className={`max-w-full max-h-[85vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 ${
+                animDir === 'up' ? 'animate-slide-in-top' : animDir === 'down' ? 'animate-slide-in-bottom' : 'animate-fade-in-scale'
+              }`}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
         </div>
       )}
     </section>
