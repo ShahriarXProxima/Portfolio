@@ -26,7 +26,7 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
 
       {/* Main Container */}
-      <main className="relative z-10 max-w-4xl mx-auto px-4 md:px-12 pt-12 pb-24 space-y-12 bg-white/40 dark:bg-blue-vivid/20 backdrop-blur-md rounded-2xl md:rounded-tl-[4rem] md:rounded-br-[4rem] border border-blue-vivid/30 dark:border-blue-vivid/50 shadow-2xl mt-32 mb-12">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 md:px-12 pt-12 pb-24 space-y-12 bg-white/40 dark:bg-blue-vivid/20 backdrop-blur-md rounded-2xl md:rounded-tl-[4rem] md:rounded-br-[4rem] border border-blue-vivid/30 dark:border-blue-vivid/50 shadow-2xl mt-32 mb-12">
         {/* Navigation Breadcrumb & Back Button */}
         <div className="flex items-center justify-between border-b border-gray-200/50 dark:border-white/10 pb-6">
           <HoverButton
