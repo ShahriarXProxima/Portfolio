@@ -45,7 +45,7 @@ export default function Design() {
     if (!selectedPoster) return;
     const currentIndex = ALL_POSTERS.indexOf(selectedPoster);
     if (currentIndex === -1) return;
-    
+
     setAnimDir(direction);
     let nextIndex;
     if (direction === 'up') {
@@ -153,9 +153,8 @@ export default function Design() {
               key={selectedPoster}
               src={selectedPoster}
               alt="Enlarged poster design"
-              className={`max-w-full max-h-[85vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 ${
-                animDir === 'up' ? 'animate-slide-in-top' : animDir === 'down' ? 'animate-slide-in-bottom' : 'animate-fade-in-scale'
-              }`}
+              className={`max-w-full max-h-[85vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 ${animDir === 'up' ? 'animate-slide-in-top' : animDir === 'down' ? 'animate-slide-in-bottom' : 'animate-fade-in-scale'
+                }`}
               onClick={(e) => e.stopPropagation()}
             />
           </div>
