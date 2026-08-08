@@ -66,7 +66,7 @@ export default function Design() {
       <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 0.2, scale: 1 }}
+          whileInView={{ opacity: 0.9, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           viewport={{ once: true }}
           className="absolute top-20 text-[15vw] font-oswald font-bold text-gray-900 dark:text-white/40 uppercase tracking-tighter select-none whitespace-nowrap"
@@ -75,7 +75,7 @@ export default function Design() {
         </motion.div>
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 0.2, y: 0 }}
+          whileInView={{ opacity: 0.4, y: 0 }}
           transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
           viewport={{ once: true }}
           className="absolute bottom-10 text-[10vw] font-oswald font-bold text-gray-900 dark:text-white/40 uppercase tracking-tighter select-none whitespace-nowrap"
