@@ -1,24 +1,15 @@
 import { useState, useEffect } from 'react';
 import { HoverButton } from './HoverButton';
 import CurvedCarousel from './CurvedCarousel';
-import poster1 from '../../resources/poster1.jpg';
-import poster2 from '../../resources/poster2.jpg';
-import poster3 from '../../resources/poster3.jpg';
-import poster4 from '../../resources/poster4.jpg';
-import poster5 from '../../resources/poster5.jpg';
-import poster6 from '../../resources/poster6.jpg';
-import poster7 from '../../resources/poster7.jpg';
-import poster8 from '../../resources/poster8.jpg';
-import poster9 from '../../resources/poster9.jpg';
-import poster10 from '../../resources/poster10.png';
-import poster11 from '../../resources/poster11.jpg';
-import poster12 from '../../resources/poster12.jpg';
-import poster13 from '../../resources/poster13.jpg';
+// Dynamically import all posters from the resources/posters directory
+const posterModules = import.meta.glob('../../resources/posters/*.{png,jpg,jpeg,webp}', { eager: true, query: '?url', import: 'default' });
 
-const ALL_POSTERS = [
-  poster1, poster2, poster3, poster4, poster5, poster6, poster7,
-  poster8, poster9, poster10, poster11, poster12, poster13,
-];
+// Sort them by the number in the filename to maintain poster1, poster2, etc. order
+const ALL_POSTERS = Object.keys(posterModules).sort((a, b) => {
+  const numA = parseInt(a.match(/poster(\d+)/)?.[1] || '0', 10);
+  const numB = parseInt(b.match(/poster(\d+)/)?.[1] || '0', 10);
+  return numA - numB;
+}).map(key => posterModules[key] as string);
 
 export default function Design() {
   const [selectedPoster, setSelectedPoster] = useState<string | null>(null);

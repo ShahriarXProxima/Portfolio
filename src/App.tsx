@@ -1,4 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,11 +16,29 @@ import StaticStrip from './components/StaticStrip';
 import CautionStrip from './components/CautionStrip';
 import ShimmerBackground from './components/ShimmerBackground';
 import LoadingScreen from './components/LoadingScreen';
-import footerBg from '../resources/footer.jpg';
+import ScrollReveal from './components/ScrollReveal';
+import ScrollOverlay from './components/ScrollOverlay';
+import footerBg from '../resources/assets/footer.jpg';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
   const [showLoading, setShowLoading] = useState(true);
+  const parallaxBgRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.to(parallaxBgRef.current, {
+      yPercent: 20, // Parallax effect
+      ease: 'none',
+      scrollTrigger: {
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  });
 
   // Lock body scroll during loading
   useEffect(() => {
@@ -96,6 +117,7 @@ export default function App() {
 
   return (
     <>
+      <ScrollOverlay />
       {showLoading && <LoadingScreen onComplete={() => setShowLoading(false)} />}
       <div className="min-h-screen font-sans transition-colors duration-300 text-gray-900 dark:text-white">
         <ShimmerBackground isDark={isDark} />
@@ -105,6 +127,7 @@ export default function App() {
 
           <div className="relative flex flex-col pb-0 pt-0 overflow-hidden">
             <div
+              ref={parallaxBgRef}
               className="absolute inset-0 z-0 w-full h-full"
               style={{
                 backgroundImage: `url(${footerBg})`,
@@ -117,17 +140,17 @@ export default function App() {
 
             <div className="relative z-10 w-full">
               <StaticStrip title="ABOUT" direction="left" />
-              <About />
+              <ScrollReveal><About /></ScrollReveal>
               <StaticStrip title="SKILLS" direction="right" />
-              <Skills />
+              <ScrollReveal><Skills /></ScrollReveal>
               <StaticStrip title="DESIGN" direction="left" />
-              <Design />
+              <ScrollReveal><Design /></ScrollReveal>
               <StaticStrip title="EXPERIENCE" direction="right" />
-              <WorkExperience />
+              <ScrollReveal><WorkExperience /></ScrollReveal>
               <StaticStrip title="PROJECTS" direction="left" />
-              <Projects />
+              <ScrollReveal><Projects /></ScrollReveal>
               <StaticStrip title="ARTICLES" direction="right" />
-              <Articles onSelectArticle={openArticle} />
+              <ScrollReveal><Articles onSelectArticle={openArticle} /></ScrollReveal>
             </div>
           </div>
           <CautionStrip />

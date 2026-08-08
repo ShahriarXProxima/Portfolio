@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SOCIAL_LINKS } from '../data';
 import { HoverButton } from './HoverButton';
-import footerBg from '../../resources/footer.jpg';
+import footerBg from '../../resources/assets/footer.jpg';
 
 export default function Footer() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');

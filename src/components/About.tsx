@@ -1,4 +1,4 @@
-import profileImg from '../../resources/shahriarFamtik.jpg';
+import profileImg from '../../resources/assets/shahriarFamtik.jpg';
 
 export default function About() {
   return (

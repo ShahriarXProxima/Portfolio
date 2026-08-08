@@ -1,15 +1,36 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SOCIAL_LINKS } from '../data';
 import { HoverButton } from './HoverButton';
-import branchImg from '../../resources/branch.jpeg';
-import flowerImg from '../../resources/flower.jpeg';
+import branchImg from '../../resources/assets/branch.jpeg';
+import flowerImg from '../../resources/assets/flower.jpeg';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const githubUrl = SOCIAL_LINKS.find((social) => social.name.toLowerCase() === 'github-repositories')?.url || 'https://github.com/ShahriarXProxima?tab=repositories';
 
   const containerRef = useRef<HTMLElement>(null);
   const circleRef = useRef<SVGCircleElement>(null);
+  const heroContentRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.to(heroContentRef.current, {
+      y: 150,
+      opacity: 0,
+      scale: 0.9,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+  }, { scope: containerRef });
 
   // Ref for mouse physics state to avoid React re-renders on animation frames
   const mousePos = useRef({ x: -500, y: -500, targetX: -500, targetY: -500, scale: 0, targetScale: 0 });
@@ -133,7 +154,7 @@ export default function Hero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex flex-col justify-between items-center max-w-5xl mx-auto w-full flex-1 pointer-events-none">
+      <div ref={heroContentRef} className="relative z-10 flex flex-col justify-between items-center max-w-5xl mx-auto w-full flex-1 pointer-events-none">
 
         {/* Top Section */}
         <div className="space-y-6 sm:space-y-8 mt-4 md:mt-12 animate-[fadeInDown_1s_ease-out] pointer-events-auto">

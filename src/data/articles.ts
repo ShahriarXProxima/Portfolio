@@ -28,13 +28,13 @@ export const ARTICLES_DATA: Article[] = [
     id: 'kafka-springboot',
     title: 'Getting Started with Spring Boot and Kafka',
     description: 'Build a real event-driven order processing pipeline from scratch. You will wire a Spring Boot producer to a Kafka topic, consume events in a separate service, handle deserialization errors gracefully, and run everything locally with Docker Compose.',
-    image: './resources/spring&kafka.jpg',
+    image: './resources/assets/spring&kafka.jpg',
     date: 'July 28, 2026',
     readTime: '5 min read',
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['Spring Boot', 'Kafka', 'Docker', 'Microservices', 'Java'],
     sections: [
@@ -95,7 +95,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['React', 'TypeScript', 'Vite', 'Performance'],
     sections: [
@@ -147,7 +147,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['TypeScript', 'Advanced Types', 'Enterprise'],
     sections: [
@@ -194,7 +194,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['Tailwind CSS', 'UI/UX', 'Design System'],
     sections: [
@@ -240,7 +240,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['Spring Boot', 'Backend', 'Java'],
     sections: [
@@ -283,7 +283,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['React', 'Zustand', 'State Management'],
     sections: [
@@ -326,7 +326,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['Java', 'Concurrency', 'Multithreading'],
     sections: [
@@ -376,7 +376,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['Spring Boot', 'Security', 'JWT'],
     sections: [
@@ -428,7 +428,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['Spring Cloud', 'Microservices', 'Eureka', 'Gateway'],
     sections: [
@@ -479,7 +479,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['LeetCode', 'Dynamic Programming', 'Interviews'],
     sections: [
@@ -531,7 +531,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['LeetCode', 'Graphs', 'Algorithms'],
     sections: [
@@ -582,7 +582,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['Codeforces', 'Competitive Programming', 'C++'],
     sections: [
@@ -628,7 +628,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Shahriar Tahmid',
       role: 'Full‑stack Developer',
-      avatar: './resources/shahriarFamtik.jpg',
+      avatar: './resources/assets/shahriarFamtik.jpg',
     },
     tags: ['Java', 'JVM', 'GC'],
     sections: [

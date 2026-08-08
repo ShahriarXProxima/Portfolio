@@ -1,10 +1,10 @@
 import React from 'react';
-import facebookImg from '../../resources/social/facebook.svg';
-import githubImg from '../../resources/social/github.png';
-import googleImg from '../../resources/social/google.png';
-import linkedinImg from '../../resources/social/linkedIn.svg';
-import telegramImg from '../../resources/social/telegram.png';
-import whatsappImg from '../../resources/social/whatsapp.png';
+import facebookImg from '../../resources/assets/social/facebook.svg';
+import githubImg from '../../resources/assets/social/github.png';
+import googleImg from '../../resources/assets/social/google.png';
+import linkedinImg from '../../resources/assets/social/linkedIn.svg';
+import telegramImg from '../../resources/assets/social/telegram.png';
+import whatsappImg from '../../resources/assets/social/whatsapp.png';
 
 export interface IconProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   size?: number | string;

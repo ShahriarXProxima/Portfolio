@@ -1,8 +1,8 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import { HoverButton } from './HoverButton';
-import bloodLinkImg from '../../resources/bloodLink.jpg';
-import titanBoostImg from '../../resources/titanBoost.jpg';
-import pacmanImg from '../../resources/pacman.png';
+import bloodLinkImg from '../../resources/assets/bloodLink.jpg';
+import titanBoostImg from '../../resources/assets/titanBoost.jpg';
+import pacmanImg from '../../resources/assets/pacman.png';
 
 const PROJECTS = [
   {
