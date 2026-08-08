@@ -128,13 +128,15 @@ export default function App() {
           <div className="relative flex flex-col pb-0 pt-0 overflow-hidden">
             <div
               ref={parallaxBgRef}
-              className="absolute inset-0 z-0 w-full h-full"
+              className="absolute inset-[-100px] z-0"
               style={{
+                width: 'calc(100% + 200px)',
+                height: 'calc(100% + 200px)',
                 backgroundImage: `url(${footerBg})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 filter: 'blur(20px)',
-                transform: 'scaleX(1.15) scaleY(-1.15)'
+                transform: 'scaleY(-1)'
               }}
             />
 
