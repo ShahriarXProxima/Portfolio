@@ -1,3 +1,5 @@
+import { motion } from 'motion/react';
+
 const EXPERIENCES = [
   {
     period: 'Jun,26 - Present',
@@ -15,8 +17,30 @@ const EXPERIENCES = [
 
 export default function WorkExperience() {
   return (
-    <section id="work" className="w-full max-w-full py-16 md:py-24 relative bg-transparent backdrop-blur-md transition-colors">
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-12 flex flex-col gap-16">
+    <section id="work" className="w-full max-w-full py-16 md:py-24 relative bg-transparent backdrop-blur-md transition-colors overflow-hidden">
+      {/* Background Typographies */}
+      <div className="absolute inset-0 pointer-events-none z-0 flex flex-col justify-between overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 0.1, x: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="absolute top-32 -left-20 text-[12vw] font-bold text-gray-900 dark:text-white uppercase tracking-tighter select-none rotate-90 origin-left"
+        >
+          EXPERTISE
+        </motion.div>
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 0.1, x: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+          className="absolute bottom-32 -right-20 text-[12vw] font-bold text-gray-900 dark:text-white uppercase tracking-tighter select-none -rotate-90 origin-right"
+        >
+          JOURNEY
+        </motion.div>
+      </div>
+
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-12 flex flex-col gap-16 relative z-10">
         <div className="text-center space-y-4">
           <h2 className="text-3xl sm:text-5xl md:text-7xl font-mono font-bold text-black dark:text-white drop-shadow-md tracking-tight">Work Experience</h2>
           <div className="text-orange-vivid font-mono text-lg sm:text-2xl font-bold tracking-wider drop-shadow-sm uppercase">

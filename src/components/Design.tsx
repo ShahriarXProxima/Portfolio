@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { HoverButton } from './HoverButton';
 import CurvedCarousel from './CurvedCarousel';
 // Dynamically import all posters from the resources/posters directory
@@ -45,7 +46,7 @@ export default function Design() {
     if (!selectedPoster) return;
     const currentIndex = ALL_POSTERS.indexOf(selectedPoster);
     if (currentIndex === -1) return;
-
+    
     setAnimDir(direction);
     let nextIndex;
     if (direction === 'up') {
@@ -60,7 +61,30 @@ export default function Design() {
 
   return (
     <section id="design" className="w-full overflow-hidden relative min-h-screen flex flex-col items-center justify-center py-16">
-      <div className="px-4 md:px-12 w-full flex justify-center mb-12 md:mb-16">
+      
+      {/* Background Typographies */}
+      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: .8, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="absolute top-20 text-[15vw] font-oswald font-bold text-gray-900 dark:text-white uppercase tracking-tighter select-none whitespace-nowrap"
+        >
+          CREATIVITY
+        </motion.div>
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: .6, y: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+          viewport={{ once: true }}
+          className="absolute bottom-10 text-[10vw] font-oswald font-bold text-gray-900 dark:text-white uppercase tracking-tighter select-none whitespace-nowrap"
+        >
+          AESTHETICS
+        </motion.div>
+      </div>
+
+      <div className="px-4 md:px-12 w-full flex justify-center mb-12 md:mb-16 relative z-10">
         <h2 className="text-5xl md:text-7xl font-jetbrains font-bold text-black dark:text-white drop-shadow-md tracking-tight text-center">Poster Design</h2>
       </div>
 
@@ -153,8 +177,9 @@ export default function Design() {
               key={selectedPoster}
               src={selectedPoster}
               alt="Enlarged poster design"
-              className={`max-w-full max-h-[85vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 ${animDir === 'up' ? 'animate-slide-in-top' : animDir === 'down' ? 'animate-slide-in-bottom' : 'animate-fade-in-scale'
-                }`}
+              className={`max-w-full max-h-[85vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 ${
+                animDir === 'up' ? 'animate-slide-in-top' : animDir === 'down' ? 'animate-slide-in-bottom' : 'animate-fade-in-scale'
+              }`}
               onClick={(e) => e.stopPropagation()}
             />
           </div>
