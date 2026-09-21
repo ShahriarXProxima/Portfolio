@@ -6,7 +6,7 @@ const ICON_BASE_PATH = './resources/assets/skill-icons';
 // All 41 icons distributed across 5 rows
 const SKILL_ROWS = [
   // Row 1: Web & Front-end Core
-  ['typeScript.svg', 'React.svg', 'Vue.js.svg', 'jQuery.svg', 'HTML5.svg', 'CSS3.svg', 'JavaScript.svg', 'Redux.svg'],
+  ['TypeScript.svg', 'React.svg', 'Vue.js.svg', 'jQuery.svg', 'HTML5.svg', 'CSS3.svg', 'JavaScript.svg', 'Redux.svg'],
   // Row 2: Languages & Databases
   ['Java.svg', 'C.svg', 'C++ (CPlusPlus).svg', 'Spring.svg', 'SQL Developer.svg', 'PostgresSQL.svg', 'MySQL.svg', 'Oracle.svg'],
   // Row 3: Infrastructure, Build Tools & Styling
