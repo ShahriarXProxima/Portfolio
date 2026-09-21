@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Base relative path for your skill icons
-const ICON_BASE_PATH = './resources/assets/skill-icons';
+const ICON_BASE_PATH = '/resources/assets/skill-icons';
 
 // All 41 icons distributed across 5 rows
 const SKILL_ROWS = [
