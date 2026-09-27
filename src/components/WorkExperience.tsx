@@ -17,7 +17,7 @@ const EXPERIENCES = [
 
 export default function WorkExperience() {
   return (
-    <section id="work" className="w-full max-w-full py-16 md:py-24 relative bg-transparent backdrop-blur-md transition-colors overflow-hidden">
+    <section id="work" className="w-full max-w-full py-16 md:py-24 relative bg-[#2872A1] transition-colors overflow-hidden">
       {/* Background Typographies */}
       <div className="absolute inset-0 pointer-events-none z-0 flex flex-col justify-between overflow-hidden">
         <motion.div 

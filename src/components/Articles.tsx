@@ -33,7 +33,7 @@ export default function Articles({ onSelectArticle }: ArticlesProps) {
   };
 
   return (
-    <section id="articles" className="w-full py-16 md:py-24 relative bg-transparent overflow-hidden">
+    <section id="articles" className="w-full py-16 md:py-24 relative bg-[#4B5320] overflow-hidden">
       {/* Background Typographies */}
       <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
         <motion.div 
