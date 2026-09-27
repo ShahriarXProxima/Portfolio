@@ -59,7 +59,7 @@ export default function Design() {
   };
 
   return (
-    <section id="design" className="w-full bg-[#E9F056] overflow-hidden relative min-h-screen flex flex-col items-center justify-center py-16">
+    <section id="design" className="w-full bg-[#2EC4B6] overflow-hidden relative flex flex-col items-center justify-center pt-16 pb-0">
       
       <div className="px-4 md:px-12 w-full flex justify-center mb-12 md:mb-16 relative z-10">
         <h2 className="text-5xl md:text-7xl font-jetbrains font-bold text-black dark:text-white drop-shadow-md tracking-tight text-center">Poster Design</h2>
