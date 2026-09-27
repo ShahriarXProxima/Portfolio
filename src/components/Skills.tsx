@@ -1,7 +1,6 @@
 import React from 'react';
 
 // Load all skill icons through Vite.
-// Works in both local development and Vercel production.
 const skillIcons = import.meta.glob(
   '../../resources/assets/skills/*.svg',
   {
@@ -11,7 +10,7 @@ const skillIcons = import.meta.glob(
   }
 );
 
-// Map normalized (lowercase) filenames to their loaded URLs for case-insensitive lookup on Vercel/Linux
+// Map normalized (lowercase) filenames to their loaded URLs for case-insensitive lookup
 const normalizedIcons = Object.keys(skillIcons).reduce((acc, key) => {
   const filename = key.split('/').pop().toLowerCase();
   const moduleVal = skillIcons[key];
@@ -19,7 +18,6 @@ const normalizedIcons = Object.keys(skillIcons).reduce((acc, key) => {
   return acc;
 }, {});
 
-// Helper function to get the correct Vite-generated URL
 const getIconUrl = (iconFile) => {
   const directPath = `../../resources/assets/skills/${iconFile}`;
   const directMatch = skillIcons[directPath];
@@ -27,212 +25,119 @@ const getIconUrl = (iconFile) => {
   if (directMatch) {
     return typeof directMatch === 'string' ? directMatch : directMatch?.default || directMatch;
   }
-
-  // Fallback to case-insensitive matching (prevents Vercel 404s due to letter case)
   return normalizedIcons[iconFile.toLowerCase()];
 };
 
-// All skill icons distributed across 5 rows
-const SKILL_ROWS = [
-  // Row 1: Web & Front-end Core
-  [
-    'typeScript.svg', // Fixed case: actual filename is typeScript.svg
-    'React.svg',
-    'Vue.js.svg',
-    'jQuery.svg',
-    'HTML5.svg',
-    'CSS3.svg',
-    'JavaScript.svg',
-    'Redux.svg',
-  ],
-
-  // Row 2: Languages & Databases
-  [
-    'Java.svg',
-    'C.svg',
-    'C++ (CPlusPlus).svg',
-    'Spring.svg',
-    'SQL Developer.svg',
-    'PostgresSQL.svg',
-    'MySQL.svg',
-    'Oracle.svg',
-  ],
-
-  // Row 3: Infrastructure, Build Tools & Styling
-  [
-    'Redis.svg',
-    'GraphQL.svg',
-    'Apache Kafka.svg',
-    'Apache Maven.svg',
-    'Gradle.svg',
-    'Sass.svg',
-    'PostCSS.svg',
-    'Ant Design.svg',
-  ],
-
-  // Row 4: Design, Utilities & Environments
-  [
-    'Material UI.svg',
-    'Canva.svg',
-    'Figma.svg',
-    'affinity-studio-icon.svg',
-    'Vercel.svg',
-    'Postman.svg',
-    'NPM.svg',
-    'Ubuntu.svg',
-  ],
-
-  // Row 5: DevOps, IDEs & Messaging
-  [
-    'GitHub.svg',
-    'Docker.svg',
-    'Kubernetes.svg',
-    'Bash.svg',
-    'IntelliJ IDEA.svg',
-    'Visual Studio Code (VS Code).svg',
-    'WebStorm.svg',
-    'Eclipse IDE.svg',
-    'rabbitmq.svg',
-  ],
+// All skills
+const ALL_SKILLS = [
+  'typeScript.svg', 'React.svg', 'Vue.js.svg', 'jQuery.svg', 'HTML5.svg', 'CSS3.svg', 'JavaScript.svg', 'Redux.svg',
+  'Java.svg', 'C.svg', 'C++ (CPlusPlus).svg', 'Spring.svg', 'SQL Developer.svg', 'PostgresSQL.svg', 'MySQL.svg', 'Oracle.svg',
+  'Redis.svg', 'GraphQL.svg', 'Apache Kafka.svg', 'Apache Maven.svg', 'Gradle.svg', 'Sass.svg', 'PostCSS.svg', 'Ant Design.svg',
+  'Material UI.svg', 'Canva.svg', 'Figma.svg', 'affinity-studio-icon.svg', 'Vercel.svg', 'Postman.svg', 'NPM.svg', 'Ubuntu.svg',
+  'GitHub.svg', 'Docker.svg', 'Kubernetes.svg', 'Bash.svg', 'IntelliJ IDEA.svg', 'Visual Studio Code (VS Code).svg', 'WebStorm.svg', 'Eclipse IDE.svg', 'rabbitmq.svg'
 ];
+
+// Split into 3 rows for the marquees
+const row1 = ALL_SKILLS.slice(0, 14);
+const row2 = ALL_SKILLS.slice(14, 28);
+const row3 = ALL_SKILLS.slice(28, 41);
+const ROWS = [row1, row2, row3];
+
+const WavyLogo = () => (
+  <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="white" strokeWidth="2" strokeLinejoin="round" className="opacity-90">
+    <polyline points="0,6 4,2 8,6 12,2 16,6 20,2 24,6 28,2 32,6" />
+    <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14" />
+  </svg>
+);
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className="w-full bg-[#59020B] py-20 px-2 sm:px-6 md:px-12 flex justify-center items-center overflow-hidden"
-    >
-      {/* Animation keyframes & typography */}
+    <section id="skills" className="w-full bg-white py-24 flex flex-col items-center justify-center relative overflow-hidden min-h-screen">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700;900&family=JetBrains+Mono:wght@500;700&display=swap');
-
         @keyframes marquee {
-          0% {
-            transform: translateX(0%);
-          }
-
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
         }
-
         .animate-marquee {
-          animation: marquee 35s linear infinite;
+          animation: marquee 40s linear infinite;
           display: flex;
           width: max-content;
         }
-
         .animate-marquee-reverse {
-          animation: marquee 35s linear infinite reverse;
+          animation: marquee 40s linear infinite reverse;
           display: flex;
           width: max-content;
         }
-
-        .animate-marquee:hover,
-        .animate-marquee-reverse:hover {
+        .animate-marquee:hover, .animate-marquee-reverse:hover {
           animation-play-state: paused;
-        }
-
-        .font-cyber {
-          font-family: 'Chakra Petch', sans-serif;
-        }
-
-        .font-tech-mono {
-          font-family: 'JetBrains Mono', monospace;
         }
       `}</style>
 
-      {/* MacBook Pro M2 Frame */}
-      <div className="w-full max-w-6xl mx-auto flex flex-col items-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]">
-        {/* MacBook Pro Display Screen Aluminum Enclosure */}
-        <div className="w-full bg-[#121318] rounded-t-[1.8rem] rounded-b-[0.4rem] p-2.5 sm:p-3 pb-2 border border-neutral-800 relative">
-          {/* Inner Black Bezel */}
-          <div className="w-full bg-black rounded-t-[1.3rem] rounded-b-md p-1.5 sm:p-2 relative overflow-hidden">
-            {/* MacBook Notch */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 sm:w-36 h-4 sm:h-5 bg-black rounded-b-xl z-30 flex items-center justify-center space-x-2 border-b border-x border-neutral-900/80">
-              <div className="w-2 h-2 rounded-full bg-[#0a0a0c] border border-cyan-500/40 flex items-center justify-center">
-                <div className="w-0.5 h-0.5 bg-cyan-400 rounded-full shadow-[0_0_4px_#00f0ff]" />
-              </div>
-
-              <div className="w-1 h-1 rounded-full bg-[#08080a]" />
-            </div>
-
-            {/* Inner Display Screen */}
-            <div className="w-full bg-white rounded-t-xl rounded-b-sm pt-8 sm:pt-10 pb-8 pl-0 pr-0 border border-neutral-200 relative overflow-hidden">
-              <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-4">
-                {/* Left Side: Scrolling Skill Rows */}
-                <div className="w-full lg:w-4/5 flex flex-col space-y-4 sm:space-y-5 overflow-hidden pl-0">
-                  {SKILL_ROWS.map((row, index) => {
-                    const repeatedRow = [...row, ...row, ...row, ...row];
-
-                    return (
-                      <div
-                        key={index}
-                        className="w-full overflow-hidden flex items-center"
-                      >
-                        <div
-                          className={
-                            index % 2 === 0
-                              ? 'animate-marquee'
-                              : 'animate-marquee-reverse'
-                          }
-                        >
-                          {repeatedRow.map((iconFile, i) => {
-                            const iconUrl = getIconUrl(iconFile);
-
-                            return (
-                              <div
-                                key={`${iconFile}-${i}`}
-                                className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-2 sm:mx-3 flex items-center justify-center transition-transform duration-300 hover:scale-110"
-                              >
-                                {iconUrl ? (
-                                  <img
-                                    src={iconUrl}
-                                    alt={`${iconFile.split('.')[0]} logo`}
-                                    className="w-12 h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 object-contain"
-                                  />
-                                ) : (
-                                  <div
-                                    className="text-red-500 text-xs text-center"
-                                    title={`Icon not found: ${iconFile}`}
-                                  >
-                                    ?
-                                  </div>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* Right Side: SKILLS Typography */}
-                <div className="w-full lg:w-1/5 flex flex-col lg:flex-row items-end justify-center shrink-0 pr-0">
-                  <div className="flex flex-col items-end justify-center pr-0">
-                    {/* Micro Tagline */}
-                    <span className="font-tech-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-cyan-600 font-bold mb-2 pr-2 sm:pr-3 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-pulse" />
-                      // SYS_CORE
-                    </span>
-
-                    {/* Vertical Header */}
-                    <h2 className="font-cyber text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-neutral-950 uppercase leading-none [writing-mode:vertical-rl] rotate-180 pr-0 select-none">
-                      SKILLS
-                    </h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* MacBook Pro Base */}
-        <div className="w-[102%] -mt-[1px] h-3.5 sm:h-4 bg-gradient-to-b from-[#22242c] via-[#16171d] to-[#0c0d11] rounded-b-xl relative flex justify-center border-t border-neutral-700/50 shadow-lg">
-          <div className="w-16 sm:w-24 h-1.5 sm:h-2 bg-[#0c0d11] rounded-b-md border-x border-b border-neutral-700/50 shadow-inner" />
-        </div>
+      {/* Top Tag */}
+      <div className="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-1.5 mb-8 bg-[#FDFDFD] shadow-sm">
+        <span className="text-[10px] font-bold tracking-widest text-gray-500">006</span>
+        <span className="w-1.5 h-1.5 bg-black rounded-full"></span>
+        <span className="text-[10px] font-bold tracking-widest text-black uppercase">Technologies</span>
       </div>
+
+      {/* Main Headline */}
+      <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-black mb-16 md:mb-24 text-center px-4">
+        Technology Ecosystem
+      </h2>
+
+      {/* Scrolling Marquees Wrapper */}
+      <div className="w-full relative py-10 flex flex-col gap-8 md:gap-12">
+        
+        {/* Marquee Rows */}
+        {ROWS.map((row, index) => {
+          // Quadruple the array to ensure smooth infinite scrolling
+          const repeatedRow = [...row, ...row, ...row, ...row];
+          const isReverse = index % 2 !== 0;
+
+          return (
+            <div key={index} className="w-full overflow-hidden flex items-center relative">
+              {/* Fade masks for edges */}
+              <div className="absolute left-0 w-24 md:w-48 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute right-0 w-24 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+              <div className={isReverse ? 'animate-marquee-reverse' : 'animate-marquee'}>
+                {repeatedRow.map((iconFile, i) => {
+                  const iconUrl = getIconUrl(iconFile);
+                  // Clean name formatting
+                  let rawName = iconFile.split('.')[0];
+                  if(rawName === 'C++ (CPlusPlus)') rawName = 'C++';
+                  if(rawName === 'affinity-studio-icon') rawName = 'Affinity';
+                  if(rawName === 'rabbitmq') rawName = 'RabbitMQ';
+                  
+                  return (
+                    <div
+                      key={`${iconFile}-${i}`}
+                      className="flex items-center gap-4 md:gap-6 bg-[#FAFAFA] border border-gray-200/80 rounded-full px-6 md:px-10 py-4 md:py-6 mx-4 md:mx-6 shrink-0 shadow-[0_2px_15px_-5px_rgba(0,0,0,0.05)] hover:bg-white hover:shadow-[0_8px_30px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
+                    >
+                      <span className="text-gray-800 font-bold text-base md:text-xl lg:text-2xl whitespace-nowrap group-hover:text-black transition-colors">
+                        {rawName}
+                      </span>
+                      {iconUrl && (
+                        <img
+                          src={iconUrl}
+                          alt={`${rawName} logo`}
+                          className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Bottom Description */}
+      <p className="text-gray-500 font-medium text-sm md:text-lg lg:text-xl text-center max-w-3xl mt-16 md:mt-24 px-6 leading-relaxed">
+        My technology stack connects robust backend architectures, dynamic frontends, and reliable databases into a scalable, high-performance ecosystem that grows with you.
+      </p>
+
     </section>
   );
 }

@@ -10,26 +10,6 @@ export default function Articles({ onSelectArticle }: { onSelectArticle?: (id: s
     <section id="articles" className="w-full py-16 md:py-24 px-3 sm:px-6 md:px-10 bg-gradient-to-b from-gray-400 to-black min-h-screen flex items-center justify-center">
       <div className="w-full max-w-[1600px] 2xl:max-w-[92vw] bg-[#F5F5F7] rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-14 lg:p-20 shadow-2xl relative overflow-hidden flex flex-col">
         
-        {/* Navigation / Header pill (optional mimicking of the image's top nav) */}
-        <div className="hidden md:flex items-center justify-between bg-white rounded-full p-2 pl-6 pr-2 shadow-sm mb-16 w-max max-w-full gap-12 mx-auto sm:mx-0">
-          <div className="flex items-center gap-6">
-            <div className="w-10 h-6 border-[3px] border-black rounded-full"></div>
-            <div className="flex items-center gap-6 text-sm font-semibold text-gray-500">
-              <span className="text-black">Articles</span>
-              <span className="hover:text-black cursor-pointer">Projects</span>
-              <span className="hover:text-black cursor-pointer">Insights</span>
-              <span className="hover:text-black cursor-pointer">About</span>
-            </div>
-          </div>
-          <button className="bg-black text-white text-sm font-semibold py-3 px-6 rounded-full flex items-center gap-2">
-            <div className="w-4 h-4 grid grid-cols-2 gap-0.5 opacity-50">
-              <div className="bg-white rounded-[1px]"></div><div className="bg-white rounded-[1px]"></div>
-              <div className="bg-white rounded-[1px]"></div><div className="bg-white rounded-[1px]"></div>
-            </div>
-            Read More
-          </button>
-        </div>
-
         {/* Huge Headline */}
         <div className="max-w-4xl mb-16 md:mb-24 mt-8 md:mt-0">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-black leading-[1.1]">

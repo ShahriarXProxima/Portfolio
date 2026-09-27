@@ -68,68 +68,74 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
   };
 
   return (
-    <header className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[96vw] md:w-max ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0 pointer-events-none'}`}>
-      <nav className="flex items-center justify-between gap-3 md:gap-10 py-2.5 px-4 md:px-6 w-full mx-auto backdrop-blur-md bg-white/30 dark:bg-black/30 rounded-full shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] transition-colors duration-300">
+    <header className={`fixed top-4 md:top-8 left-1/2 -translate-x-1/2 w-full max-w-[1600px] 2xl:max-w-[92vw] px-4 md:px-8 z-50 transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-12 opacity-0 pointer-events-none'}`}>
+      <div className="flex items-center justify-between w-full">
+        
+        {/* Left Pill: Logo and Links */}
+        <nav className="flex items-center gap-6 md:gap-8 bg-white dark:bg-[#111] rounded-full py-3 md:py-4 px-6 md:px-8 shadow-lg shadow-black/5 dark:shadow-white/5 border border-black/5 dark:border-white/10 transition-colors duration-300">
+          
+          {/* Logo (Rounded Rectangle Outline) */}
+          <div 
+            onClick={handleLogoClick}
+            className="w-10 h-6 md:w-12 md:h-7 border-[3px] border-black dark:border-white rounded-full cursor-pointer hover:opacity-70 transition-opacity shrink-0"
+            title="Home"
+          />
 
-        {/* Sleek Logo */}
-        <div
-          onClick={handleLogoClick}
-          className="text-lg md:text-xl font-medium tracking-tighter cursor-pointer hover:opacity-80 transition-opacity shrink-0 flex items-baseline"
+          {/* Navigation Links */}
+          <div className="hidden md:flex items-center gap-6">
+            {navItems.filter(item => item.id !== 'contact').map((item) => (
+              <div
+                key={item.id}
+                onClick={() => handleScroll(item.id)}
+                className="text-xs md:text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white cursor-pointer transition-colors"
+              >
+                {item.name}
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Links (Compacted) */}
+          <div className="flex md:hidden items-center gap-4 overflow-x-auto no-scrollbar">
+            {navItems.filter(item => item.id !== 'contact').map((item) => (
+              <div
+                key={item.id}
+                onClick={() => handleScroll(item.id)}
+                className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white cursor-pointer whitespace-nowrap"
+              >
+                {item.name}
+              </div>
+            ))}
+          </div>
+        </nav>
+
+        {/* Right Pill: Theme Toggle & Hire Me (Contact) */}
+        <div 
+          onClick={() => handleScroll('contact')}
+          className="flex items-center gap-3 md:gap-4 bg-white dark:bg-[#111] rounded-full p-2 md:p-2.5 pr-5 md:pr-6 shadow-lg shadow-black/5 dark:shadow-white/5 border border-black/5 dark:border-white/10 cursor-pointer group transition-colors duration-300 shrink-0"
         >
-          <span className="font-serif font-extrabold text-gray-900 dark:text-white transition-colors duration-300">
-            shahriar
-          </span>
-          <span className="font-serif italic text-accent font-extrabold">.dev</span>
-        </div>
-
-        {/* Navigation Links */}
-        <div className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => (
-            <HoverButton
-              key={item.id}
-              onClick={() => handleScroll(item.id)}
-              className="text-sm font-fira font-bold text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white hover:italic px-5 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer"
-            >
-              {item.name}
-            </HoverButton>
-          ))}
-        </div>
-
-        {/* Mobile Navigation (Compacted) */}
-        <div className="flex md:hidden items-center gap-1 overflow-x-auto no-scrollbar scroll-smooth">
-          {navItems.map((item) => (
-            <HoverButton
-              key={item.id}
-              onClick={() => handleScroll(item.id)}
-              className="text-[11px] sm:text-xs font-fira font-bold text-gray-800 dark:text-gray-300 hover:text-black dark:hover:text-white hover:italic px-2.5 sm:px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer whitespace-nowrap"
-            >
-              {item.name}
-            </HoverButton>
-          ))}
-        </div>
-
-        {/* Theme Toggle */}
-        {toggleTheme && (
-          <button
-            onClick={toggleTheme}
-            className={`relative shrink-0 rounded-full w-9 h-9 flex items-center justify-center transition-all duration-300 shadow-sm ml-1
-              ${isDark
-                ? 'bg-black/40 hover:bg-white/20'
-                : 'bg-white/40 hover:bg-black/5'
-              }
-            `}
-            aria-label="Toggle theme"
+          {/* Black square acting as theme toggle wrapper inside the contact pill */}
+          <div 
+            onClick={(e) => {
+              e.stopPropagation();
+              if (toggleTheme) toggleTheme();
+            }}
+            className="w-8 h-8 md:w-10 md:h-10 bg-black dark:bg-white rounded-xl md:rounded-2xl flex items-center justify-center text-white dark:text-black hover:opacity-80 transition-opacity"
+            title="Toggle Theme"
           >
-            <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ease-in-out ${isDark ? 'opacity-100 rotate-0 scale-100 text-yellow-400' : 'opacity-0 -rotate-90 scale-50'}`}>
+            <div className={`absolute flex items-center justify-center transition-all duration-500 ease-in-out ${isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-50'}`}>
               <Sun size={16} />
             </div>
-            <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ease-in-out ${!isDark ? 'opacity-100 rotate-0 scale-100 text-indigo-500' : 'opacity-0 rotate-90 scale-50 text-indigo-500'}`}>
+            <div className={`absolute flex items-center justify-center transition-all duration-500 ease-in-out ${!isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-50'}`}>
               <Moon size={16} />
             </div>
-          </button>
-        )}
+          </div>
+          
+          <span className="text-xs md:text-sm font-semibold text-black dark:text-white group-hover:opacity-70 transition-opacity">
+            Hire Me
+          </span>
+        </div>
 
-      </nav>
+      </div>
     </header>
   );
 }
