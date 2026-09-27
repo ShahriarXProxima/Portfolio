@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { HoverButton } from './HoverButton';
-import CurvedCarousel from './CurvedCarousel';
 // Dynamically import all posters from the resources/posters directory
 const posterModules = import.meta.glob('../../resources/posters/*.{png,jpg,jpeg,webp}', { eager: true, query: '?url', import: 'default' });
 
@@ -60,80 +59,65 @@ export default function Design() {
   };
 
   return (
-    <section id="design" className="w-full overflow-hidden relative min-h-screen flex flex-col items-center justify-center py-16">
+    <section id="design" className="w-full bg-[#E9F056] overflow-hidden relative min-h-screen flex flex-col items-center justify-center py-16">
       
-      {/* Background Typographies */}
-      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 0.9, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="absolute top-20 text-[15vw] font-oswald font-bold text-gray-900 dark:text-white/40 uppercase tracking-tighter select-none whitespace-nowrap"
-        >
-          CREATIVITY
-        </motion.div>
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 0.4, y: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          className="absolute bottom-10 text-[10vw] font-oswald font-bold text-gray-900 dark:text-white/40 uppercase tracking-tighter select-none whitespace-nowrap"
-        >
-          AESTHETICS
-        </motion.div>
-      </div>
-
       <div className="px-4 md:px-12 w-full flex justify-center mb-12 md:mb-16 relative z-10">
         <h2 className="text-5xl md:text-7xl font-jetbrains font-bold text-black dark:text-white drop-shadow-md tracking-tight text-center">Poster Design</h2>
       </div>
 
-      {/* Curved Carousel — Full Width */}
-      <CurvedCarousel
-        items={
-          ALL_POSTERS.map((src, idx) => (
-            <div
-              key={idx}
-              onClick={() => {
-                setAnimDir('scale');
-                setSelectedPoster(src);
-              }}
-              style={{
-                cursor: 'pointer',
-                pointerEvents: 'auto',
-                borderRadius: 16,
-                overflow: 'hidden',
-                boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
-              }}
+      {/* 3-Column Moving Grid matching reference design */}
+      <div className="w-full h-[75vh] md:h-[90vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 relative z-10 overflow-hidden bg-black/5 dark:bg-transparent">
+        {[0, 1, 2].map((colIndex) => {
+          const colPosters = ALL_POSTERS.filter((_, i) => i % 3 === colIndex);
+          const direction = colIndex % 2 === 0 ? 'up' : 'down';
+          
+          return (
+            <div 
+              key={colIndex} 
+              className={`relative w-full h-full overflow-hidden flex-col ${colIndex === 1 ? 'hidden md:flex' : colIndex === 2 ? 'hidden lg:flex' : 'flex'}`}
             >
-              <img
-                src={src}
-                alt={`Poster design ${idx + 1}`}
-                style={{
-                  width: 300,
-                  height: 420,
-                  objectFit: 'cover',
-                  display: 'block',
-                }}
-                draggable={false}
-              />
+              <motion.div
+                className="flex flex-col w-full"
+                animate={{ y: direction === 'up' ? ['0%', '-50%'] : ['-50%', '0%'] }}
+                transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+              >
+                {[...colPosters, ...colPosters].map((src, idx) => (
+                  <div
+                    key={`${colIndex}-${idx}`}
+                    className="relative group cursor-pointer overflow-hidden aspect-video md:aspect-[16/10] lg:aspect-video w-full flex-shrink-0"
+                    onClick={() => {
+                      setAnimDir('scale');
+                      setSelectedPoster(src);
+                    }}
+                  >
+                    <img
+                      src={src}
+                      alt={`Poster design ${idx + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      draggable={false}
+                    />
+                    {/* Hover Overlay matching the play button reference */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 w-16 h-16 rounded-full bg-black/80 flex items-center justify-center backdrop-blur-sm text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 ml-1" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                    {/* Optional subtle corner text to mimic the reference image text '2025-26 | 1:25 MIN. OVERVIEW' */}
+                    <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-white/80 text-xs font-medium tracking-wider">
+                      {new Date().getFullYear()}-{String(new Date().getFullYear() + 1).slice(-2)}
+                    </div>
+                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-white/80 text-xs font-medium tracking-wider uppercase">
+                      View Poster
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
             </div>
-          ))
-        }
-        autoplay
-        autoplayMs={2000}
-        radius={1200}
-        angleStep={14}
-        sizeDecrease={0.06}
-        arrowSize={48}
-        arrowInset={32}
-        arrowGap={16}
-        arrowBg="rgba(255,255,255,0.9)"
-        arrowBorder="rgba(200,200,200,0.5)"
-        arrowText="#333"
-        bottomFade={false}
-        style={{ height: 620 }}
-      />
+          );
+        })}
+      </div>
 
       {/* Fullscreen Poster Modal */}
       {selectedPoster && (

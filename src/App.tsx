@@ -16,8 +16,6 @@ import StaticStrip from './components/StaticStrip';
 import CautionStrip from './components/CautionStrip';
 import ShimmerBackground from './components/ShimmerBackground';
 import LoadingScreen from './components/LoadingScreen';
-import ScrollReveal from './components/ScrollReveal';
-import ScrollOverlay from './components/ScrollOverlay';
 import footerBg from '../resources/assets/footer.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -117,7 +115,6 @@ export default function App() {
 
   return (
     <>
-      <ScrollOverlay />
       {showLoading && <LoadingScreen onComplete={() => setShowLoading(false)} />}
       <div className="min-h-screen font-sans transition-colors duration-300 text-gray-900 dark:text-white">
         <ShimmerBackground isDark={isDark} />
@@ -142,17 +139,17 @@ export default function App() {
 
             <div className="relative z-10 w-full">
               <StaticStrip title="ABOUT" direction="left" />
-              <ScrollReveal><About /></ScrollReveal>
+              <About />
               <StaticStrip title="SKILLS" direction="right" />
-              <ScrollReveal><Skills /></ScrollReveal>
+              <Skills />
               <StaticStrip title="DESIGN" direction="left" />
-              <ScrollReveal><Design /></ScrollReveal>
+              <Design />
               <StaticStrip title="EXPERIENCE" direction="right" />
-              <ScrollReveal><WorkExperience /></ScrollReveal>
+              <WorkExperience />
               <StaticStrip title="PROJECTS" direction="left" />
-              <ScrollReveal><Projects /></ScrollReveal>
+              <Projects />
               <StaticStrip title="ARTICLES" direction="right" />
-              <ScrollReveal><Articles onSelectArticle={openArticle} /></ScrollReveal>
+              <Articles onSelectArticle={openArticle} />
             </div>
           </div>
           <CautionStrip />

@@ -100,7 +100,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="w-full bg-white py-20 px-2 sm:px-6 md:px-12 flex justify-center items-center overflow-hidden"
+      className="w-full bg-[#59020B] py-20 px-2 sm:px-6 md:px-12 flex justify-center items-center overflow-hidden"
     >
       {/* Animation keyframes & typography */}
       <style>{`

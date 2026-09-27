@@ -2,16 +2,17 @@ import profileImg from '../../resources/assets/shahriarFamtik.jpg';
 
 export default function About() {
   return (
-    <section id="about" className="px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-20 w-full max-w-[90rem] mx-auto space-y-6 sm:space-y-8">
-      {/* Intro Header */}
-      <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-4">
-        {/* ... About me ... */}
-      </div>
+    <section id="about" className="w-full bg-[#353531]">
+      <div className="px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-20 w-full max-w-[90rem] mx-auto space-y-6 sm:space-y-8">
+        {/* Intro Header */}
+        <div className="text-orange-vivid font-mono text-xl font-bold tracking-wider text-center drop-shadow-sm mb-4">
+          {/* ... About me ... */}
+        </div>
 
-      {/* Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 auto-rows-auto">
+        {/* Grid Container */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 auto-rows-auto">
 
-        {/* Card 1: Greeting & Title (col-span-2) */}
+          {/* Card 1: Greeting & Title (col-span-2) */}
         <div className="md:col-span-2 bg-white/40 dark:bg-primary/20 backdrop-blur-md rounded-[2rem] p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent group flex flex-col justify-center text-right items-end">
           <h3 className="text-2xl sm:text-4xl md:text-6xl font-medium font-serif text-gray-900 dark:text-white leading-[1.1] drop-shadow-sm">
             Hello! I'm <span className="text-accent italic font-bold">Shahriar</span>,
@@ -71,6 +72,7 @@ export default function About() {
           />
         </div>
 
+        </div>
       </div>
     </section>
   );
