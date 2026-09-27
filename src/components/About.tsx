@@ -39,7 +39,7 @@ export default function About() {
         </div>
 
         {/* Card 3: Experience/Focus (col-span-1) */}
-        <div className="md:col-span-1 bg-gradient-to-br from-blue-vivid/20 to-orange-vivid/20 dark:from-blue-vivid/30 dark:to-orange-vivid/30 backdrop-blur-md rounded-[2rem] p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent flex flex-col justify-center gap-4 text-right items-end">
+        <div className="md:col-span-1 bg-white/40 dark:bg-primary/20 backdrop-blur-md rounded-[2rem] p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-accent dark:hover:border-accent flex flex-col justify-center gap-4 text-right items-end">
           <h4 className="text-2xl font-mono font-bold text-gray-900 dark:text-white drop-shadow-sm">
             My Focus
           </h4>

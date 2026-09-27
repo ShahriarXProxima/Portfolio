@@ -1,204 +1,119 @@
-import React, { useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useState } from 'react';
 import { SOCIAL_LINKS } from '../data';
-import { HoverButton } from './HoverButton';
 import branchImg from '../../resources/assets/branch.jpeg';
-import flowerImg from '../../resources/assets/flower.jpeg';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  const githubUrl = SOCIAL_LINKS.find((social) => social.name.toLowerCase() === 'github-repositories')?.url || 'https://github.com/ShahriarXProxima?tab=repositories';
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const containerRef = useRef<HTMLElement>(null);
-  const circleRef = useRef<SVGCircleElement>(null);
-  const heroContentRef = useRef<HTMLDivElement>(null);
+  const navItems = [
+    { name: 'About me', id: 'about' },
+    { name: 'Work', id: 'work' },
+    { name: 'Design', id: 'design' },
+    { name: 'Articles', id: 'articles' },
+    { name: 'Contact me', id: 'contact' },
+  ];
 
-  useGSAP(() => {
-    gsap.to(heroContentRef.current, {
-      y: 150,
-      opacity: 0,
-      scale: 0.9,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      }
-    });
-  }, { scope: containerRef });
-
-  // Ref for mouse physics state to avoid React re-renders on animation frames
-  const mousePos = useRef({ x: -500, y: -500, targetX: -500, targetY: -500, scale: 0, targetScale: 0 });
-
-  useEffect(() => {
-    let animationFrameId: number;
-    let time = 0;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // Check if the device is touch-only to disable the effect
-    const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    if (isTouchDevice) return;
-
-    const animate = () => {
-      time += 0.05;
-      const m = mousePos.current;
-
-      // Interpolate towards target (smooth following)
-      m.x += (m.targetX - m.x) * 0.15;
-      m.y += (m.targetY - m.y) * 0.15;
-      m.scale += (m.targetScale - m.scale) * 0.1;
-
-      if (circleRef.current) {
-        // Subtle breathing effect based on time
-        const breath = prefersReducedMotion ? 0 : Math.sin(time) * 15;
-        // Base radius 250px + breathing, scaled by hover state (0 to 1)
-        const radius = Math.max(0, (300 + breath) * m.scale);
-
-        circleRef.current.setAttribute('cx', m.x.toString());
-        circleRef.current.setAttribute('cy', m.y.toString());
-        circleRef.current.setAttribute('r', radius.toString());
-      }
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      // Mouse coordinates relative to the hero section
-      mousePos.current.targetX = e.clientX - rect.left;
-      mousePos.current.targetY = e.clientY - rect.top;
-      mousePos.current.targetScale = 1;
-    }
-  };
-
-  const handleMouseLeave = () => {
-    mousePos.current.targetScale = 0;
-  };
-
-  const handleMouseEnter = (e: React.MouseEvent) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      // Instantly set starting position to avoid flying from 0,0
-      if (mousePos.current.scale < 0.1) {
-        mousePos.current.x = e.clientX - rect.left;
-        mousePos.current.y = e.clientY - rect.top;
-      }
-      mousePos.current.targetX = e.clientX - rect.left;
-      mousePos.current.targetY = e.clientY - rect.top;
-      mousePos.current.targetScale = 1;
+  const handleScroll = (id: string) => {
+    setIsMenuOpen(false);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.hash = `#${id}`;
     }
   };
 
   return (
-    <section
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onMouseEnter={handleMouseEnter}
-      className="relative w-full min-h-screen flex flex-col items-center text-center px-4 sm:px-6 md:px-12 pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-12 overflow-hidden"
-    >
-      {/* Interactive Botanical Background */}
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-        {/* Base Branch Image */}
-        <img
-          src={branchImg}
-          alt="Branch Background"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+    <section className="relative w-full h-screen overflow-hidden bg-black">
+      {/* Background Image */}
+      <img 
+        src={branchImg} 
+        alt="Hero Background" 
+        className="absolute inset-0 w-full h-full object-cover scale-105" 
+      />
+      
+      {/* Subtle Dark Overlay to ensure text readability */}
+      <div className="absolute inset-0 bg-black/10"></div>
 
-        {/* Revealed Flower Image using SVG Mask for perfection & performance */}
-        <svg className="absolute inset-0 w-full h-full">
-          <defs>
-            <filter id="organic-filter" colorInterpolationFilters="sRGB">
-              <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" result="noise">
-                <animate attributeName="baseFrequency" dur="12s" values="0.015;0.025;0.015" repeatCount="indefinite" />
-              </feTurbulence>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G" result="displaced">
-                <animate attributeName="scale" dur="6s" values="30;70;30" repeatCount="indefinite" />
-              </feDisplacementMap>
-              <feGaussianBlur in="displaced" stdDeviation="15" result="blurred" />
-            </filter>
+      {/* Content Overlays */}
+      <div className="relative z-10 w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 text-white pointer-events-none">
+          
+          {/* Top Row: Logo & Menu */}
+          <div className="flex justify-between items-start pointer-events-auto">
+            {/* Wavy Logo similar to reference */}
+            <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="white" strokeWidth="2.5" strokeLinejoin="round">
+              <polyline points="0,6 4,2 8,6 12,2 16,6 20,2 24,6 28,2 32,6" />
+              <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14" />
+            </svg>
+          </div>
 
-            <mask id="organic-mask">
-              <circle
-                ref={circleRef}
-                cx="-500"
-                cy="-500"
-                r="0"
-                fill="white"
-                filter="url(#organic-filter)"
-              />
-            </mask>
-          </defs>
+          {/* Center-Left: Bracketed Text */}
+          <div className="absolute top-1/2 left-6 sm:left-10 md:left-14 -translate-y-1/2 pointer-events-auto hidden md:block">
+            <a href="#projects" className="relative text-[9px] font-bold tracking-[0.2em] px-4 py-2.5 flex items-center justify-center uppercase hover:bg-white/10 transition-colors cursor-pointer group">
+              {/* Corner brackets */}
+              <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white/80 group-hover:border-white transition-colors"></div>
+              <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white/80 group-hover:border-white transition-colors"></div>
+              <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white/80 group-hover:border-white transition-colors"></div>
+              <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white/80 group-hover:border-white transition-colors"></div>
+              View Project
+            </a>
+          </div>
 
-          <image
-            href={flowerImg}
-            width="100%"
-            height="100%"
-            preserveAspectRatio="xMidYMid slice"
-            mask="url(#organic-mask)"
-          />
-        </svg>
-      </div>
+          {/* Bottom Row */}
+          <div className="flex flex-col md:flex-row justify-between items-end gap-6 md:gap-0 relative pointer-events-auto w-full">
+            {/* Giant Text */}
+            <h1 className="text-[25vw] md:text-[14vw] leading-[0.75] font-semibold tracking-tighter drop-shadow-md -ml-1 md:-ml-3 text-white">
+              Shahriar
+            </h1>
 
-      {/* Hero Content */}
-      <div ref={heroContentRef} className="relative z-10 flex flex-col justify-between items-center max-w-5xl mx-auto w-full flex-1 pointer-events-none">
+            {/* Right details */}
+            <div className="flex flex-col items-end gap-3 text-right shrink-0">
+              <div className="flex items-center gap-2 text-[9px] md:text-[10px] font-medium tracking-[0.1em] opacity-80 mb-1">
+                <span>01</span>
+                <span className="w-6 h-[1px] bg-white"></span>
+                <span>03</span>
+              </div>
+              <div className="text-[10px] md:text-xs font-semibold tracking-[0.15em] uppercase mb-1">
+                Software Engineer
+              </div>
+              
+              {/* Pagination/Action Buttons */}
+              <div className="flex gap-2 mt-1">
+                <button className="bg-white hover:bg-gray-100 text-black w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-bold transition-colors cursor-pointer text-sm">
+                  &lt;
+                </button>
+                <button className="bg-white hover:bg-gray-100 text-black w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-bold transition-colors cursor-pointer text-sm">
+                  &gt;
+                </button>
+              </div>
+            </div>
+          </div>
 
-        {/* Top Section */}
-        <div className="space-y-6 sm:space-y-8 mt-4 md:mt-12 animate-[fadeInDown_1s_ease-out] pointer-events-auto">
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-[7.5rem] font-serif leading-[1.1] text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] tracking-tight break-words md:whitespace-nowrap">
-            Full-stack <span className="font-sans font-medium text-accent italic">Developer</span>
-          </h1>
-
-          <p className="text-base sm:text-lg md:text-2xl text-zinc-100 font-serif italic max-w-2xl mx-auto leading-relaxed drop-shadow-xl font-medium px-2 sm:px-4">
-            Goal is to write maintainable, clean and understandable code so the development process is enjoyable.
-          </p>
         </div>
 
-        {/* Bottom Section */}
-        <div className="flex flex-col items-center space-y-6 sm:space-y-10 mt-auto animate-[fadeInUp_1s_ease-out] w-full pb-4 sm:pb-8 pt-8 sm:pt-16 pointer-events-auto">
-          <HoverButton as="a"
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-accent text-white px-6 sm:px-10 py-3 sm:py-5 rounded-full font-bold flex items-center gap-3 sm:gap-5 hover:bg-accent/90 hover:scale-105 transition-all duration-300 cursor-pointer mx-auto inline-flex shadow-[0_0_20px_rgba(255,78,70,0.4)] hover:shadow-[0_0_40px_rgba(255,78,70,0.6)] text-sm sm:text-lg"
+      {/* Fullscreen Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center pointer-events-auto transition-opacity duration-500">
+          <button 
+            className="absolute top-8 right-8 text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase text-white hover:text-gray-300 transition-colors p-4 cursor-pointer"
+            onClick={() => setIsMenuOpen(false)}
           >
-            Explore Projects
-            <div className="bg-white text-accent p-2.5 rounded-full z-10 pointer-events-none">
-              <ArrowRight size={20} />
-            </div>
-          </HoverButton>
-
-          {/* Social Links */}
-          <div className="flex flex-wrap justify-center items-center gap-x-5 sm:gap-x-10 gap-y-4 sm:gap-y-6 max-w-3xl pt-2">
-            {SOCIAL_LINKS.map((social) => (
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 sm:gap-3 text-zinc-100 bg-black/40 backdrop-blur-md px-4 py-2 sm:px-6 sm:py-2.5 rounded-full border border-white/10 hover:bg-black/60 hover:text-white hover:border-white/20 transition-all duration-300 group shadow-lg hover:-translate-y-1"
+            Close
+          </button>
+          
+          <div className="flex flex-col gap-6 md:gap-10 text-center">
+            {navItems.map((item, i) => (
+              <a 
+                key={item.id} 
+                onClick={() => handleScroll(item.id)}
+                className="text-white text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight hover:text-gray-400 hover:scale-105 transition-all cursor-pointer"
               >
-                <social.icon size={18} className="group-hover:scale-110 group-hover:text-accent transition-all duration-300 shrink-0 sm:[width:20px] sm:[height:20px]" />
-                <span className="text-xs sm:text-sm font-bold tracking-wider uppercase">{social.name}</span>
+                {item.name}
               </a>
             ))}
           </div>
         </div>
-
-      </div>
+      )}
     </section>
   );
 }
