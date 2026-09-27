@@ -1,14 +1,14 @@
-import { motion } from 'motion/react';
+import React from 'react';
 
 const EXPERIENCES = [
   {
-    period: 'Jun,26 - Present',
+    period: 'Jun, 2026 - Present',
     company: 'AxonCore Technologies',
     role: 'Java Developer Intern',
     stack: 'Spring Boot & PostgreSQL'
   },
   {
-    period: 'Jan,25 - Jun,25',
+    period: 'Jan, 2025 - Jun, 2025',
     company: 'DriveTrain',
     role: 'Software Engineer Intern',
     stack: 'Java & Spring Boot'
@@ -17,64 +17,50 @@ const EXPERIENCES = [
 
 export default function WorkExperience() {
   return (
-    <section id="work" className="w-full max-w-full py-16 md:py-24 relative bg-[#2872A1] transition-colors overflow-hidden">
-      {/* Background Typographies */}
-      <div className="absolute inset-0 pointer-events-none z-0 flex flex-col justify-between overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 0.1, x: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="absolute top-32 -left-20 text-[12vw] font-bold text-gray-900 dark:text-white uppercase tracking-tighter select-none rotate-90 origin-left"
-        >
-          EXPERTISE
-        </motion.div>
-        <motion.div 
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 0.1, x: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
-          viewport={{ once: true }}
-          className="absolute bottom-32 -right-20 text-[12vw] font-bold text-gray-900 dark:text-white uppercase tracking-tighter select-none -rotate-90 origin-right"
-        >
-          JOURNEY
-        </motion.div>
+    <section id="work" className="w-full py-24 md:py-32 px-4 md:px-10 bg-white flex flex-col items-center overflow-hidden">
+      
+      <div className="w-full max-w-[1600px] 2xl:max-w-[92vw] mx-auto mb-16 md:mb-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+        <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black leading-none drop-shadow-sm">
+          Work <span className="text-gray-300">Experience.</span>
+        </h2>
+        <div className="flex items-center gap-4 border border-gray-200 bg-[#FAFAFA] rounded-full px-6 py-3 shadow-sm">
+          <span className="w-2.5 h-2.5 bg-black rounded-full animate-pulse"></span>
+          <span className="text-[10px] md:text-xs font-bold tracking-widest uppercase text-black">Professional Journey</span>
+        </div>
       </div>
 
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-12 flex flex-col gap-16 relative z-10">
-        <div className="text-center space-y-4">
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-mono font-bold text-black dark:text-white drop-shadow-md tracking-tight">Work Experience</h2>
-          <div className="text-orange-vivid font-mono text-lg sm:text-2xl font-bold tracking-wider drop-shadow-sm uppercase">
-            7 months
-          </div>
-        </div>
-
-        <div className="space-y-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-transparent before:via-blue-vivid/40 dark:before:via-blue-pale/40 before:to-transparent mt-8">
-          {EXPERIENCES.map((exp, index) => (
-            <div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-              {/* Timeline dot */}
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-primary bg-orange-vivid shadow-[0_0_15px_rgba(247,91,4,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-300 group-hover:scale-125">
-              </div>
-
-              {/* Card */}
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-4rem)] p-8 md:p-10 rounded-3xl bg-white/70 dark:bg-secondary/70 backdrop-blur-sm border border-gray-200 dark:border-white/10 shadow-2xl hover:border-orange-vivid/70 dark:hover:border-orange-vivid/70 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(247,91,4,0.2)]">
-                <div className="flex flex-col gap-4">
-                  <span className="text-orange-vivid font-mono text-sm font-bold uppercase tracking-widest drop-shadow-sm whitespace-pre-line bg-orange-vivid/10 dark:bg-orange-vivid/20 px-3 py-1 rounded-full w-fit">
-                    {exp.period.replace('\n', ' • ')}
+      <div className="w-full max-w-[1600px] 2xl:max-w-[92vw] mx-auto grid grid-cols-1 gap-6 md:gap-8">
+        {EXPERIENCES.map((exp, i) => (
+          <div 
+            key={i} 
+            className="bg-[#F8F9FA] border border-gray-200/80 rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 group hover:-translate-y-2 transition-transform duration-500 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]"
+          >
+            <div className="flex flex-col gap-4 md:gap-6">
+              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black transition-opacity group-hover:translate-x-2 duration-500 ease-out">
+                {exp.company}
+              </h3>
+              <p className="text-gray-500 font-medium text-lg md:text-xl lg:text-2xl transition-transform duration-500 group-hover:translate-x-2">
+                {exp.role}
+              </p>
+              <div className="flex flex-wrap gap-3 mt-4 transition-transform duration-500 group-hover:translate-x-2">
+                {exp.stack.split(' & ').map(tech => (
+                  <span 
+                    key={tech} 
+                    className="bg-white border border-gray-200 text-gray-700 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:bg-black hover:text-white transition-colors cursor-default"
+                  >
+                    {tech}
                   </span>
-                  <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white drop-shadow-md tracking-tight leading-none">{exp.company}</h3>
-                  <p className="text-blue-deep dark:text-blue-pale font-mono text-base sm:text-xl font-medium drop-shadow-sm">{exp.role}</p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {exp.stack.split(' & ').map(tech => (
-                      <span key={tech} className="px-4 py-2 rounded-full border border-blue-vivid/40 dark:border-blue-pale/40 text-sm font-mono font-bold text-blue-vivid dark:text-blue-pale bg-white/60 dark:bg-primary/60 shadow-sm transition-colors hover:bg-blue-vivid hover:text-white dark:hover:bg-blue-pale dark:hover:text-primary cursor-default">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+            
+            <div className="flex flex-col items-start lg:items-end gap-4 shrink-0 mt-6 lg:mt-0 w-full lg:w-auto border-t lg:border-t-0 border-gray-200 pt-6 lg:pt-0">
+              <div className="bg-[#111] text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] px-6 py-3.5 rounded-full whitespace-nowrap shadow-md group-hover:bg-white group-hover:text-black group-hover:border group-hover:border-gray-200 transition-colors">
+                {exp.period}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
