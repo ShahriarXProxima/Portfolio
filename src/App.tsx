@@ -90,7 +90,7 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const [isDark, setIsDark] = useState(true); // Dark mode by default
+  const [isDark, setIsDark] = useState(false); // Light mode by default
 
   useEffect(() => {
     if (isDark) {
