@@ -72,12 +72,12 @@ export default function Hero() {
 
           {/* Center-Left: Bracketed Text */}
           <div className="absolute top-1/2 left-6 sm:left-10 md:left-14 -translate-y-1/2 pointer-events-auto hidden md:block">
-            <a href="#projects" className="relative text-[9px] font-bold tracking-[0.2em] px-4 py-2.5 flex items-center justify-center uppercase hover:bg-white/10 transition-colors cursor-pointer group">
+            <a href="#projects" className="relative text-[11px] font-bold tracking-[0.2em] px-6 py-3.5 flex items-center justify-center uppercase bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer group">
               {/* Corner brackets */}
-              <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white/80 group-hover:border-white transition-colors"></div>
-              <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white/80 group-hover:border-white transition-colors"></div>
-              <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white/80 group-hover:border-white transition-colors"></div>
-              <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white/80 group-hover:border-white transition-colors"></div>
+              <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/80 group-hover:border-white transition-colors"></div>
+              <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/80 group-hover:border-white transition-colors"></div>
+              <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/80 group-hover:border-white transition-colors"></div>
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/80 group-hover:border-white transition-colors"></div>
               View Project
             </a>
           </div>
@@ -86,7 +86,7 @@ export default function Hero() {
           <div className="flex flex-col md:flex-row justify-between items-end gap-6 md:gap-0 relative pointer-events-auto w-full">
             {/* Giant Text */}
             <h1 className="text-[25vw] md:text-[14vw] leading-[0.75] font-semibold tracking-tighter drop-shadow-md -ml-1 md:-ml-3 text-white">
-              Shahriar
+              Shahriar.
             </h1>
 
             {/* Right details */}
