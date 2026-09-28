@@ -44,6 +44,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
 
   const navItems = [
     { name: 'About me', id: 'about' },
+    { name: 'Skills', id: 'skills' },
     { name: 'Work', id: 'work' },
     { name: 'Design', id: 'design' },
     { name: 'Articles', id: 'articles' },
@@ -70,12 +71,12 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
   return (
     <header className={`fixed top-4 md:top-8 left-1/2 -translate-x-1/2 w-full max-w-[1600px] 2xl:max-w-[92vw] px-4 md:px-8 z-50 transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-12 opacity-0 pointer-events-none'}`}>
       <div className="flex items-center justify-between w-full">
-        
+
         {/* Left Pill: Logo and Links */}
         <nav className="flex items-center gap-6 md:gap-8 bg-white dark:bg-[#111] rounded-full py-3 md:py-4 px-6 md:px-8 shadow-lg shadow-black/5 dark:shadow-white/5 border border-black/5 dark:border-white/10 transition-colors duration-300">
-          
+
           {/* Logo (Rounded Rectangle Outline) */}
-          <div 
+          <div
             onClick={handleLogoClick}
             className="w-10 h-6 md:w-12 md:h-7 border-[3px] border-black dark:border-white rounded-full cursor-pointer hover:opacity-70 transition-opacity shrink-0"
             title="Home"
@@ -109,12 +110,12 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
         </nav>
 
         {/* Right Pill: Theme Toggle & Hire Me (Contact) */}
-        <div 
+        <div
           onClick={() => handleScroll('contact')}
           className="flex items-center gap-3 md:gap-4 bg-white dark:bg-[#111] rounded-full p-2 md:p-2.5 pr-5 md:pr-6 shadow-lg shadow-black/5 dark:shadow-white/5 border border-black/5 dark:border-white/10 cursor-pointer group transition-colors duration-300 shrink-0"
         >
           {/* Black square acting as theme toggle wrapper inside the contact pill */}
-          <div 
+          <div
             onClick={(e) => {
               e.stopPropagation();
               if (toggleTheme) toggleTheme();
@@ -129,7 +130,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
               <Moon size={16} />
             </div>
           </div>
-          
+
           <span className="text-xs md:text-sm font-semibold text-black dark:text-white group-hover:opacity-70 transition-opacity">
             Hire Me
           </span>
