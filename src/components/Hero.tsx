@@ -1,10 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SOCIAL_LINKS } from '../data';
 import branchImg from '../../resources/assets/hand.jpg';
+import gsap from 'gsap';
 
 export default function Hero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+
+  const magneticWrapRef = useRef<HTMLDivElement>(null);
+  const magneticBtnRef = useRef<HTMLDivElement>(null);
+  const floatBtnRef = useRef<HTMLAnchorElement>(null);
+  const isInRange = useRef(false);
+
+  useEffect(() => {
+    const wrap = magneticWrapRef.current;
+    const btn = magneticBtnRef.current;
+    const floatBtn = floatBtnRef.current;
+    if (!wrap || !btn || !floatBtn) return;
+
+    // Chaotic floating – a looping timeline that drifts the button
+    // along an irregular path so it never feels mechanical.
+    const floatTl = gsap.timeline({ repeat: -1, yoyo: true });
+    floatTl
+      .to(floatBtn, { y: -7,  x: 4,   rotation: 1.5,  duration: 1.8, ease: "sine.inOut" })
+      .to(floatBtn, { y: 3,   x: -5,  rotation: -1,   duration: 2.2, ease: "power1.inOut" })
+      .to(floatBtn, { y: -10, x: -3,  rotation: 0.8,  duration: 1.5, ease: "sine.inOut" })
+      .to(floatBtn, { y: 5,   x: 6,   rotation: -1.8, duration: 2.5, ease: "power1.inOut" })
+      .to(floatBtn, { y: -4,  x: -2,  rotation: 0.5,  duration: 1.9, ease: "sine.inOut" })
+      .to(floatBtn, { y: 8,   x: 3,   rotation: -0.6, duration: 2.1, ease: "power1.inOut" })
+      .to(floatBtn, { y: -6,  x: -4,  rotation: 1.2,  duration: 1.7, ease: "sine.inOut" })
+      .to(floatBtn, { y: 0,   x: 0,   rotation: 0,    duration: 2.0, ease: "sine.inOut" });
+
+    const xTo = gsap.quickTo(btn, "x", { duration: 0.8, ease: "power3.out" });
+    const yTo = gsap.quickTo(btn, "y", { duration: 0.8, ease: "power3.out" });
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Use the wrapper's rect for stable center calculation
+      const rect = wrap.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const dx = e.clientX - centerX;
+      const dy = e.clientY - centerY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 200) {
+        if (!isInRange.current) {
+          isInRange.current = true;
+        }
+        xTo(dx * 0.5);
+        yTo(dy * 0.5);
+      } else if (isInRange.current) {
+        isInRange.current = false;
+        xTo(0);
+        yTo(0);
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      floatTl.kill();
+    };
+  }, []);
 
   const roles = [
     "Software Engineer",
@@ -71,15 +128,17 @@ export default function Hero() {
           </div>
 
           {/* Center-Left: Bracketed Text */}
-          <div className="absolute top-1/2 left-6 sm:left-10 md:left-14 -translate-y-1/2 pointer-events-auto hidden md:block">
-            <a href="#projects" className="relative text-[11px] font-bold tracking-[0.2em] px-6 py-3.5 flex items-center justify-center uppercase bg-black/5 backdrop-blur-md hover:bg-black/10 transition-colors cursor-pointer group text-black">
-              {/* Corner brackets */}
-              <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-black/80 group-hover:border-black transition-colors"></div>
-              <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-black/80 group-hover:border-black transition-colors"></div>
-              <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-black/80 group-hover:border-black transition-colors"></div>
-              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-black/80 group-hover:border-black transition-colors"></div>
-              View Project
-            </a>
+          <div ref={magneticWrapRef} className="absolute top-1/2 left-6 sm:left-10 md:left-14 -translate-y-1/2 pointer-events-auto hidden md:block">
+            <div ref={magneticBtnRef}>
+              <a ref={floatBtnRef} href="#projects" className="relative text-[11px] font-bold tracking-[0.2em] px-6 py-3.5 flex items-center justify-center uppercase bg-black/5 backdrop-blur-md hover:bg-black/10 transition-colors cursor-pointer group text-black">
+                {/* Corner brackets */}
+                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-black/80 group-hover:border-black transition-colors"></div>
+                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-black/80 group-hover:border-black transition-colors"></div>
+                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-black/80 group-hover:border-black transition-colors"></div>
+                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-black/80 group-hover:border-black transition-colors"></div>
+                View Project
+              </a>
+            </div>
           </div>
 
           {/* Bottom Row */}

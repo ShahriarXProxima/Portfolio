@@ -11,16 +11,16 @@ const skillIcons = import.meta.glob(
 );
 
 // Map normalized (lowercase) filenames to their loaded URLs for case-insensitive lookup
-const normalizedIcons = Object.keys(skillIcons).reduce((acc, key) => {
-  const filename = key.split('/').pop().toLowerCase();
-  const moduleVal = skillIcons[key];
+const normalizedIcons = Object.keys(skillIcons).reduce((acc: Record<string, string>, key) => {
+  const filename = key.split('/').pop()!.toLowerCase();
+  const moduleVal = skillIcons[key] as any;
   acc[filename] = typeof moduleVal === 'string' ? moduleVal : moduleVal?.default || moduleVal;
   return acc;
 }, {});
 
-const getIconUrl = (iconFile) => {
+const getIconUrl = (iconFile: string) => {
   const directPath = `../../resources/assets/skills/${iconFile}`;
-  const directMatch = skillIcons[directPath];
+  const directMatch = skillIcons[directPath] as any;
 
   if (directMatch) {
     return typeof directMatch === 'string' ? directMatch : directMatch?.default || directMatch;

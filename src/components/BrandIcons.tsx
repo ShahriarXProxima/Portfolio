@@ -8,6 +8,7 @@ import whatsappImg from '../../resources/assets/social/whatsapp.png';
 
 export interface IconProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   size?: number | string;
+  className?: string;
 }
 
 export const GithubIcon = ({ size = 24, className, ...props }: IconProps) => (
