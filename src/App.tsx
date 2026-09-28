@@ -16,7 +16,8 @@ import StaticStrip from './components/StaticStrip';
 import CautionStrip from './components/CautionStrip';
 import ShimmerBackground from './components/ShimmerBackground';
 import LoadingScreen from './components/LoadingScreen';
-import footerBg from '../resources/assets/footer.jpg';
+import ScrollToTopButton from './components/ScrollToTopButton';
+import footerBg from '../resources/assets/flower.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -155,6 +156,7 @@ export default function App() {
           <CautionStrip />
           <Footer />
         </main>
+        <ScrollToTopButton />
       </div>
     </>
   );

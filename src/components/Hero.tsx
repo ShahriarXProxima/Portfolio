@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SOCIAL_LINKS } from '../data';
-import branchImg from '../../resources/assets/branch.jpeg';
+import branchImg from '../../resources/assets/hand.jpg';
 
 export default function Hero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
