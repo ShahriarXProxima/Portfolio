@@ -10,6 +10,29 @@ import googleIcon from '../../resources/assets/social/google.png';
 
 export default function Footer() {
   const qrData = "https://drive.google.com/file/d/1-um3LfSZzJDiHPpCxPLTImasjWkTSAbm/view?usp=drive_link";
+  
+  const baseColors = ["#03624C", "#DCEEFF", "#7DA7D9", "#FFFFFF", "#FF4D00"];
+  const colors = [...baseColors, baseColors[0]];
+  const [colorIndex, setColorIndex] = React.useState(0);
+  const [isTransitioning, setIsTransitioning] = React.useState(true);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setColorIndex((prev) => prev + 1);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  React.useEffect(() => {
+    if (colorIndex === baseColors.length) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setColorIndex(0);
+      }, 750); // wait for CSS transition to finish before snapping back
+      return () => clearTimeout(timeout);
+    }
+  }, [colorIndex, baseColors.length]);
 
   return (
     <footer id="contact" className="w-full bg-[#181818] text-[#F0F0F0] flex flex-col font-sans px-6 md:px-12 py-10">
@@ -111,8 +134,20 @@ export default function Footer() {
       </div>
 
       {/* Bottom Name */}
-      <h1 className="text-[14vw] md:text-[12vw] font-bold leading-[0.8] tracking-tighter text-center mb-16 lowercase break-words text-[#FF4D00]">
-        Shahriar Tahmid
+      <h1 className="text-[14vw] md:text-[12vw] font-bold leading-[0.8] tracking-tighter text-center mb-16 lowercase break-words flex items-center justify-center flex-wrap">
+        <span className="text-[#FF4D00]">Shahriar&nbsp;</span>
+        <span className="inline-flex flex-col h-[0.8em] overflow-hidden">
+          <span 
+            className={`flex flex-col ${isTransitioning ? 'transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]' : ''}`}
+            style={{ transform: `translateY(-${colorIndex * (100 / colors.length)}%)` }}
+          >
+            {colors.map((color, i) => (
+              <span key={i} style={{ color }} className="h-[0.8em] leading-[0.8]">
+                tahmid
+              </span>
+            ))}
+          </span>
+        </span>
       </h1>
 
       {/* Footer Links */}

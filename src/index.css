@@ -142,4 +142,12 @@
   .animate-fade-in-scale {
     animation: fade-in-scale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+
+  @keyframes text-scroll {
+    0% { background-position: 0% 50%; }
+    100% { background-position: -200% 50%; }
+  }
+  .animate-text-scroll {
+    animation: text-scroll 4s linear infinite;
+  }
 }
