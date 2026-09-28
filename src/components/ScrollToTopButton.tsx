@@ -45,17 +45,18 @@ export default function ScrollToTopButton() {
   };
 
   return (
-    <button
-      onClick={scrollToTop}
+    <div 
+      className={`fixed top-1/2 right-8 -translate-y-1/2 z-50 transition-all duration-500 ${(isVisible || isHovered) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`fixed top-1/2 right-8 -translate-y-1/2 z-50 p-4 rounded-full transition-all duration-500 shadow-xl backdrop-blur-md border 
-        bg-black/10 hover:bg-black/20 text-black border-black/10
-        dark:bg-white/10 dark:hover:bg-white/20 dark:text-white dark:border-white/10
-        ${(isVisible || isHovered) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'}`}
-      aria-label="Scroll to top"
     >
-      <ArrowUp size={28} />
-    </button>
+      <button
+        onClick={scrollToTop}
+        className="welcome-btn--float p-4 rounded-full shadow-xl backdrop-blur-md border bg-black/10 hover:bg-black/20 text-black border-black/10 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white dark:border-white/10 flex items-center justify-center cursor-pointer"
+        aria-label="Scroll to top"
+      >
+        <ArrowUp size={28} />
+      </button>
+    </div>
   );
 }
