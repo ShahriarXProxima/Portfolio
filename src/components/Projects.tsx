@@ -2,6 +2,10 @@ import React from 'react';
 import bloodLinkImg from '../../resources/assets/bloodLink.jpg';
 import titanBoostImg from '../../resources/assets/titanBoost.jpg';
 import pacmanImg from '../../resources/assets/pacman.png';
+import androidIcon from '../../resources/assets/skills/Android.svg';
+import cppIcon from '../../resources/assets/skills/C++ (CPlusPlus).svg';
+import bashIcon from '../../resources/assets/skills/Bash.svg';
+import termuxIcon from '../../resources/assets/skills/termux.svg';
 
 const WavyLogo = () => (
   <svg width="24" height="12" viewBox="0 0 32 16" fill="none" stroke="black" strokeWidth="2.5" strokeLinejoin="round" className="opacity-80">
@@ -9,6 +13,21 @@ const WavyLogo = () => (
     <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14" />
   </svg>
 );
+
+const getTagIcon = (tag: string) => {
+  switch (tag) {
+    case 'Shell Script':
+      return <img src={bashIcon} alt="Shell Script" className="w-12 h-12 object-contain" />;
+    case 'C++':
+      return <img src={cppIcon} alt="C++" className="w-12 h-12 object-contain" />;
+    case 'Android':
+      return <img src={androidIcon} alt="Android" className="w-12 h-12 object-contain" />;
+    case 'Termux':
+      return <img src={termuxIcon} alt="Termux" className="w-12 h-12 object-contain" />;
+    default:
+      return null;
+  }
+};
 
 export default function Projects() {
   return (
@@ -92,10 +111,8 @@ export default function Projects() {
           <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-auto">
              {['Shell Script', 'C++', 'Android', 'Termux'].map(tag => (
                <div key={tag} className="aspect-square border border-black/5 flex flex-col items-center justify-center p-2 hover:bg-black/5 transition-colors cursor-pointer group/tag">
-                 <div className="w-6 h-6 mb-3 bg-black/10 rounded-sm group-hover/tag:bg-black/20 transition-colors overflow-hidden flex items-center justify-center">
-                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-black/50">
-                     <path d="M4 17l6-6-6-6M12 19h8" />
-                   </svg>
+                 <div className="w-14 h-14 mb-4 bg-black/5 rounded-md group-hover/tag:bg-black/10 transition-colors overflow-hidden flex items-center justify-center">
+                   {getTagIcon(tag)}
                  </div>
                  <span className="text-[10px] md:text-xs font-bold tracking-[0.1em] uppercase text-center text-black">{tag}</span>
                </div>
@@ -105,9 +122,9 @@ export default function Projects() {
 
         {/* Card 4: Pac-Man (Mimics Bottom-Right of reference with large bottom text) */}
         <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:col-span-2 relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2">
-          <div className="absolute inset-0 opacity-10 z-0 group-hover:opacity-20 transition-opacity duration-700">
-             <img src={pacmanImg} alt="Pac-Man" className="w-full h-full object-cover grayscale" />
-             <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+          <div className="absolute inset-0 opacity-30 z-0 group-hover:opacity-60 transition-opacity duration-700">
+             <img src={pacmanImg} alt="Pac-Man" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+             <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent"></div>
           </div>
 
           <div className="flex justify-between items-start w-full relative z-10">
