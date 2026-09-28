@@ -119,7 +119,7 @@ export default function App() {
       <div className="min-h-screen font-sans transition-colors duration-300 text-gray-900 dark:text-white">
         <ShimmerBackground isDark={isDark} />
         <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-        <main className="relative z-10">
+        <main className="relative z-10 bg-[#FAFAFA]">
           <Hero />
 
           <div className="relative flex flex-col pb-0 pt-0 overflow-hidden">
@@ -153,10 +153,8 @@ export default function App() {
             </div>
           </div>
           <CautionStrip />
-        </main>
-        <div className="relative z-10">
           <Footer />
-        </div>
+        </main>
       </div>
     </>
   );

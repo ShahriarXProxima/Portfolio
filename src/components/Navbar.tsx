@@ -119,7 +119,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
               e.stopPropagation();
               if (toggleTheme) toggleTheme();
             }}
-            className="w-8 h-8 md:w-10 md:h-10 bg-black dark:bg-white rounded-xl md:rounded-2xl flex items-center justify-center text-white dark:text-black hover:opacity-80 transition-opacity"
+            className="w-8 h-8 md:w-10 md:h-10 bg-black dark:bg-white rounded-full flex items-center justify-center text-white dark:text-black hover:opacity-80 transition-opacity"
             title="Toggle Theme"
           >
             <div className={`absolute flex items-center justify-center transition-all duration-500 ease-in-out ${isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-50'}`}>

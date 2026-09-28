@@ -24,12 +24,12 @@ export default function CautionStrip() {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden bg-cyan-400/90 backdrop-blur-md py-2 sm:py-3 shadow-lg z-40 pointer-events-none">
+    <div ref={containerRef} className="relative w-full overflow-hidden bg-[#FF4D00]/90 backdrop-blur-md py-2 sm:py-3 shadow-lg z-40 pointer-events-none border-t border-b border-[#FF4D00]">
       <div ref={stripRef} className="flex w-max">
         {[...Array(repeatCount)].map((_, i) => (
           <div
             key={i}
-            className="flex items-center gap-6 px-6 text-black font-black text-xl md:text-2xl uppercase tracking-widest italic"
+            className="flex items-center gap-6 px-6 text-white font-black text-xl md:text-2xl uppercase tracking-widest italic"
           >
             <span>///</span>
             <span>OPEN TO WORK!</span>
@@ -40,4 +40,3 @@ export default function CautionStrip() {
     </div>
   );
 }
-

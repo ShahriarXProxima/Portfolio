@@ -16,13 +16,12 @@ export default function Projects() {
       {/* Optional vignette to match the dark fuzzy edges in the reference image */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)] pointer-events-none z-0"></div>
       
-      <div className="w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 relative z-10">
+      <div className="w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 relative z-10">
 
         {/* Card 1: Intro (Mimics Top-Right of reference) */}
-        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:aspect-[3/2] xl:aspect-[16/10] relative group overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:col-span-2 relative group overflow-hidden transition-transform duration-500 hover:-translate-y-2">
           <div className="flex justify-between items-start w-full">
             <WavyLogo />
-            <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-black">Menu</span>
           </div>
           
           <div className="max-w-md mt-12 md:mt-0">
@@ -47,10 +46,9 @@ export default function Projects() {
         </div>
 
         {/* Card 2: BloodLink (Mimics Top-Left of reference with vertical image and giant text) */}
-        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:aspect-[3/2] xl:aspect-[16/10] relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2">
+        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:col-span-1 relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2">
           <div className="flex justify-between items-start w-full relative z-20">
             <WavyLogo />
-            <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-black">Menu</span>
           </div>
 
           {/* Giant Text Background */}
@@ -66,10 +64,10 @@ export default function Projects() {
           </div>
 
           <div className="relative z-20 flex justify-between items-end mt-auto h-full">
-            <div className="w-1/3 md:w-1/4 text-[10px] md:text-xs font-medium leading-relaxed text-gray-800 bg-white/80 p-2 backdrop-blur-sm rounded-lg hidden sm:block">
+            <div className="w-full text-[10px] md:text-xs font-medium leading-relaxed text-gray-800 bg-white/80 p-2 backdrop-blur-sm rounded-lg hidden sm:block">
               "A full-stack blood donation platform using Spring Boot and React. Features secure JWT authentication."
             </div>
-            <div className="flex gap-1.5 self-end ml-auto">
+            <div className="flex gap-1.5 self-end ml-2">
                <a href="https://github.com/ShahriarXProxima" target="_blank" rel="noopener noreferrer" className="w-8 h-8 md:w-10 md:h-10 bg-black text-white flex items-center justify-center text-sm font-bold hover:bg-gray-800 transition-colors">&lt;</a>
                <a href="https://github.com/ShahriarXProxima" target="_blank" rel="noopener noreferrer" className="w-8 h-8 md:w-10 md:h-10 bg-black text-white flex items-center justify-center text-sm font-bold hover:bg-gray-800 transition-colors">&gt;</a>
             </div>
@@ -77,10 +75,9 @@ export default function Projects() {
         </div>
 
         {/* Card 3: TitanBoost (Mimics Bottom-Left of reference with grid/tags) */}
-        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:aspect-[3/2] xl:aspect-[16/10] relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2">
+        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:col-span-1 relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2">
           <div className="flex justify-between items-start w-full">
             <WavyLogo />
-            <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-black">Menu</span>
           </div>
 
           <div className="mt-12 lg:mt-8 mb-8">
@@ -92,7 +89,7 @@ export default function Projects() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-auto">
              {['Shell Script', 'C++', 'Android', 'Termux'].map(tag => (
                <div key={tag} className="aspect-square border border-black/5 flex flex-col items-center justify-center p-2 hover:bg-black/5 transition-colors cursor-pointer group/tag">
                  <div className="w-6 h-6 mb-3 bg-black/10 rounded-sm group-hover/tag:bg-black/20 transition-colors overflow-hidden flex items-center justify-center">
@@ -107,7 +104,7 @@ export default function Projects() {
         </div>
 
         {/* Card 4: Pac-Man (Mimics Bottom-Right of reference with large bottom text) */}
-        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:aspect-[3/2] xl:aspect-[16/10] relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2">
+        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:col-span-2 relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2">
           <div className="absolute inset-0 opacity-10 z-0 group-hover:opacity-20 transition-opacity duration-700">
              <img src={pacmanImg} alt="Pac-Man" className="w-full h-full object-cover grayscale" />
              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
@@ -115,7 +112,6 @@ export default function Projects() {
 
           <div className="flex justify-between items-start w-full relative z-10">
             <WavyLogo />
-            <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-black">Menu</span>
           </div>
 
           <div className="relative z-10 flex flex-col justify-end h-full mt-12 lg:mt-0">
