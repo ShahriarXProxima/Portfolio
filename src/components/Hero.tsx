@@ -85,8 +85,8 @@ export default function Hero() {
           {/* Bottom Row */}
           <div className="flex flex-col md:flex-row justify-between items-end gap-6 md:gap-0 relative pointer-events-auto w-full">
             {/* Giant Text */}
-            <h1 className="text-[25vw] md:text-[14vw] leading-[0.75] font-semibold tracking-tighter drop-shadow-md -ml-1 md:-ml-3 text-[#4E6813]">
-              Shahriar.
+            <h1 className="text-[25vw] md:text-[14vw] leading-[0.75] font-semibold tracking-tighter drop-shadow-md -ml-1 md:-ml-3 text-[#4E6813] ">
+              shahríar.
             </h1>
 
             {/* Right details */}
