@@ -38,7 +38,7 @@ export default function Footer() {
     <footer id="contact" className="w-full bg-[#181818] text-[#F0F0F0] flex flex-col font-sans px-6 md:px-12 py-10">
       {/* Huge Heading */}
       <h2 className="text-[16vw] md:text-[13vw] font-bold leading-[0.8] tracking-tighter mb-20 md:mb-32 ml-[-0.5vw]">
-        Open the door
+        Let’s Connect →
       </h2>
 
       {/* Main Grid: Info and Form */}
