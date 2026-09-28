@@ -54,7 +54,7 @@ export default function About() {
               Shahriar<br/>Tahmid
             </h2>
             <p className="text-gray-300 text-base md:text-lg font-medium tracking-wide">
-              Fullstack Software Engineer
+            Fullstack Engineer
             </p>
           </div>
         </div>
