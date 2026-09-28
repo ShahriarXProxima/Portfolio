@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SOCIAL_LINKS } from '../data';
 import branchImg from '../../resources/assets/branch.jpeg';
 
@@ -9,8 +9,16 @@ export default function Hero() {
   const roles = [
     "Software Engineer",
     "Designer",
-    "Competitive Programmer"
+    "Competitive Programmer",
+    "Researcher"
   ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRoleIndex((prev) => (prev === roles.length - 1 ? 0 : prev + 1));
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [roles.length]);
 
   const handlePrevRole = () => {
     setCurrentRoleIndex((prev) => (prev === 0 ? roles.length - 1 : prev - 1));
