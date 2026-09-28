@@ -97,16 +97,16 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-[12px] md:text-[13px] font-mono text-gray-400 mb-20 md:mb-32">
         <div className="leading-relaxed">
           Full-Stack Developer<br />
-          React, Node.js, Typescript<br />
+          React, Spring Boot, Typescript<br />
           Problem Solver
         </div>
         <div className="leading-relaxed md:text-center">
-          8 years of experience<br />
+          1 years of experience<br />
           <a href="#" className="underline hover:text-white transition-colors">View Work</a>
         </div>
         <div className="leading-relaxed md:text-right">
-          Manhattan, New York<br />
-          2023
+          Dhaka, Bangladesh<br />
+          2026
         </div>
       </div>
 

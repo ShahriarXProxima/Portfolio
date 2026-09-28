@@ -89,10 +89,10 @@ export default function About() {
             
             <div className="flex flex-col w-full">
               {[
-                { title: 'BACKEND DEVELOPMENT', desc: 'Spring Boot, Node.js', yr: '/ 2024' },
-                { title: 'DATABASE ARCHITECTURE', desc: 'PostgreSQL, MongoDB', yr: '/ 2023' },
-                { title: 'FRONTEND ENGINEERING', desc: 'React, TypeScript', yr: '/ 2022' },
-                { title: 'DEVOPS & TOOLING', desc: 'Docker, Git, Linux', yr: '/ 2021' }
+                { title: 'BACKEND DEVELOPMENT', desc: 'Spring Boot, Node.js', yr: '/ 2025' },
+                { title: 'DATABASE ARCHITECTURE', desc: 'PostgreSQL, MongoDB', yr: '/ 2025' },
+                { title: 'FRONTEND ENGINEERING', desc: 'React, TypeScript', yr: '/ 2024' },
+                { title: 'DEVOPS & TOOLING', desc: 'Docker, Git, Linux', yr: '/ 2026' }
               ].map((item, i) => (
                 <div key={i} className="flex items-center justify-between py-4 md:py-6 border-b border-white/10 last:border-0 hover:bg-white/5 transition-colors px-2 -mx-2 rounded-lg cursor-pointer">
                   <span className="text-[10px] md:text-xs font-bold tracking-widest uppercase text-gray-300 w-[40%]">{item.title}</span>

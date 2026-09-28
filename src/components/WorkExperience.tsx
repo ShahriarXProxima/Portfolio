@@ -17,7 +17,7 @@ const EXPERIENCES = [
 
 export default function WorkExperience() {
   return (
-    <section id="work" className="w-full py-24 md:py-32 px-4 md:px-10 bg-white flex flex-col items-center overflow-hidden">
+    <section id="work" className="w-full py-24 md:py-32 px-4 md:px-10 bg-[#537179] flex flex-col items-center overflow-hidden">
       
       <div className="w-full max-w-[1600px] 2xl:max-w-[92vw] mx-auto mb-16 md:mb-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
         <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black leading-none drop-shadow-sm">

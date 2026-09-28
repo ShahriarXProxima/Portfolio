@@ -4,6 +4,21 @@ import branchImg from '../../resources/assets/branch.jpeg';
 
 export default function Hero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+
+  const roles = [
+    "Software Engineer",
+    "Designer",
+    "Competitive Programmer"
+  ];
+
+  const handlePrevRole = () => {
+    setCurrentRoleIndex((prev) => (prev === 0 ? roles.length - 1 : prev - 1));
+  };
+
+  const handleNextRole = () => {
+    setCurrentRoleIndex((prev) => (prev === roles.length - 1 ? 0 : prev + 1));
+  };
 
   const navItems = [
     { name: 'About me', id: 'about' },
@@ -68,21 +83,21 @@ export default function Hero() {
 
             {/* Right details */}
             <div className="flex flex-col items-end gap-3 text-right shrink-0">
-              <div className="flex items-center gap-2 text-[9px] md:text-[10px] font-medium tracking-[0.1em] opacity-80 mb-1">
-                <span>01</span>
+              <div key={`index-${currentRoleIndex}`} className="flex items-center gap-2 text-[9px] md:text-[10px] font-medium tracking-[0.1em] opacity-80 mb-1 animate-fade-in-scale">
+                <span>0{currentRoleIndex + 1}</span>
                 <span className="w-6 h-[1px] bg-white"></span>
-                <span>03</span>
+                <span>0{roles.length}</span>
               </div>
-              <div className="text-[10px] md:text-xs font-semibold tracking-[0.15em] uppercase mb-1">
-                Software Engineer
+              <div key={`role-${currentRoleIndex}`} className="text-[10px] md:text-xs font-semibold tracking-[0.15em] uppercase mb-1 animate-slide-in-bottom">
+                {roles[currentRoleIndex]}
               </div>
               
               {/* Pagination/Action Buttons */}
               <div className="flex gap-2 mt-1">
-                <button className="bg-white hover:bg-gray-100 text-black w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-bold transition-colors cursor-pointer text-sm">
+                <button onClick={handlePrevRole} className="bg-white hover:bg-gray-100 text-black w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-bold transition-colors cursor-pointer text-sm">
                   &lt;
                 </button>
-                <button className="bg-white hover:bg-gray-100 text-black w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-bold transition-colors cursor-pointer text-sm">
+                <button onClick={handleNextRole} className="bg-white hover:bg-gray-100 text-black w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-bold transition-colors cursor-pointer text-sm">
                   &gt;
                 </button>
               </div>
