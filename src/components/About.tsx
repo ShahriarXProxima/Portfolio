@@ -29,10 +29,10 @@ export default function About() {
           </div>
           
           <div className="relative z-10 mt-12 md:mt-0 flex flex-col justify-end h-full">
-            <p className="text-xs md:text-sm text-gray-400 font-medium leading-relaxed max-w-[320px] mb-6 md:mb-10">
+            <p className="text-xs md:text-sm text-gray-400 font-bold leading-relaxed max-w-[420px] mb-6 md:mb-10">
               Guided by a passion for clean architecture, I merge innovative engineering with timeless design to craft software that scales effortlessly.
             </p>
-            <h2 className="text-[22vw] lg:text-[11vw] font-bold tracking-tighter text-white leading-[0.75] -ml-2 drop-shadow-lg">
+            <h2 className="text-[22vw] lg:text-[11vw] font-bold tracking-tighter text-[#FF4D00] leading-[0.75] -ml-2 drop-shadow-lg">
               About
             </h2>
           </div>
@@ -72,7 +72,7 @@ export default function About() {
             <p className="text-sm md:text-base text-gray-400 font-medium leading-relaxed mb-10 md:mb-12">
               Collaboration is at the heart of everything I do. By working closely with teams and users, I design backend systems that balance functionality and robust architecture. I am also a competitive programmer ranked top 10 in CodeTrap 2025.
             </p>
-            <a href="#contact" className="inline-flex items-center justify-center bg-white text-black text-sm md:text-base font-bold px-8 py-3.5 rounded-full hover:bg-gray-200 hover:scale-105 transition-all w-max mt-2">
+            <a href="#contact" className="inline-flex items-center justify-center bg-[#FF4D00] text-black text-sm md:text-base font-bold px-8 py-3.5 rounded-full hover:bg-gray-200 hover:scale-105 transition-all w-max mt-2">
               Contact Me
             </a>
           </div>
