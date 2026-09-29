@@ -130,10 +130,8 @@ const Eyes = () => (
   </div>
 );
 
-const FIRST_NAME = "Shahriar's ";
-const LAST_NAME = 'Studio';
-const FULL_NAME = FIRST_NAME + LAST_NAME;
-const LOADING_DURATION = 2000; // Total time for loading in ms
+const FULL_NAME = 'shahríar.®';
+const LOADING_DURATION = 1200; // Total time for loading in ms
 const TYPEWRITER_INTERVAL = LOADING_DURATION / FULL_NAME.length;
 
 interface LoadingScreenProps {
@@ -198,16 +196,13 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       // Wait for the exit animation to complete
       setTimeout(() => {
         onComplete();
-      }, 1200);
-    }, 500);
+      }, 800);
+    }, 300);
     return () => clearTimeout(timer);
   }, [displayedChars, onComplete]);
 
-  // Split displayed text into first name and last name portions
-  const firstNameDisplay = FULL_NAME.substring(0, Math.min(displayedChars, FIRST_NAME.length));
-  const lastNameDisplay = displayedChars > FIRST_NAME.length
-    ? FULL_NAME.substring(FIRST_NAME.length, displayedChars)
-    : '';
+  // Get the displayed text portion
+  const textDisplay = FULL_NAME.substring(0, displayedChars);
 
   return (
     <div
@@ -216,14 +211,14 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: 'rgba(0, 0, 0, 1)',
+        background: `rgba(0, 0, 0, ${1 - (loadCount / 100) * 0.4})`,
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        transition: 'transform 1.2s cubic-bezier(0.76, 0, 0.24, 1)',
+        transition: 'transform 0.8s cubic-bezier(0.76, 0, 0.24, 1)',
         transform: isExiting ? 'translateY(-100%)' : 'translateY(0)',
         willChange: 'transform',
       }}
@@ -245,7 +240,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           className="loading-name"
           style={{
             fontSize: 'clamp(1.5rem, 4.5vw, 3.5rem)',
-            letterSpacing: '-0.02em',
+            letterSpacing: '0.01em',
             lineHeight: 1,
             color: '#ffffff',
             minHeight: '1.2em',
@@ -254,22 +249,12 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         >
           <span
             style={{
-              fontStyle: 'italic',
-              fontWeight: 400,
-              fontFamily: "'Playfair Display', Georgia, serif",
-            }}
-          >
-            {firstNameDisplay}
-          </span>
-          <span
-            style={{
               fontStyle: 'normal',
-              fontWeight: 800,
-              fontFamily: "'Playfair Display', Georgia, serif",
-              color: 'gray',
+              fontWeight: 'bold',
+              fontFamily: "'Alata', sans-serif",
             }}
           >
-            {lastNameDisplay}
+            {textDisplay}
           </span>
           {/* Blinking cursor */}
           <span

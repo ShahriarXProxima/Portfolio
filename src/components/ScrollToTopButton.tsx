@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 
 export default function ScrollToTopButton() {
@@ -47,12 +47,18 @@ export default function ScrollToTopButton() {
   return (
     <div 
       className={`fixed top-1/2 right-8 -translate-y-1/2 z-50 transition-all duration-500 ${(isVisible || isHovered) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'}`}
+      style={{ mixBlendMode: 'difference' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <button
         onClick={scrollToTop}
-        className="welcome-btn--float p-4 rounded-full shadow-xl backdrop-blur-md border bg-black/10 hover:bg-black/20 text-black border-black/10 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white dark:border-white/10 flex items-center justify-center cursor-pointer"
+        className="welcome-btn--float p-4 rounded-full flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110"
+        style={{
+          background: 'white',
+          border: 'none',
+          color: 'black',
+        }}
         aria-label="Scroll to top"
       >
         <ArrowUp size={28} />

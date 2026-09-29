@@ -15,6 +15,29 @@ export default function Design() {
   const [selectedPoster, setSelectedPoster] = useState<string | null>(null);
   const [animDir, setAnimDir] = useState<'up' | 'down' | 'scale'>('scale');
 
+  const baseColors = ["#03624C", "#DCEEFF", "#7DA7D9", "#FFFFFF", "#FF4D00"];
+  const colors = [...baseColors, baseColors[0]];
+  const [colorIndex, setColorIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setColorIndex((prev) => prev + 1);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (colorIndex === baseColors.length) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setColorIndex(0);
+      }, 750);
+      return () => clearTimeout(timeout);
+    }
+  }, [colorIndex, baseColors.length]);
+
   useEffect(() => {
     const header = document.querySelector('header');
     if (selectedPoster) {
@@ -61,8 +84,11 @@ export default function Design() {
   return (
     <section id="design" className="w-full bg-[#2EC4B6] overflow-hidden relative flex flex-col items-center justify-center pt-16 pb-0">
       
-      <div className="px-4 md:px-12 w-full flex justify-center mb-12 md:mb-16 relative z-10">
-        <h2 className="text-5xl md:text-7xl font-jetbrains font-bold text-black dark:text-white drop-shadow-md tracking-tight text-center">Poster Design</h2>
+      <div className="px-4 md:px-12 w-full flex justify-end mb-12 md:mb-16 relative z-10 pb-4 md:pb-6">
+        <h2 className="text-[12vw] md:text-[9vw] font-bold leading-[0.9] tracking-tighter text-right lowercase break-words w-full font-sans text-black dark:text-white drop-shadow-md pb-4">
+          <span>Poster </span>
+          <span className="text-[#FF4D00] relative inline-block glitch-effect" data-text="design">design</span>
+        </h2>
       </div>
 
       {/* 3-Column Moving Grid matching reference design */}
