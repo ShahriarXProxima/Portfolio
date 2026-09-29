@@ -46,7 +46,8 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
     { name: 'About me', id: 'about' },
     { name: 'Skills', id: 'skills' },
     { name: 'Design', id: 'design' },
-    { name: 'Work', id: 'work' },
+    { name: 'Xp', id: 'work' },
+    {name: 'Projects', id:'projects'},
     { name: 'Articles', id: 'articles' },
     { name: 'Contact me', id: 'contact' },
   ];
