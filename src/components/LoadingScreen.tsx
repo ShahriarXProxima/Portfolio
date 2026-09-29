@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import type { ComponentType } from 'react';
-import { HoverButton } from './HoverButton';
 
 export function eyesFollowCursor<P extends object>(Component: ComponentType<P>): ComponentType<P> {
   return (props: P) => {
@@ -145,7 +144,6 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [loadCount, setLoadCount] = useState(0);
   const [displayedChars, setDisplayedChars] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
-  const [loadingComplete, setLoadingComplete] = useState(false);
   const startTimeRef = useRef<number>(0);
   const rafRef = useRef<number>(0);
   const typewriterRef = useRef<ReturnType<typeof setInterval>>();
@@ -164,7 +162,6 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       rafRef.current = requestAnimationFrame(animateCounter);
     } else {
       setLoadCount(100);
-      setLoadingComplete(true);
     }
   }, []);
 
@@ -192,13 +189,19 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
     };
   }, []);
 
-  const handleWelcomeClick = () => {
-    setIsExiting(true);
-    // Wait for the exit animation to complete
-    setTimeout(() => {
-      onComplete();
-    }, 1200);
-  };
+  // Auto-exit after the typewriter finishes
+  useEffect(() => {
+    if (displayedChars < FULL_NAME.length) return;
+    // Brief pause so the user can read the full name
+    const timer = setTimeout(() => {
+      setIsExiting(true);
+      // Wait for the exit animation to complete
+      setTimeout(() => {
+        onComplete();
+      }, 1200);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [displayedChars, onComplete]);
 
   // Split displayed text into first name and last name portions
   const firstNameDisplay = FULL_NAME.substring(0, Math.min(displayedChars, FIRST_NAME.length));
@@ -225,7 +228,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         willChange: 'transform',
       }}
     >
-      {/* Center content: Name + Welcome button */}
+      {/* Center content: Name */}
       <div
         style={{
           display: 'flex',
@@ -284,33 +287,8 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           />
         </div>
 
-        {/* Welcome button — fades in when loading is complete */}
-        <HoverButton
-          onClick={handleWelcomeClick}
-          disabled={!loadingComplete}
-          className={`welcome-btn ${loadingComplete ? 'welcome-btn--float' : ''}`}
-          style={{
-            background: 'linear-gradient(135deg, #ff6a00 0%, #f75b04 50%, #e04e00 100%)',
-            border: 'none',
-            outline: 'none',
-            color: '#ffffff',
-            padding: '14px 44px',
-            fontSize: '12px',
-            fontFamily: "'Fira Code', monospace",
-            fontWeight: 600,
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase' as const,
-            borderRadius: '50px',
-            cursor: loadingComplete ? 'pointer' : 'default',
-            boxShadow: '0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(255,255,255,0.05)',
-            transition: 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), letter-spacing 0.4s ease',
-            opacity: loadingComplete ? 1 : 0,
-            pointerEvents: loadingComplete ? 'auto' as const : 'none' as const,
-          }}
-        >
-          Welcome
-        </HoverButton>
       </div>
+
 
       {/* Loading counter — bottom right */}
       <div
@@ -325,7 +303,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           letterSpacing: '0.05em',
           fontVariantNumeric: 'tabular-nums',
           transition: 'opacity 0.4s ease',
-          opacity: loadingComplete ? 0.3 : 0.5,
+          opacity: loadCount >= 100 ? 0.3 : 0.5,
         }}
       >
         {String(loadCount).padStart(3, '0')}
