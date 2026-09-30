@@ -44,9 +44,11 @@ const row3 = ALL_SKILLS.slice(28, 41);
 const ROWS = [row1, row2, row3];
 
 const WavyLogo = () => (
-  <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="white" strokeWidth="2" strokeLinejoin="round" className="opacity-90">
-    <polyline points="0,6 4,2 8,6 12,2 16,6 20,2 24,6 28,2 32,6" />
-    <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14" />
+  <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="white" strokeWidth="2" strokeLinejoin="round" className="opacity-90 overflow-hidden">
+    <g className="animate-wave-move">
+      <polyline points="0,6 4,2 8,6 12,2 16,6 20,2 24,6 28,2 32,6 36,2 40,6" />
+      <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14 36,10 40,14" />
+    </g>
   </svg>
 );
 

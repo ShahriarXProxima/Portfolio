@@ -141,6 +141,15 @@
     animation: fade-in-scale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
+  @keyframes wave-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-8px); }
+  }
+
+  .animate-wave-move {
+    animation: wave-move 1s linear infinite;
+  }
+
   @keyframes text-scroll {
     0% { background-position: 0% 50%; }
     100% { background-position: -200% 50%; }

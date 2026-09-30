@@ -3,9 +3,11 @@ import profileImg from '../../resources/assets/shahriarFamtik.jpg';
 import branchImg from '../../resources/assets/branch.jpeg';
 
 const WavyLogo = ({ color = "white" }: { color?: string }) => (
-  <svg width="24" height="12" viewBox="0 0 32 16" fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" className="opacity-80">
-    <polyline points="0,6 4,2 8,6 12,2 16,6 20,2 24,6 28,2 32,6" />
-    <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14" />
+  <svg width="24" height="12" viewBox="0 0 32 16" fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" className="opacity-80 overflow-hidden">
+    <g className="animate-wave-move">
+      <polyline points="0,6 4,2 8,6 12,2 16,6 20,2 24,6 28,2 32,6 36,2 40,6" />
+      <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14 36,10 40,14" />
+    </g>
   </svg>
 );
 

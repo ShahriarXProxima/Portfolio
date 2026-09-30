@@ -2,15 +2,18 @@ import React from 'react';
 import bloodLinkImg from '../../resources/assets/bloodLink.jpg';
 import titanBoostImg from '../../resources/assets/titanBoost.jpg';
 import pacmanImg from '../../resources/assets/pacman.png';
+import campusCareImg from '../../resources/assets/campusCare.jpg';
 import androidIcon from '../../resources/assets/skills/Android.svg';
 import cppIcon from '../../resources/assets/skills/C++ (CPlusPlus).svg';
 import bashIcon from '../../resources/assets/skills/Bash.svg';
 import termuxIcon from '../../resources/assets/skills/termux.svg';
 
 const WavyLogo = () => (
-  <svg width="24" height="12" viewBox="0 0 32 16" fill="none" stroke="black" strokeWidth="2.5" strokeLinejoin="round" className="opacity-80">
-    <polyline points="0,6 4,2 8,6 12,2 16,6 20,2 24,6 28,2 32,6" />
-    <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14" />
+  <svg width="24" height="12" viewBox="0 0 32 16" fill="none" stroke="black" strokeWidth="2.5" strokeLinejoin="round" className="opacity-80 overflow-hidden">
+    <g className="animate-wave-move">
+      <polyline points="0,6 4,2 8,6 12,2 16,6 20,2 24,6 28,2 32,6 36,2 40,6" />
+      <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14 36,10 40,14" />
+    </g>
   </svg>
 );
 
@@ -58,7 +61,7 @@ export default function Projects() {
               <div className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gray-500 mt-2">Months Exp</div>
             </div>
             <div>
-              <div className="text-4xl md:text-6xl font-bold tracking-tighter text-black">03</div>
+              <div className="text-4xl md:text-6xl font-bold tracking-tighter text-black">04</div>
               <div className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gray-500 mt-2">Projects</div>
             </div>
           </div>
@@ -140,6 +143,32 @@ export default function Projects() {
                 Pac-Man
               </h2>
               <a href="https://github.com/ShahriarXProxima/Pac-man" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-1 hover:opacity-70 transition-opacity text-black">
+                ↓ GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 5: CampusCare */}
+        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:col-span-3 relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2">
+          <div className="absolute inset-0 opacity-30 z-0 group-hover:opacity-60 transition-opacity duration-700">
+             <img src={campusCareImg} alt="CampusCare" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+             <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-transparent"></div>
+          </div>
+
+          <div className="flex justify-between items-start w-full relative z-10">
+            <WavyLogo />
+          </div>
+
+          <div className="relative z-10 flex flex-col justify-end h-full mt-12 lg:mt-0">
+            <p className="text-sm md:text-base text-gray-800 font-medium leading-relaxed max-w-xl self-start text-left mb-8 md:mb-12">
+              A full-stack web platform connecting students with campus care services. Features real-time appointment booking, secure data access via Supabase, automated background jobs, and a hardened API for staff to seamlessly manage schedules and records in one place.
+            </p>
+            <div className="flex justify-between items-end w-full">
+              <h2 className="text-[12vw] lg:text-[7vw] font-bold tracking-tighter text-black leading-[0.8] -ml-2 drop-shadow-sm">
+                CampusCare
+              </h2>
+              <a href="https://github.com/Yeasifjanimishad/Campus-Care.git" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-1 hover:opacity-70 transition-opacity text-black">
                 ↓ GitHub
               </a>
             </div>
