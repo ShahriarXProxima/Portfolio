@@ -77,10 +77,7 @@
     transform: translateZ(0);
   }
 
-  .animate-marquee:hover,
-  .animate-marquee-reverse:hover {
-    animation-play-state: paused;
-  }
+
 
   /* Loading Screen Animations */
   @keyframes cursor-blink {

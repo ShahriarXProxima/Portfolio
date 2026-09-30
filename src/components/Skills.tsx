@@ -50,6 +50,31 @@ const WavyLogo = () => (
   </svg>
 );
 
+const smoothPlaybackRate = (target: HTMLElement, targetRate: number) => {
+  if ((target as any)._animationFrame) cancelAnimationFrame((target as any)._animationFrame);
+  
+  const animations = target.getAnimations();
+  if (!animations.length) return;
+  
+  let start = performance.now();
+  const initialRates = animations.map(a => a.playbackRate);
+  
+  const animate = (time: number) => {
+    const elapsed = Math.max(0, time - start);
+    const progress = Math.min(elapsed / 300, 1);
+    
+    animations.forEach((anim, i) => {
+      const initialRate = initialRates[i];
+      anim.playbackRate = initialRate + (targetRate - initialRate) * progress;
+    });
+    
+    if (progress < 1) {
+      (target as any)._animationFrame = requestAnimationFrame(animate);
+    }
+  };
+  (target as any)._animationFrame = requestAnimationFrame(animate);
+};
+
 export default function Skills() {
   return (
     <section id="skills" className="w-full bg-white py-24 flex flex-col items-center justify-center relative overflow-hidden min-h-screen">
@@ -67,9 +92,6 @@ export default function Skills() {
           animation: marquee 40s linear infinite reverse;
           display: flex;
           width: max-content;
-        }
-        .animate-marquee:hover, .animate-marquee-reverse:hover {
-          animation-play-state: paused;
         }
       `}</style>
 
@@ -100,7 +122,11 @@ export default function Skills() {
               <div className="absolute left-0 w-24 md:w-48 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
               <div className="absolute right-0 w-24 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-              <div className={isReverse ? 'animate-marquee-reverse' : 'animate-marquee'}>
+              <div 
+                className={isReverse ? 'animate-marquee-reverse' : 'animate-marquee'}
+                onMouseEnter={(e) => smoothPlaybackRate(e.currentTarget, 0.2)}
+                onMouseLeave={(e) => smoothPlaybackRate(e.currentTarget, 1)}
+              >
                 {repeatedRow.map((iconFile, i) => {
                   const iconUrl = getIconUrl(iconFile);
                   // Clean name formatting
