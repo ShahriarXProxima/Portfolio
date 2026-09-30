@@ -57,7 +57,7 @@ export default function ScrollToTopButton() {
     >
       <button
         onClick={scrollToTop}
-        className={`welcome-btn--float rounded-full shadow-xl backdrop-blur-md bg-black/10 hover:bg-black/20 text-black border border-black/10 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white dark:border-white/10 flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
+        className={`welcome-btn--float rounded-full shadow-xl backdrop-blur-md bg-black/10 hover:bg-black/20 text-green-500 border border-black/10 dark:bg-white/10 dark:hover:bg-white/20 dark:text-green-500 dark:border-white/10 flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
           !isAtTop ? 'opacity-100 scale-100 hover:scale-110 p-3 md:p-4 max-h-[100px] mb-2' : 'opacity-0 scale-50 hover:scale-50 p-0 max-h-0 mb-0 !border-transparent pointer-events-none'
         }`}
         aria-label="Scroll to top"
@@ -67,7 +67,7 @@ export default function ScrollToTopButton() {
 
       <button
         onClick={scrollToBottom}
-        className={`welcome-btn--float rounded-full shadow-xl backdrop-blur-md bg-black/10 hover:bg-black/20 text-black border border-black/10 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white dark:border-white/10 flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
+        className={`welcome-btn--float rounded-full shadow-xl backdrop-blur-md bg-black/10 hover:bg-black/20 text-green-500 border border-black/10 dark:bg-white/10 dark:hover:bg-white/20 dark:text-green-500 dark:border-white/10 flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
           !isAtBottom ? 'opacity-100 scale-100 hover:scale-110 p-3 md:p-4 max-h-[100px] mt-2' : 'opacity-0 scale-50 hover:scale-50 p-0 max-h-0 mt-0 !border-transparent pointer-events-none'
         }`}
         aria-label="Scroll to bottom"
