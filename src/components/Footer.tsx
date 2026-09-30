@@ -66,50 +66,50 @@ export default function Footer() {
 
         {/* Right Column: Form */}
         <form action="https://formspree.io/f/xykrvpap" method="POST" className="flex flex-col gap-8 lg:pl-16">
-          <div className="text-[15px] font-bold font-sans">Name (required)</div>
+          <div className="text-[18px] font-bold font-sans">Name (required)</div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex flex-col gap-2">
-              <label className="text-[11px] font-mono text-gray-300">First Name</label>
+              <label className="text-[13px] font-mono text-gray-300">First Name</label>
               <input
                 type="text"
                 name="firstName"
                 required
-                className="bg-transparent border-b border-gray-600 focus:border-white outline-none py-2 text-sm font-sans transition-colors"
+                className="bg-transparent border-b border-gray-600 focus:border-white outline-none py-2 text-base font-sans transition-colors"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[11px] font-mono text-gray-300">Last Name</label>
+              <label className="text-[13px] font-mono text-gray-300">Last Name</label>
               <input
                 type="text"
                 name="lastName"
                 required
-                className="bg-transparent border-b border-gray-600 focus:border-white outline-none py-2 text-sm font-sans transition-colors"
+                className="bg-transparent border-b border-gray-600 focus:border-white outline-none py-2 text-base font-sans transition-colors"
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[11px] font-mono text-gray-300">Email (required)</label>
+            <label className="text-[13px] font-mono text-gray-300">Email (required)</label>
             <input
               type="email"
               name="email"
               required
-              className="bg-transparent border-b border-gray-600 focus:border-white outline-none py-2 text-sm font-sans transition-colors"
+              className="bg-transparent border-b border-gray-600 focus:border-white outline-none py-2 text-base font-sans transition-colors"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[11px] font-mono text-gray-300">Message (required)</label>
+            <label className="text-[13px] font-mono text-gray-300">Message (required)</label>
             <textarea
               name="message"
               required
-              className="bg-transparent border-b border-gray-600 focus:border-white outline-none py-2 text-sm font-sans min-h-[100px] resize-none transition-colors"
+              className="bg-transparent border-b border-gray-600 focus:border-white outline-none py-2 text-base font-sans min-h-[100px] resize-none transition-colors"
             ></textarea>
           </div>
 
           <div className="mt-4">
-            <button type="submit" className="bg-white text-black px-8 py-3 text-[13px] font-bold font-mono tracking-wider hover:bg-gray-200 transition-colors rounded-full">
+            <button type="submit" className="bg-white text-black px-8 py-3 text-[15px] font-bold font-mono tracking-wider hover:bg-gray-200 transition-colors rounded-full">
               SUBMIT
             </button>
           </div>
