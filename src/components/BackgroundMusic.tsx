@@ -33,7 +33,7 @@ export default function BackgroundMusic() {
       <audio ref={audioRef} src={bgmFile} loop />
       <button
         onClick={toggleMute}
-        className="w-12 h-12 md:w-[60px] md:h-[60px] rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-md transition-transform hover:scale-110 flex items-center justify-center border-none shadow-none text-black dark:text-white shrink-0"
+        className="w-12 h-12 md:w-[60px] md:h-[60px] rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-md transition-transform hover:scale-110 flex items-center justify-center border-none shadow-none text-[#4E6813] dark:text-[#4E6813] shrink-0"
         aria-label="Toggle Background Music"
       >
         {isMuted ? <VolumeX className="w-5 h-5 md:w-6 md:h-6" /> : <Volume2 className="w-5 h-5 md:w-6 md:h-6" />}
