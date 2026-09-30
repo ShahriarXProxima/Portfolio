@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { HoverButton } from './HoverButton';
+import BackgroundMusic from './BackgroundMusic';
 
 interface NavbarProps {
   isDark?: boolean;
@@ -110,31 +111,35 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
           </div>
         </nav>
 
-        {/* Right Pill: Theme Toggle & Hire Me (Contact) */}
-        <div
-          onClick={() => handleScroll('contact')}
-          className="flex items-center gap-3 md:gap-4 bg-white dark:bg-[#111] rounded-full p-2 md:p-2.5 pr-5 md:pr-6 shadow-lg shadow-black/5 dark:shadow-white/5 border border-black/5 dark:border-white/10 cursor-pointer group transition-colors duration-300 shrink-0"
-        >
-          {/* Black square acting as theme toggle wrapper inside the contact pill */}
+        {/* Right Section: Music & Hire Me Pill */}
+        <div className="flex items-center gap-3">
+          <BackgroundMusic />
+          
           <div
-            onClick={(e) => {
-              e.stopPropagation();
-              if (toggleTheme) toggleTheme();
-            }}
-            className="w-8 h-8 md:w-10 md:h-10 bg-black dark:bg-white rounded-full flex items-center justify-center text-white dark:text-black hover:opacity-80 transition-opacity"
-            title="Toggle Theme"
+            onClick={() => handleScroll('contact')}
+            className="flex items-center gap-3 md:gap-4 bg-white dark:bg-[#111] rounded-full p-2 md:p-2.5 pr-5 md:pr-6 shadow-lg shadow-black/5 dark:shadow-white/5 border border-black/5 dark:border-white/10 cursor-pointer group transition-colors duration-300 shrink-0"
           >
-            <div className={`absolute flex items-center justify-center transition-all duration-500 ease-in-out ${isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-50'}`}>
-              <Sun size={16} />
+            {/* Black square acting as theme toggle wrapper inside the contact pill */}
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                if (toggleTheme) toggleTheme();
+              }}
+              className="w-8 h-8 md:w-10 md:h-10 bg-black dark:bg-white rounded-full flex items-center justify-center text-white dark:text-black hover:opacity-80 transition-opacity"
+              title="Toggle Theme"
+            >
+              <div className={`absolute flex items-center justify-center transition-all duration-500 ease-in-out ${isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-50'}`}>
+                <Sun size={16} />
+              </div>
+              <div className={`absolute flex items-center justify-center transition-all duration-500 ease-in-out ${!isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-50'}`}>
+                <Moon size={16} />
+              </div>
             </div>
-            <div className={`absolute flex items-center justify-center transition-all duration-500 ease-in-out ${!isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-50'}`}>
-              <Moon size={16} />
-            </div>
-          </div>
 
-          <span className="text-xs md:text-sm font-semibold text-black dark:text-white group-hover:opacity-70 transition-opacity">
-            Hire Me
-          </span>
+            <span className="text-xs md:text-sm font-semibold text-black dark:text-white group-hover:opacity-70 transition-opacity">
+              Hire Me
+            </span>
+          </div>
         </div>
 
       </div>
