@@ -3,6 +3,7 @@ import bloodLinkImg from '../../resources/assets/bloodLink.jpg';
 import titanBoostImg from '../../resources/assets/titanBoost.jpg';
 import pacmanImg from '../../resources/assets/pacman.png';
 import campusCareImg from '../../resources/assets/campusCare.jpg';
+import githubOctopusImg from '../../resources/assets/githubOctopus.jpg';
 import androidIcon from '../../resources/assets/skills/Android.svg';
 import cppIcon from '../../resources/assets/skills/C++ (CPlusPlus).svg';
 import bashIcon from '../../resources/assets/skills/Bash.svg';
@@ -34,7 +35,7 @@ const getTagIcon = (tag: string) => {
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-3 sm:px-6 md:px-8 py-10 md:py-16 w-full min-h-screen flex flex-col justify-center items-center bg-[#f8c828] relative overflow-hidden">
+    <section id="projects" className="px-3 sm:px-6 md:px-8 py-10 md:py-16 w-full min-h-screen flex flex-col justify-center items-center bg-[#4E6813] relative overflow-hidden">
       {/* Optional vignette to match the dark fuzzy edges in the reference image */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)] pointer-events-none z-0"></div>
       
@@ -172,6 +173,38 @@ export default function Projects() {
                 ↓ GitHub
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Card 6: Mona's Bug Bash */}
+        <div className="bg-[#EDEDED] rounded-[2rem] shadow-2xl flex flex-col-reverse md:flex-row overflow-hidden md:aspect-auto lg:col-span-3 min-h-[340px] relative group transition-transform duration-500 hover:-translate-y-2">
+          
+          {/* Left part (Content) */}
+          <div className="w-full md:w-[33%] p-8 md:p-12 flex flex-col justify-center items-start bg-[#EFEFEF]">
+            <h2 className="text-3xl md:text-[2.2rem] leading-tight font-medium tracking-tight text-black mb-10 font-sans">
+              mona's-bug-bash/
+            </h2>
+            <a 
+              href="https://bug-bash.github.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="mt-auto inline-flex gap-4 bg-[#1F883D] text-white px-7 py-4 rounded-full text-sm font-bold hover:bg-[#1A7F37] transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl items-center"
+            >
+              Play now
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          {/* Right part (Image) */}
+          <div className="w-full md:w-[67%] relative overflow-hidden bg-[#0D1117] min-h-[200px]">
+            <img 
+              src={githubOctopusImg} 
+              alt="Mona's Bug Bash" 
+              className="absolute inset-0 w-full h-full object-cover object-center -scale-x-100"
+            />
           </div>
         </div>
 
