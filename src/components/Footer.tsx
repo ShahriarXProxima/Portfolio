@@ -149,18 +149,7 @@ export default function Footer() {
           </span>
         </span>
       </h1>
-
-      {/* Footer Links */}
-      <div className="flex justify-between items-center text-[12px] md:text-[13px] font-mono mb-8 px-4">
-        <div className="w-1/3">
-          <a href="#" className="underline hover:text-gray-300 transition-colors">Contact</a>
-        </div>
-        <div className="w-1/3 text-center">
-          <a href="mailto:shahriarxproximalog1@gmail.com" className="underline hover:text-gray-300 transition-colors">hello@shahriar</a>
-        </div>
-        <div className="w-1/3 flex justify-end"></div>
-      </div>
-
+      
       {/* Copyright Line */}
       <div className="flex flex-col md:flex-row justify-between items-center text-[10px] md:text-[11px] text-gray-500 font-mono px-4 border-t border-gray-800 pt-6">
         <p className="mb-4 md:mb-0 text-center md:text-left">© 2026 Shahriar Tahmid</p>
