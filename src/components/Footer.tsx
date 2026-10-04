@@ -57,7 +57,8 @@ export default function Footer() {
             <a href="mailto:shahriarxproximalog1@gmail.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-white transition-colors"><img src={googleIcon} alt="Google" className="w-6 h-6 hover:opacity-80 transition-opacity" /><span>Google</span></a>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-6 flex flex-col gap-3">
+            <div className="text-[13px] font-mono text-gray-300">Click for CV</div>
             <a href={qrData} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center bg-white rounded-full hover:scale-105 transition-transform w-40 h-40">
               <QRCode value={qrData} size={110} />
             </a>
@@ -66,11 +67,11 @@ export default function Footer() {
 
         {/* Right Column: Form */}
         <form action="https://formspree.io/f/xykrvpap" method="POST" className="flex flex-col gap-8 lg:pl-16">
-          <div className="text-[18px] font-bold font-sans">Name (required)</div>
+          <div className="text-[18px] font-bold font-mono">Send an email</div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex flex-col gap-2">
-              <label className="text-[13px] font-mono text-gray-300">First Name</label>
+              <label className="text-[13px] font-mono text-gray-300">First Name (required)</label>
               <input
                 type="text"
                 name="firstName"
@@ -79,7 +80,7 @@ export default function Footer() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[13px] font-mono text-gray-300">Last Name</label>
+              <label className="text-[13px] font-mono text-gray-300">Last Name (required)</label>
               <input
                 type="text"
                 name="lastName"
