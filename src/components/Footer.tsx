@@ -9,7 +9,7 @@ import telegramIcon from '../../resources/assets/social/telegram.png';
 import googleIcon from '../../resources/assets/social/google.png';
 
 export default function Footer() {
-  const qrData = "https://drive.google.com/file/d/1mQ2hrHXFfcCXGB42M0yZAnP8x161nidG/view?usp=drive_link";
+  const qrData = "https://drive.google.com/file/d/1oR0s4cz8hEsxyy3484ILr_insrPHDRst/view?usp=drivesdk";
   
   const baseColors = ["#03624C", "#DCEEFF", "#7DA7D9", "#FFFFFF", "#FF4D00"];
   const colors = [...baseColors, baseColors[0]];
