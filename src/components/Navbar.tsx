@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { HoverButton } from './HoverButton';
 import BackgroundMusic from './BackgroundMusic';
 
 interface NavbarProps {
@@ -48,9 +47,8 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
     { name: 'Skills', id: 'skills' },
     { name: 'Design', id: 'design' },
     { name: 'Xp', id: 'work' },
-    {name: 'Projects', id:'projects'},
+    { name: 'Projects', id: 'projects' },
     { name: 'Articles', id: 'articles' },
-    { name: 'Contact me', id: 'contact' },
   ];
 
   const handleScroll = (id: string) => {
@@ -86,7 +84,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-6">
-            {navItems.filter(item => item.id !== 'contact').map((item) => (
+            {navItems.map((item) => (
               <div
                 key={item.id}
                 onClick={() => handleScroll(item.id)}
@@ -98,8 +96,8 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
           </div>
 
           {/* Mobile Links (Compacted) */}
-          <div className="flex md:hidden items-center gap-4 overflow-x-auto no-scrollbar">
-            {navItems.filter(item => item.id !== 'contact').map((item) => (
+          <div className="flex md:hidden items-center gap-4 overflow-x-auto">
+            {navItems.map((item) => (
               <div
                 key={item.id}
                 onClick={() => handleScroll(item.id)}

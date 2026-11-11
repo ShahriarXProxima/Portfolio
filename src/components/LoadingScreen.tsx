@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import type { ComponentType } from 'react';
 
-export function eyesFollowCursor<P extends object>(Component: ComponentType<P>): ComponentType<P> {
+function eyesFollowCursor<P extends object>(Component: ComponentType<P>): ComponentType<P> {
   return (props: P) => {
     const ref = useRef<HTMLDivElement>(null);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -144,7 +144,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [isExiting, setIsExiting] = useState(false);
   const startTimeRef = useRef<number>(0);
   const rafRef = useRef<number>(0);
-  const typewriterRef = useRef<ReturnType<typeof setInterval>>();
+  const typewriterRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
 
   // Smooth loading counter using requestAnimationFrame
   const animateCounter = useCallback((timestamp: number) => {

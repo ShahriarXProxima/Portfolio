@@ -69,18 +69,11 @@ export const HoverButton = React.forwardRef<HTMLElement, HoverButtonProps>(
             zIndex: 0,
           }}
         />
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child)) {
-            // If the child is already an element, we don't want to necessarily wrap it in a span if it ruins flex layout.
-            // But we need z-index: 10 to put it above the circle.
-            return (
-              <span className="relative z-10 pointer-events-none" style={{ color: isHovered ? 'white' : 'inherit', transition: 'color 0.3s ease' }}>
-                {child}
-              </span>
-            );
-          }
-          return <span className="relative z-10 pointer-events-none" style={{ color: isHovered ? 'white' : 'inherit', transition: 'color 0.3s ease' }}>{child}</span>;
-        })}
+        {React.Children.map(children, (child) => (
+          <span className="relative z-10 pointer-events-none" style={{ color: isHovered ? 'white' : 'inherit', transition: 'color 0.3s ease' }}>
+            {child}
+          </span>
+        ))}
       </Component>
     );
   }

@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { SOCIAL_LINKS } from '../data';
+import { useState, useEffect, useRef } from 'react';
 import branchImg from '../../resources/assets/hand.jpg';
 import gsap from 'gsap';
 
 export default function Hero() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
   const magneticWrapRef = useRef<HTMLDivElement>(null);
@@ -85,24 +83,6 @@ export default function Hero() {
     setCurrentRoleIndex((prev) => (prev === roles.length - 1 ? 0 : prev + 1));
   };
 
-  const navItems = [
-    { name: 'About me', id: 'about' },
-    { name: 'Work', id: 'work' },
-    { name: 'Design', id: 'design' },
-    { name: 'Articles', id: 'articles' },
-    { name: 'Contact me', id: 'contact' },
-  ];
-
-  const handleScroll = (id: string) => {
-    setIsMenuOpen(false);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.hash = `#${id}`;
-    }
-  };
-
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
       {/* Background Image */}
@@ -118,7 +98,7 @@ export default function Hero() {
       {/* Content Overlays */}
       <div className="relative z-10 w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 text-black pointer-events-none">
           
-          {/* Top Row: Logo & Menu */}
+          {/* Top Row: Logo */}
           <div className="flex justify-between items-start pointer-events-auto">
             {/* Wavy Logo similar to reference */}
             <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="black" strokeWidth="2.5" strokeLinejoin="round">
@@ -172,30 +152,6 @@ export default function Hero() {
           </div>
 
         </div>
-
-      {/* Fullscreen Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center pointer-events-auto transition-opacity duration-500">
-          <button 
-            className="absolute top-8 right-8 text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase text-black hover:text-gray-600 transition-colors p-4 cursor-pointer"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Close
-          </button>
-          
-          <div className="flex flex-col gap-6 md:gap-10 text-center">
-            {navItems.map((item, i) => (
-              <a 
-                key={item.id} 
-                onClick={() => handleScroll(item.id)}
-                className="text-black text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight hover:text-gray-600 hover:scale-105 transition-all cursor-pointer"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
     </section>
   );
 }

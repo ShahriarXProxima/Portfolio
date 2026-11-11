@@ -1,4 +1,4 @@
-import React from 'react';
+import ScrollRevealParagraph from './ScrollRevealParagraph';
 
 // Load all skill icons through Vite.
 const skillIcons = import.meta.glob(
@@ -43,15 +43,6 @@ const row2 = ALL_SKILLS.slice(14, 28);
 const row3 = ALL_SKILLS.slice(28, 41);
 const ROWS = [row1, row2, row3];
 
-const WavyLogo = () => (
-  <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="white" strokeWidth="2" strokeLinejoin="round" className="opacity-90 overflow-hidden">
-    <g className="animate-wave-move">
-      <polyline points="0,6 4,2 8,6 12,2 16,6 20,2 24,6 28,2 32,6 36,2 40,6" />
-      <polyline points="0,14 4,10 8,14 12,10 16,14 20,10 24,14 28,10 32,14 36,10 40,14" />
-    </g>
-  </svg>
-);
-
 const smoothPlaybackRate = (target: HTMLElement, targetRate: number) => {
   if ((target as any)._animationFrame) cancelAnimationFrame((target as any)._animationFrame);
   
@@ -80,23 +71,6 @@ const smoothPlaybackRate = (target: HTMLElement, targetRate: number) => {
 export default function Skills() {
   return (
     <section id="skills" className="w-full bg-white py-24 flex flex-col items-center justify-center relative overflow-hidden min-h-screen">
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
-          display: flex;
-          width: max-content;
-        }
-        .animate-marquee-reverse {
-          animation: marquee 40s linear infinite reverse;
-          display: flex;
-          width: max-content;
-        }
-      `}</style>
-
       {/* Top Tag */}
       <div className="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-1.5 mb-8 bg-[#FDFDFD] shadow-sm">
         <span className="text-[10px] font-bold tracking-widest text-gray-500">006</span>
@@ -162,9 +136,12 @@ export default function Skills() {
       </div>
 
       {/* Bottom Description */}
-      <p className="text-gray-500 font-medium text-sm md:text-lg lg:text-xl text-center max-w-3xl mt-16 md:mt-24 px-6 leading-relaxed">
+      <ScrollRevealParagraph
+        theme="light"
+        className="font-medium text-sm md:text-lg lg:text-xl text-center max-w-3xl mt-16 md:mt-24 px-6 leading-relaxed"
+      >
         My technology stack connects robust backend architectures, dynamic frontends, and reliable databases into a scalable, high-performance ecosystem that grows with you.
-      </p>
+      </ScrollRevealParagraph>
 
     </section>
   );

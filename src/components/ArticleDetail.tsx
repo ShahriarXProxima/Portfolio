@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import ScrollBackground from './ScrollBackground';
 import { HoverButton } from './HoverButton';
+import ScrollRevealParagraph from './ScrollRevealParagraph';
 
 interface ArticleDetailProps {
   articleId: string;
@@ -102,9 +103,13 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
 
         {/* Lead Paragraph */}
         <div className="p-8 rounded-xl bg-white/40 dark:bg-blue-deep/40 backdrop-blur-md border border-gray-200/50 dark:border-blue-deep space-y-4 shadow-sm">
-          <p className="text-lg md:text-xl text-black dark:text-white font-serif leading-relaxed italic font-medium drop-shadow-sm">
-            "{article.description}"
-          </p>
+          <ScrollRevealParagraph
+            key={`lead-${article.id}`}
+            theme="auto"
+            className="text-lg md:text-xl font-serif leading-relaxed italic font-medium drop-shadow-sm"
+          >
+            {`"${article.description}"`}
+          </ScrollRevealParagraph>
         </div>
 
         {/* Article Body Sections */}
@@ -118,9 +123,13 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
               )}
 
               {section.paragraphs.map((para, pIdx) => (
-                <p key={pIdx} className="leading-relaxed">
+                <ScrollRevealParagraph
+                  key={`${article.id}-${idx}-${pIdx}`}
+                  theme="auto"
+                  className="leading-relaxed"
+                >
                   {para}
-                </p>
+                </ScrollRevealParagraph>
               ))}
 
               {/* Bullets */}
@@ -203,9 +212,13 @@ export default function ArticleDetail({ articleId, onBack, onSelectArticle, isDa
                   <h4 className="text-xl font-bold font-mono text-black dark:text-white leading-tight group-hover:text-orange-vivid dark:group-hover:text-orange-vivid transition-colors drop-shadow-sm">
                     {other.title}
                   </h4>
-                  <p className="text-black dark:text-white text-sm font-medium leading-relaxed line-clamp-2 drop-shadow-sm">
+                  <ScrollRevealParagraph
+                    key={`more-${other.id}`}
+                    theme="auto"
+                    className="text-sm font-medium leading-relaxed line-clamp-2 drop-shadow-sm"
+                  >
                     {other.description}
-                  </p>
+                  </ScrollRevealParagraph>
                 </div>
 
                 <div className="flex items-center justify-between pt-6 mt-4 border-t border-gray-200/50 dark:border-white/10">

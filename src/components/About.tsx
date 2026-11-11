@@ -1,6 +1,6 @@
-import React from 'react';
 import profileImg from '../../resources/assets/shahriarFamtik.jpg';
 import branchImg from '../../resources/assets/branch.jpeg';
+import ScrollRevealParagraph from './ScrollRevealParagraph';
 
 const WavyLogo = ({ color = "white" }: { color?: string }) => (
   <svg width="24" height="12" viewBox="0 0 32 16" fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" className="opacity-80 overflow-hidden">
@@ -31,9 +31,12 @@ export default function About() {
           </div>
           
           <div className="relative z-10 mt-12 md:mt-0 flex flex-col justify-end h-full">
-            <p className="text-xs md:text-sm text-gray-400 font-bold leading-relaxed max-w-[420px] mb-6 md:mb-10">
+            <ScrollRevealParagraph
+              theme="dark"
+              className="text-xs md:text-sm font-bold leading-relaxed max-w-[420px] mb-6 md:mb-10"
+            >
               Guided by a passion for clean architecture, I merge innovative engineering with timeless design to craft software that scales effortlessly.
-            </p>
+            </ScrollRevealParagraph>
             <h2 className="text-[22vw] lg:text-[11vw] font-bold tracking-tighter text-[#FF4D00] leading-[0.75] -ml-2 drop-shadow-lg">
               About
             </h2>
@@ -68,12 +71,19 @@ export default function About() {
           </div>
 
           <div className="mt-12 lg:mt-12 flex flex-col justify-center h-full max-w-lg md:ml-0">
-            <h3 className="text-2xl md:text-3xl font-medium text-white leading-relaxed mb-6 md:mb-8">
+            <ScrollRevealParagraph
+              as="h3"
+              theme="dark"
+              className="text-2xl md:text-3xl font-medium leading-relaxed mb-6 md:mb-8"
+            >
               Rooted in modern software engineering principles, I approach every project with a deep respect for performance, security, and scalability.
-            </h3>
-            <p className="text-sm md:text-base text-gray-400 font-medium leading-relaxed mb-10 md:mb-12">
+            </ScrollRevealParagraph>
+            <ScrollRevealParagraph
+              theme="dark"
+              className="text-sm md:text-base font-medium leading-relaxed mb-10 md:mb-12"
+            >
               Collaboration is at the heart of everything I do. By working closely with teams and users, I design backend systems that balance functionality and robust architecture. I am also a competitive programmer ranked top 10 in CodeTrap 2025.
-            </p>
+            </ScrollRevealParagraph>
             <a href="#contact" className="inline-flex items-center justify-center bg-[#FF4D00] text-black text-sm md:text-base font-bold px-8 py-3.5 rounded-full hover:bg-gray-200 hover:scale-105 transition-all w-max mt-2">
               Contact Me
             </a>

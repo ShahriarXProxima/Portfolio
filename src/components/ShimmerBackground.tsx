@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 
 interface ShimmerBackgroundProps {
@@ -13,12 +13,11 @@ export default function ShimmerBackground({ isDark }: ShimmerBackgroundProps) {
   const canvasRefBright = useRef<HTMLCanvasElement>(null);
   const [isClient, setIsClient] = useState(false);
   const mousePosRef = useRef({ x: -1000, y: -1000 });
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
 
   // Grid configuration
   const size = 1.5;
   const gap = 28;
-  const speed = 15;
 
   useEffect(() => {
     setIsClient(true);

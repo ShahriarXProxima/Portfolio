@@ -1,6 +1,6 @@
-import React from 'react';
 import { ARTICLES_DATA } from '../data/articles';
 import { TrendingUp, Quote, Rocket } from 'lucide-react';
+import ScrollRevealParagraph from './ScrollRevealParagraph';
 
 export default function Articles({ onSelectArticle }: { onSelectArticle?: (id: string) => void }) {
   // Take first 4 articles to fit the 4-card layout
@@ -17,9 +17,12 @@ export default function Articles({ onSelectArticle }: { onSelectArticle?: (id: s
             <span className="text-gray-300"> engineeri</span>
             <span className="text-gray-200">ng.</span>
           </h2>
-          <p className="mt-8 text-gray-600 font-medium text-sm md:text-base max-w-md leading-relaxed">
+          <ScrollRevealParagraph
+            theme="light"
+            className="mt-8 font-medium text-sm md:text-base max-w-md leading-relaxed"
+          >
             Empowering developers with intelligent insights that turn complex architectures into actionable knowledge daily.
-          </p>
+          </ScrollRevealParagraph>
         </div>
 
         {/* 4 Cards Grid */}
@@ -37,9 +40,12 @@ export default function Articles({ onSelectArticle }: { onSelectArticle?: (id: s
               <div className="text-5xl md:text-6xl font-bold text-white tracking-tighter mb-4 group-hover:scale-105 transition-transform origin-left">
                 5<span className="text-3xl md:text-4xl">MIN</span>
               </div>
-              <p className="text-white/70 text-xs md:text-sm font-medium leading-relaxed">
+              <ScrollRevealParagraph
+                theme="dark"
+                className="text-xs md:text-sm font-medium leading-relaxed"
+              >
                 {articles[0].title}
-              </p>
+              </ScrollRevealParagraph>
             </div>
           </div>
 
@@ -66,9 +72,12 @@ export default function Articles({ onSelectArticle }: { onSelectArticle?: (id: s
               <div className="text-4xl md:text-5xl font-bold text-black tracking-tighter mb-2">
                 React
               </div>
-              <p className="text-gray-500 text-xs md:text-sm font-medium leading-relaxed">
+              <ScrollRevealParagraph
+                theme="light"
+                className="text-xs md:text-sm font-medium leading-relaxed"
+              >
                 {articles[1].title}
-              </p>
+              </ScrollRevealParagraph>
             </div>
           </div>
 
@@ -92,9 +101,12 @@ export default function Articles({ onSelectArticle }: { onSelectArticle?: (id: s
               <div className="text-lg font-bold text-black mb-2">
                 TypeScript
               </div>
-              <p className="text-gray-600 text-xs md:text-sm font-medium leading-relaxed line-clamp-3">
+              <ScrollRevealParagraph
+                theme="light"
+                className="text-xs md:text-sm font-medium leading-relaxed line-clamp-3"
+              >
                 {articles[2].description}
-              </p>
+              </ScrollRevealParagraph>
             </div>
           </div>
 
@@ -110,9 +122,12 @@ export default function Articles({ onSelectArticle }: { onSelectArticle?: (id: s
               </div>
             </div>
             <div className="mt-auto">
-              <p className="text-gray-600 text-sm md:text-base font-medium leading-relaxed mb-6">
-                "{articles[3].description.split('.')[0]}."
-              </p>
+              <ScrollRevealParagraph
+                theme="light"
+                className="text-sm md:text-base font-medium leading-relaxed mb-6"
+              >
+                {`"${articles[3].description.split('.')[0]}."`}
+              </ScrollRevealParagraph>
               <div className="flex items-center gap-2 text-xs font-bold text-gray-400">
                 <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
                 {articles[3].title}

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const EXPERIENCES = [
   {
     period: 'Jun, 2026 - Present',

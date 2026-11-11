@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alata&family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -12,12 +10,7 @@
   --color-blue-vivid: #4837ff;
   --color-blue-pale: #d1cdff;
   --color-orange-vivid: #f75b04;
-  --color-gray-stone: #5f5f6b;
-  --color-paper-white: #ffffff;
   --color-accent: #f75b04;
-  --font-fira: 'Fira Code', monospace;
-  --font-jetbrains: 'JetBrains Mono', monospace;
-  --font-oswald: 'Oswald', sans-serif;
 }
 
 @layer base {
@@ -41,12 +34,6 @@
 
 
 @layer utilities {
-  .bg-graph-paper {
-    background-image: linear-gradient(to right, rgba(150, 150, 150, 0.15) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(150, 150, 150, 0.15) 1px, transparent 1px);
-    background-size: 30px 30px;
-  }
-
   @keyframes marquee {
     0% {
       transform: translateX(0);
@@ -68,18 +55,20 @@
   }
 
   .animate-marquee {
+    display: flex;
+    width: max-content;
     animation: marquee 40s linear infinite;
     will-change: transform;
     transform: translateZ(0);
   }
 
   .animate-marquee-reverse {
+    display: flex;
+    width: max-content;
     animation: marquee-reverse 40s linear infinite;
     will-change: transform;
     transform: translateZ(0);
   }
-
-
 
   /* Loading Screen Animations */
   @keyframes cursor-blink {
@@ -96,12 +85,6 @@
 
   .typewriter-cursor {
     animation: cursor-blink 0.7s steps(1) infinite;
-  }
-
-  .welcome-btn:hover {
-    background: linear-gradient(135deg, #ff8533 0%, #ff6a00 50%, #f75b04 100%) !important;
-    letter-spacing: 0.25em !important;
-    box-shadow: 0 6px 30px rgba(247, 91, 4, 0.4), 0 0 60px rgba(255, 106, 0, 0.15) !important;
   }
 
   @keyframes float-gentle {
@@ -150,14 +133,6 @@
 
   .animate-wave-move {
     animation: wave-move 1s linear infinite;
-  }
-
-  @keyframes text-scroll {
-    0% { background-position: 0% 50%; }
-    100% { background-position: -200% 50%; }
-  }
-  .animate-text-scroll {
-    animation: text-scroll 4s linear infinite;
   }
 }
 

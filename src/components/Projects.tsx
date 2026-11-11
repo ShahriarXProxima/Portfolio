@@ -1,6 +1,5 @@
-import React from 'react';
+import ScrollRevealParagraph from './ScrollRevealParagraph';
 import bloodLinkImg from '../../resources/assets/bloodLink.jpg';
-import titanBoostImg from '../../resources/assets/titanBoost.jpg';
 import pacmanImg from '../../resources/assets/pacman.png';
 import campusCareImg from '../../resources/assets/campusCare.jpg';
 import githubOctopusImg from '../../resources/assets/githubOctopus.jpg';
@@ -51,9 +50,12 @@ export default function Projects() {
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-black leading-tight mb-6">
               Shahriar —<br/>Selected Work and Case Studies.
             </h2>
-            <p className="text-sm md:text-base text-gray-600 font-medium leading-relaxed max-w-sm">
+            <ScrollRevealParagraph
+              theme="light"
+              className="text-sm md:text-base font-medium leading-relaxed max-w-sm"
+            >
               Collaboration is at the heart of everything we do. Crafting thoughtful designs that seamlessly blend functionality, performance, and scalability. Each project tells a unique story reflecting technical excellence.
-            </p>
+            </ScrollRevealParagraph>
           </div>
 
           <div className="flex items-center gap-12 mt-12 border-t border-black/10 pt-8">
@@ -87,9 +89,13 @@ export default function Projects() {
           </div>
 
           <div className="relative z-20 flex justify-between items-end mt-auto h-full">
-            <div className="w-full text-xs md:text-sm font-medium leading-relaxed text-gray-800 bg-white/80 p-3 backdrop-blur-sm rounded-lg hidden sm:block">
+            <ScrollRevealParagraph
+              as="div"
+              theme="light"
+              className="w-full text-xs md:text-sm font-medium leading-relaxed bg-white/80 p-3 backdrop-blur-sm rounded-lg hidden sm:block"
+            >
               "A full-stack blood donation platform using Spring Boot and React. Features secure JWT authentication."
-            </div>
+            </ScrollRevealParagraph>
             <div className="flex gap-1.5 self-end ml-2">
                <a href="https://github.com/ShahriarXProxima" target="_blank" rel="noopener noreferrer" className="w-8 h-8 md:w-10 md:h-10 bg-black text-white flex items-center justify-center text-sm font-bold hover:bg-gray-800 transition-colors">&lt;</a>
                <a href="https://github.com/ShahriarXProxima" target="_blank" rel="noopener noreferrer" className="w-8 h-8 md:w-10 md:h-10 bg-black text-white flex items-center justify-center text-sm font-bold hover:bg-gray-800 transition-colors">&gt;</a>
@@ -107,9 +113,12 @@ export default function Projects() {
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-black leading-none mb-4">
               TitanBoost
             </h2>
-            <p className="text-sm md:text-base text-gray-600 font-medium leading-relaxed max-w-sm">
+            <ScrollRevealParagraph
+              theme="light"
+              className="text-sm md:text-base font-medium leading-relaxed max-w-sm"
+            >
               A lightweight Android performance-tuning toolkit for improving device responsiveness and gaming performance. Includes CPU/GPU tuning and memory cleanup.
-            </p>
+            </ScrollRevealParagraph>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-auto">
@@ -136,9 +145,12 @@ export default function Projects() {
           </div>
 
           <div className="relative z-10 flex flex-col justify-end h-full mt-12 lg:mt-0">
-            <p className="text-sm md:text-base text-gray-800 font-medium leading-relaxed max-w-sm self-end text-right mb-8 md:mb-12">
+            <ScrollRevealParagraph
+              theme="light"
+              className="text-sm md:text-base font-medium leading-relaxed max-w-sm self-end text-right mb-8 md:mb-12"
+            >
               A classic 2D arcade game developed from scratch using Java Swing. Features a customizable tile-based maze, collision detection, and ghost AI with randomized movement.
-            </p>
+            </ScrollRevealParagraph>
             <div className="flex justify-between items-end w-full">
               <h2 className="text-[15vw] lg:text-[7vw] font-bold tracking-tighter text-black leading-[0.8] -ml-2 drop-shadow-sm">
                 Pac-Man
@@ -162,9 +174,12 @@ export default function Projects() {
           </div>
 
           <div className="relative z-10 flex flex-col justify-end h-full mt-12 lg:mt-0">
-            <p className="text-sm md:text-base text-gray-800 font-medium leading-relaxed max-w-xl self-start text-left mb-8 md:mb-12">
+            <ScrollRevealParagraph
+              theme="light"
+              className="text-sm md:text-base font-medium leading-relaxed max-w-xl self-start text-left mb-8 md:mb-12"
+            >
               A full-stack web platform connecting students with campus care services. Features real-time appointment booking, secure data access via Supabase, automated background jobs, and a hardened API for staff to seamlessly manage schedules and records in one place.
-            </p>
+            </ScrollRevealParagraph>
             <div className="flex justify-between items-end w-full">
               <h2 className="text-[12vw] lg:text-[7vw] font-bold tracking-tighter text-black leading-[0.8] -ml-2 drop-shadow-sm">
                 CampusCare
