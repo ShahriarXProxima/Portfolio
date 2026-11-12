@@ -3,6 +3,7 @@ import bloodLinkImg from '../../resources/assets/bloodLink.jpg';
 import pacmanImg from '../../resources/assets/pacman.png';
 import campusCareImg from '../../resources/assets/campusCare.jpg';
 import githubOctopusImg from '../../resources/assets/githubOctopus.jpg';
+import terraIgnisImg from '../../resources/assets/terraIgnisSatellite.png';
 import androidIcon from '../../resources/assets/skills/Android.svg';
 import cppIcon from '../../resources/assets/skills/C++ (CPlusPlus).svg';
 import bashIcon from '../../resources/assets/skills/Bash.svg';
@@ -64,7 +65,7 @@ export default function Projects() {
               <div className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gray-500 mt-2">Months Exp</div>
             </div>
             <div>
-              <div className="text-4xl md:text-6xl font-bold tracking-tighter text-black">04</div>
+              <div className="text-4xl md:text-6xl font-bold tracking-tighter text-black">06</div>
               <div className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gray-500 mt-2">Projects</div>
             </div>
           </div>
@@ -176,7 +177,7 @@ export default function Projects() {
           <div className="relative z-10 flex flex-col justify-end h-full mt-12 lg:mt-0">
             <ScrollRevealParagraph
               theme="light"
-              className="text-sm md:text-base font-medium leading-relaxed max-w-xl self-start text-left mb-8 md:mb-12"
+              className="text-sm md:text-base font-medium leading-relaxed max-w-xl self-end text-right mb-8 md:mb-12"
             >
               A full-stack web platform connecting students with campus care services. Features real-time appointment booking, secure data access via Supabase, automated background jobs, and a hardened API for staff to seamlessly manage schedules and records in one place.
             </ScrollRevealParagraph>
@@ -192,11 +193,11 @@ export default function Projects() {
         </div>
 
         {/* Card 6: Mona's Bug Bash */}
-        <div className="bg-[#EDEDED] rounded-[2rem] shadow-2xl flex flex-col-reverse md:flex-row overflow-hidden md:aspect-auto lg:col-span-3 min-h-[340px] relative group transition-transform duration-500 hover:-translate-y-2">
+        <div className="bg-[#EDEDED] rounded-[2rem] shadow-2xl flex flex-col-reverse overflow-hidden md:aspect-auto lg:col-span-1 min-h-[340px] relative group transition-transform duration-500 hover:-translate-y-2">
           
-          {/* Left part (Content) */}
-          <div className="w-full md:w-[33%] p-8 md:p-12 flex flex-col justify-center items-start bg-[#EFEFEF]">
-            <h2 className="text-3xl md:text-[2.2rem] leading-tight font-medium tracking-tight text-black mb-10 font-sans">
+          {/* Bottom part (Content) */}
+          <div className="w-full p-8 md:p-10 flex flex-col justify-between items-start bg-[#EFEFEF] flex-1">
+            <h2 className="text-3xl md:text-[2rem] leading-tight font-medium tracking-tight text-black mb-8 font-sans">
               mona's-bug-bash/
             </h2>
             <a 
@@ -213,13 +214,54 @@ export default function Projects() {
             </a>
           </div>
 
-          {/* Right part (Image) */}
-          <div className="w-full md:w-[67%] relative overflow-hidden bg-[#0D1117] min-h-[200px]">
+          {/* Top part (Image) */}
+          <div className="w-full relative overflow-hidden bg-[#0D1117] min-h-[220px] md:min-h-[240px]">
             <img 
               src={githubOctopusImg} 
               alt="Mona's Bug Bash" 
               className="absolute inset-0 w-full h-full object-cover object-center -scale-x-100"
             />
+          </div>
+        </div>
+
+        {/* Card 7: TerraIgnis (Matches Pac-Man design style) */}
+        <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-2xl flex flex-col justify-between aspect-[4/3] md:aspect-auto lg:col-span-2 relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2">
+          <div className="absolute inset-0 opacity-30 z-0 group-hover:opacity-60 transition-opacity duration-700">
+            <img src={terraIgnisImg} alt="TerraIgnis" className="w-full h-full object-contain p-4 md:p-6 grayscale group-hover:grayscale-0 transition-all duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent"></div>
+          </div>
+
+          <div className="flex justify-between items-start w-full gap-4 relative z-10">
+            <WavyLogo />
+            <h2 className="text-[12vw] lg:text-[6.2vw] font-bold tracking-tighter text-black leading-[0.8] text-right drop-shadow-sm">
+              TerraIgnis
+            </h2>
+          </div>
+
+          <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-end w-full gap-6 mt-16 lg:mt-0">
+            <ScrollRevealParagraph
+              theme="light"
+              className="text-sm md:text-base font-medium leading-relaxed max-w-md text-left"
+            >
+              A satellite-powered wildfire monitoring platform harmonizing NASA FIRMS MODIS and VIIRS observations onto an H3 spatial grid to compute a 0–100 Burn Index and daily fire anomalies.
+            </ScrollRevealParagraph>
+            <div className="flex items-center gap-4 shrink-0 self-end">
+              <a
+                href="https://terraignis.mdzihad.xyz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex gap-4 bg-[#E25F18] text-white px-7 py-4 rounded-full text-sm font-bold hover:bg-[#C94E0C] transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl items-center"
+              >
+                Live
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a href="https://github.com/itsmdzihad/terraIgnis" target="_blank" rel="noopener noreferrer" className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-1 hover:opacity-70 transition-opacity text-black">
+                ↓ GitHub
+              </a>
+            </div>
           </div>
         </div>
 
