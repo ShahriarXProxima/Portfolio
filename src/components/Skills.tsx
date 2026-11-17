@@ -70,7 +70,7 @@ const smoothPlaybackRate = (target: HTMLElement, targetRate: number) => {
 
 export default function Skills() {
   return (
-    <section id="skills" className="w-full bg-white py-24 flex flex-col items-center justify-center relative overflow-hidden min-h-screen">
+    <section className="w-full bg-white py-24 flex flex-col items-center justify-center relative overflow-hidden min-h-screen">
       {/* Top Tag */}
       <div className="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-1.5 mb-8 bg-[#FDFDFD] shadow-sm">
         <span className="text-[10px] font-bold tracking-widest text-gray-500">006</span>

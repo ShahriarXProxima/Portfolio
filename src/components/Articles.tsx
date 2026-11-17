@@ -7,7 +7,7 @@ export default function Articles({ onSelectArticle }: { onSelectArticle?: (id: s
   const articles = ARTICLES_DATA.slice(0, 4);
 
   return (
-    <section id="articles" className="w-full pt-16 md:pt-24 pb-0 px-3 sm:px-6 md:px-10 bg-gradient-to-b from-gray-400 to-[#FAFAFA] flex justify-center">
+    <section className="w-full pt-16 md:pt-24 pb-0 px-3 sm:px-6 md:px-10 bg-gradient-to-b from-gray-400 to-[#FAFAFA] flex justify-center">
       <div className="w-full max-w-[1600px] 2xl:max-w-[92vw] bg-[#F5F5F7] rounded-t-[2.5rem] md:rounded-t-[3.5rem] rounded-b-none p-8 md:p-14 lg:p-20 shadow-2xl relative overflow-hidden flex flex-col">
         
         {/* Huge Headline */}

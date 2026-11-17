@@ -35,7 +35,7 @@ const getTagIcon = (tag: string) => {
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-3 sm:px-6 md:px-8 py-10 md:py-16 w-full min-h-screen flex flex-col justify-center items-center bg-[#4E6813] relative overflow-hidden">
+    <section className="px-3 sm:px-6 md:px-8 py-10 md:py-16 w-full min-h-screen flex flex-col justify-center items-center bg-[#4E6813] relative overflow-hidden">
       {/* Optional vignette to match the dark fuzzy edges in the reference image */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)] pointer-events-none z-0"></div>
       

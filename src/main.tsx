@@ -7,7 +7,7 @@ import { ReactLenis } from 'lenis/react';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ReactLenis root>
+    <ReactLenis root options={{ autoRaf: true, anchors: true }}>
       <App />
       <SpeedInsights />
     </ReactLenis>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { useLenis } from 'lenis/react';
 import BackgroundMusic from './BackgroundMusic';
 
 interface NavbarProps {
@@ -51,10 +52,20 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
     { name: 'Articles', id: 'articles' },
   ];
 
+  const lenis = useLenis();
+
   const handleScroll = (id: string) => {
     const el = document.getElementById(id);
-    if (el) {
+    if (lenis && el) {
+      lenis.scrollTo(`#${id}`, { offset: -20 });
+      if (window.location.hash !== `#${id}`) {
+        window.history.pushState(null, '', `#${id}`);
+      }
+    } else if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
+      if (window.location.hash !== `#${id}`) {
+        window.history.pushState(null, '', `#${id}`);
+      }
     } else {
       window.location.hash = `#${id}`;
     }
@@ -64,7 +75,11 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
     if (window.location.hash && window.location.hash.startsWith('#article/')) {
       window.location.hash = '';
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (lenis) {
+        lenis.scrollTo(0);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
   };
 

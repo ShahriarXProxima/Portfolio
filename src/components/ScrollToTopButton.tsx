@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { ArrowUp, ArrowDown } from 'lucide-react';
+import { useLenis } from 'lenis/react';
 
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
   const [isAtBottom, setIsAtBottom] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -42,11 +44,19 @@ export default function ScrollToTopButton() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (lenis) {
+      lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const scrollToBottom = () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    if (lenis) {
+      lenis.scrollTo('bottom');
+    } else {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
   };
 
   return (

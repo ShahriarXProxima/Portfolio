@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLenis } from 'lenis/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -25,6 +26,7 @@ export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
   const [showLoading, setShowLoading] = useState(true);
   const parallaxBgRef = useRef<HTMLDivElement>(null);
+  const lenis = useLenis();
 
   useGSAP(() => {
     gsap.to(parallaxBgRef.current, {
@@ -58,14 +60,20 @@ export default function App() {
       if (hash.startsWith('#article/')) {
         const articleId = hash.replace('#article/', '');
         setSelectedArticleId(articleId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       } else {
         setSelectedArticleId(null);
         if (hash) {
           const sectionId = hash.replace('#', '');
           setTimeout(() => {
             const el = document.getElementById(sectionId);
-            if (el) {
+            if (lenis && el) {
+              lenis.scrollTo(`#${sectionId}`, { offset: -20 });
+            } else if (el) {
               el.scrollIntoView({ behavior: 'smooth' });
             }
           }, 100);
@@ -76,7 +84,7 @@ export default function App() {
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  }, [lenis]);
 
   const openArticle = (id: string) => {
     setSelectedArticleId(id);
@@ -139,18 +147,30 @@ export default function App() {
             />
 
             <div className="relative z-10 w-full">
-              <StaticStrip title="ABOUT" direction="left" />
-              <About />
-              <StaticStrip title="SKILLS" direction="right" />
-              <Skills />
-              <StaticStrip title="DESIGN" direction="left" />
-              <Design />
-              <StaticStrip title="EXPERIENCE" direction="right" />
-              <WorkExperience />
-              <StaticStrip title="PROJECTS" direction="left" />
-              <Projects />
-              <StaticStrip title="ARTICLES" direction="right" />
-              <Articles onSelectArticle={openArticle} />
+              <div id="about" className="scroll-mt-20">
+                <StaticStrip title="ABOUT" direction="left" />
+                <About />
+              </div>
+              <div id="skills" className="scroll-mt-20">
+                <StaticStrip title="SKILLS" direction="right" />
+                <Skills />
+              </div>
+              <div id="design" className="scroll-mt-20">
+                <StaticStrip title="DESIGN" direction="left" />
+                <Design />
+              </div>
+              <div id="work" className="scroll-mt-20">
+                <StaticStrip title="EXPERIENCE" direction="right" />
+                <WorkExperience />
+              </div>
+              <div id="projects" className="scroll-mt-20">
+                <StaticStrip title="PROJECTS" direction="left" />
+                <Projects />
+              </div>
+              <div id="articles" className="scroll-mt-20">
+                <StaticStrip title="ARTICLES" direction="right" />
+                <Articles onSelectArticle={openArticle} />
+              </div>
             </div>
           </div>
           <CautionStrip />

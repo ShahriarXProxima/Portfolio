@@ -13,7 +13,7 @@ const WavyLogo = ({ color = "white" }: { color?: string }) => (
 
 export default function About() {
   return (
-    <section id="about" className="px-3 sm:px-6 md:px-8 py-10 md:py-16 w-full min-h-screen flex flex-col justify-center items-center bg-[#0a0a0a] relative overflow-hidden">
+    <section className="px-3 sm:px-6 md:px-8 py-10 md:py-16 w-full min-h-screen flex flex-col justify-center items-center bg-[#0a0a0a] relative overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(40,40,40,0.5)_0%,transparent_100%)] pointer-events-none z-0"></div>
       

@@ -59,7 +59,7 @@ export default function Design() {
   };
 
   return (
-    <section id="design" className="w-full bg-[#2EC4B6] overflow-hidden relative flex flex-col items-center justify-center pt-16 pb-0">
+    <section className="w-full bg-[#2EC4B6] overflow-hidden relative flex flex-col items-center justify-center pt-16 pb-0">
       
       <div className="px-4 md:px-12 w-full flex justify-end mb-12 md:mb-16 relative z-10 pb-4 md:pb-6">
         <h2 className="text-[12vw] md:text-[9vw] font-bold leading-[0.9] tracking-tighter text-right lowercase break-words w-full font-sans text-black dark:text-white drop-shadow-md pb-4">

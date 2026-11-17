@@ -1,5 +1,6 @@
 import React from 'react';
 import QRCode from 'react-qr-code';
+import { useLenis } from 'lenis/react';
 
 import githubIcon from '../../resources/assets/social/github.png';
 import linkedinIcon from '../../resources/assets/social/linkedIn.svg';
@@ -34,10 +35,17 @@ export default function Footer() {
     }
   }, [colorIndex, baseColors.length]);
 
+  const lenis = useLenis();
+
   const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const el = document.getElementById('projects');
-    if (el) {
+    if (lenis && el) {
+      lenis.scrollTo('#projects', { offset: -20 });
+      if (window.location.hash !== '#projects') {
+        window.history.pushState(null, '', '#projects');
+      }
+    } else if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
       if (window.location.hash !== '#projects') {
         window.history.pushState(null, '', '#projects');

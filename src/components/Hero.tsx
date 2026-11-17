@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import branchImg from '../../resources/assets/hand.jpg';
 import gsap from 'gsap';
+import { useLenis } from 'lenis/react';
 
 export default function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const lenis = useLenis();
 
   const magneticWrapRef = useRef<HTMLDivElement>(null);
   const magneticBtnRef = useRef<HTMLDivElement>(null);
@@ -110,7 +112,28 @@ export default function Hero() {
           {/* Center-Left: Bracketed Text */}
           <div ref={magneticWrapRef} className="absolute top-1/2 left-6 sm:left-10 md:left-14 -translate-y-1/2 pointer-events-auto hidden md:block">
             <div ref={magneticBtnRef}>
-              <a ref={floatBtnRef} href="#projects" className="relative text-[11px] font-bold tracking-[0.2em] px-6 py-3.5 flex items-center justify-center uppercase bg-black/5 backdrop-blur-md hover:bg-black/10 transition-colors cursor-pointer group text-black">
+              <a
+                ref={floatBtnRef}
+                href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById('projects');
+                  if (lenis && el) {
+                    lenis.scrollTo('#projects', { offset: -20 });
+                    if (window.location.hash !== '#projects') {
+                      window.history.pushState(null, '', '#projects');
+                    }
+                  } else if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                    if (window.location.hash !== '#projects') {
+                      window.history.pushState(null, '', '#projects');
+                    }
+                  } else {
+                    window.location.hash = '#projects';
+                  }
+                }}
+                className="relative text-[11px] font-bold tracking-[0.2em] px-6 py-3.5 flex items-center justify-center uppercase bg-black/5 backdrop-blur-md hover:bg-black/10 transition-colors cursor-pointer group text-black"
+              >
                 {/* Corner brackets */}
                 <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-black/80 group-hover:border-black transition-colors"></div>
                 <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-black/80 group-hover:border-black transition-colors"></div>
