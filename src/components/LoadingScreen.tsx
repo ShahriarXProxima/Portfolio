@@ -114,7 +114,7 @@ const Eyes = () => (
   >
     {/* Left Eye */}
     <div style={{ position: 'absolute', top: 0, left: 0, width: '24px', height: '36px' }}>
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '24px', height: '36px', backgroundColor: 'rgb(255, 254, 253)', borderRadius: '40px' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '24px', height: '36px', backgroundColor: '#ffffff', borderRadius: '40px', border: '2px solid #000000', boxSizing: 'border-box' }} />
       <div style={{ position: 'absolute', top: '7px', bottom: '7px', left: 0, right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <MovingPupil />
       </div>
@@ -122,7 +122,7 @@ const Eyes = () => (
     
     {/* Right Eye */}
     <div style={{ position: 'absolute', top: 0, right: 0, width: '24px', height: '36px' }}>
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '24px', height: '36px', backgroundColor: 'rgb(255, 254, 253)', borderRadius: '40px' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '24px', height: '36px', backgroundColor: '#ffffff', borderRadius: '40px', border: '2px solid #000000', boxSizing: 'border-box' }} />
       <div style={{ position: 'absolute', top: '7px', bottom: '7px', left: 0, right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <MovingPupil />
       </div>
@@ -211,9 +211,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: `rgba(0, 0, 0, ${1 - (loadCount / 100) * 0.4})`,
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        background: '#ffffff',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -239,19 +237,20 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         <div
           className="loading-name"
           style={{
-            fontSize: 'clamp(1.5rem, 4.5vw, 3.5rem)',
-            letterSpacing: '0.01em',
-            lineHeight: 1,
-            color: '#ffffff',
+            fontSize: 'clamp(2.2rem, 1.2rem + 4.5vw, 4.5rem)',
+            letterSpacing: '-0.06em',
+            lineHeight: 0.9,
+            color: '#000000',
             minHeight: '1.2em',
             userSelect: 'none',
+            textTransform: 'uppercase',
           }}
         >
           <span
             style={{
               fontStyle: 'normal',
-              fontWeight: 'bold',
-              fontFamily: "'Alata', sans-serif",
+              fontWeight: 900,
+              fontFamily: "'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
             }}
           >
             {textDisplay}
@@ -261,9 +260,9 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             className="typewriter-cursor"
             style={{
               display: displayedChars < FULL_NAME.length ? 'inline-block' : 'none',
-              width: '2px',
+              width: '3px',
               height: '0.85em',
-              background: '#ffffff',
+              background: '#000000',
               marginLeft: '4px',
               verticalAlign: 'baseline',
               position: 'relative',
@@ -283,12 +282,12 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           right: '24px',
           fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
           fontSize: '14px',
-          fontWeight: 500,
-          color: 'rgba(255,255,255,0.5)',
+          fontWeight: 600,
+          color: 'rgba(0, 0, 0, 0.4)',
           letterSpacing: '0.05em',
           fontVariantNumeric: 'tabular-nums',
           transition: 'opacity 0.4s ease',
-          opacity: loadCount >= 100 ? 0.3 : 0.5,
+          opacity: loadCount >= 100 ? 0.3 : 0.6,
         }}
       >
         {String(loadCount).padStart(3, '0')}
