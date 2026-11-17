@@ -34,6 +34,19 @@ export default function Footer() {
     }
   }, [colorIndex, baseColors.length]);
 
+  const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const el = document.getElementById('projects');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      if (window.location.hash !== '#projects') {
+        window.history.pushState(null, '', '#projects');
+      }
+    } else {
+      window.location.hash = '#projects';
+    }
+  };
+
   return (
     <footer id="contact" className="w-full bg-[#181818] text-[#F0F0F0] flex flex-col font-sans px-6 md:px-12 py-10">
       {/* Huge Heading */}
@@ -126,7 +139,13 @@ export default function Footer() {
         </div>
         <div className="leading-relaxed md:text-center">
           1 years of experience<br />
-          <a href="#" className="underline hover:text-white transition-colors">View Work</a>
+          <a
+            href="#projects"
+            onClick={handleScrollToProjects}
+            className="underline hover:text-white transition-colors cursor-pointer"
+          >
+            View Projects
+          </a>
         </div>
         <div className="leading-relaxed md:text-right">
           Dhaka, Bangladesh<br />
